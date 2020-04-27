@@ -137,7 +137,7 @@ struct HomeView_together: View {
                     }
                 }.frame(width:300)
             }
-            .navigationBarTitle(Text("Home"))
+            .navigationBarTitle(Text("Home"),displayMode: .inline)
             .navigationBarHidden(showingnavi)
             .onAppear() {
                 self.showingnavi = true
@@ -223,7 +223,7 @@ struct HomeView_person: View {
                 .frame(width: 380)
      
                 HStack {
-                    NavigationLink(destination: FriendView().onTapGesture {
+                    NavigationLink(destination: FriendView().onAppear() {
                         self.showingnavi = false
                     }) {
                         HStack {
@@ -273,7 +273,7 @@ struct HomeView_person: View {
                     }
                 }.frame(width:300)
             }
-            .navigationBarTitle(Text("Home"))
+            .navigationBarTitle(Text("Home"),displayMode: .inline)
             .navigationBarHidden(showingnavi)
             .onAppear() {
                 self.showingnavi = true

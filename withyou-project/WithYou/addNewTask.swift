@@ -56,7 +56,7 @@ struct addNewTask: View {
                     switchTaskType()
                 }
             }
-            .navigationBarTitle("Add tasks")
+            .navigationBarTitle("Add tasks",displayMode: .inline)
             .navigationBarHidden(isnavi)
             .onAppear() {
                 self.isnavi = true

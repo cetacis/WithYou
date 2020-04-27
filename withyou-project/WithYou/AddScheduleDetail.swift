@@ -66,10 +66,11 @@ struct AddScheduleDetail: View {
                     Text("You can share your schedule with your partner, you can do these difficult tasks with your frinds. Someone in the world is fighting with you. Now, let's find your partner, who will do these tasks")
                     Text("withYou").fontWeight(.heavy).foregroundColor(.blue)
                 }
-                
+                if(User.togethertasks.count != 0){Text("You already have a partner, you can't match a new partner before you finish the schedule")}
                 Button(
                     action: {
                         print("button")
+                        if(User.togethertasks.count == 0){
                         self.matching.toggle()
                         self.addNewTask(name: "Leg bent")
                         self.addNewTask(name: "Knee flexion")
@@ -79,7 +80,7 @@ struct AddScheduleDetail: View {
                         self.addNewTask(name: "Stretch")
                         self.addNewTask(name: "Runsning")
                         self.addNewTask(name: "Diet control")
-                        self.addNewTask(name: "Show diet")
+                        self.addNewTask(name: "Show diet")}
                         
                         
                 },
@@ -89,7 +90,7 @@ struct AddScheduleDetail: View {
             // TODO: 這裡動畫的邏輯有大問題，但是做到了如果匹配了就不能二次匹配了。並且匹配3秒後會匹配成功
             if(matching && !timeLine2){
                 MatchingAnimation().onAppear(perform: delayText).frame(width:UIScreen.main.bounds.width-50)}
-            if(timeLine2 && !timeLine || User.privatetasks.count != 0){
+            if(timeLine2 && !timeLine){
                 Text("You already have a partner, you can't match a new partner before you finish the schedule")
             }
         }.offset(y: 5).alert(isPresented: $timeLine) {

@@ -105,7 +105,7 @@ struct Friendprofileview: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle(Text("profile"))
+            .navigationBarTitle(Text("profile"),displayMode: .inline)
             .navigationBarHidden(self.showmoreprofile)
             .onAppear() {
                 self.showmoreprofile = true
