@@ -3,4 +3,69 @@
    uuid = "94AADD22-7AE7-4C3B-A543-56FAC2731D0D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "764BE450-BCE7-4715-84BA-B125D92353F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WithYou/File.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "764BE450-BCE7-4715-84BA-B125D92353F4 - 3aa91ee3040083c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_BB82FCBBC7B3F6490DFC95B797CD60F1_func4"
+                  moduleName = "WithYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/una/Library/Mobile%20Documents/com~apple~CloudDocs/withYou%E8%87%AA%E7%95%99/withYou%E5%B7%A5%E7%A8%8B/WithYou/File.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  uuid = "764BE450-BCE7-4715-84BA-B125D92353F4 - 1906151d790fd0a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.RLMSyncUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in variable initialization expression of WithYou.login : ()"
+                  moduleName = "WithYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/una/Library/Mobile%20Documents/com~apple~CloudDocs/withYou%E8%87%AA%E7%95%99/withYou%E5%B7%A5%E7%A8%8B/WithYou/File.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "764BE450-BCE7-4715-84BA-B125D92353F4 - 666b960d5a3473bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WithYou.login.unsafeMutableAddressor : ()"
+                  moduleName = "WithYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/una/Library/Mobile%20Documents/com~apple~CloudDocs/withYou%E8%87%AA%E7%95%99/withYou%E5%B7%A5%E7%A8%8B/WithYou/File.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

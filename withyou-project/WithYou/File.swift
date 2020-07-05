@@ -79,17 +79,19 @@ class PersonInfo: Object {
 
 
 var User = PersonInfo()
-let syncServerURL = URL(string: "https://ioswithyou.us1.cloud.realm.io/")!
-let credentials = SyncCredentials.usernamePassword(username: "admin", password: "dmd123123")
+let syncServerURL = URL(string: "https://withyou.us1.cloud.realm.io/")!
+let credentials = SyncCredentials.usernamePassword(username: "Kimi", password: "711224")
 var flag = true
 let login: () = SyncUser.logIn(with: credentials, server: syncServerURL, onCompletion: { user, err in
     if let _ = user {
         // User is logged in
     } else if let error = err {
         flag = false
+        print("false")
+        print(err)
     }
 })
-let DBURL = URL(string: "realms://ioswithyou.us1.cloud.realm.io/IOS")!
+let DBURL = URL(string: "realms://withyou.us1.cloud.realm.io/IOS")!
 let user = SyncUser.current!
 let config = flag ? user.configuration(realmURL: DBURL, fullSynchronization: true) : Realm.Configuration()
 let realm = flag ? try! Realm(configuration: config) : try! Realm()
