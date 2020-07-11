@@ -28,14 +28,20 @@ func isValidEmail(_ email: String) -> Bool {
     return emailPred.evaluate(with: email)
 }
 func isValiddescription(_ description: String) -> Bool {
-    if (description.count>0){return true}
-    else{return false}
+    if (description.count>0) {
+        return true
+    }
+    else {
+        return false
+    }
 }
 func isMatchedPasspord(_ password1:String,_ password2:String)->Bool{
     if (password1 == password2 && password1.count != 0) {
         return true
     }
-    else {return false}
+    else {
+        return false
+    }
     
 }
 

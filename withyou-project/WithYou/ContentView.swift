@@ -34,6 +34,7 @@ struct ContentView: View {
             }
         }.onAppear(){
             login
+            print(PostLogin(email: "test@test.test", pass: "123"))
         }
     }
 }

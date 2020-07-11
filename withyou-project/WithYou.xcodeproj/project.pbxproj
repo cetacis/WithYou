@@ -36,6 +36,7 @@
 		A15107DD2447B00900D08DD2 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107DC2447B00900D08DD2 /* Tasks.swift */; };
 		A15107DF2447BF9400D08DD2 /* addNewPrivateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107DE2447BF9400D08DD2 /* addNewPrivateTask.swift */; };
 		A15EA44124459E5D00EC4CEB /* CurrentAndFinishTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EA44024459E5D00EC4CEB /* CurrentAndFinishTask.swift */; };
+		A17F1C2A24B9A8B100A3A45C /* PostLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C2924B9A8B100A3A45C /* PostLogin.swift */; };
 		A1B1DF0D2448A8CF00921A1D /* MatchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF0C2448A8CF00921A1D /* MatchingView.swift */; };
 		A1B1DF0F24496EB100921A1D /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF0E24496EB100921A1D /* Friends.swift */; };
 		A1B1DF112449766D00921A1D /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF102449766D00921A1D /* FriendProfile.swift */; };
@@ -117,6 +118,7 @@
 		A15107DC2447B00900D08DD2 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		A15107DE2447BF9400D08DD2 /* addNewPrivateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewPrivateTask.swift; sourceTree = "<group>"; };
 		A15EA44024459E5D00EC4CEB /* CurrentAndFinishTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAndFinishTask.swift; sourceTree = "<group>"; };
+		A17F1C2924B9A8B100A3A45C /* PostLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLogin.swift; sourceTree = "<group>"; };
 		A1B1DF0C2448A8CF00921A1D /* MatchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingView.swift; sourceTree = "<group>"; };
 		A1B1DF0E24496EB100921A1D /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A1B1DF102449766D00921A1D /* FriendProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				A1B1DF102449766D00921A1D /* FriendProfile.swift */,
 				B5D85215244C5340007D0655 /* Md5Encrypt.swift */,
 				B5BBF181245163320016FD83 /* File.swift */,
+				A17F1C2924B9A8B100A3A45C /* PostLogin.swift */,
 			);
 			path = WithYou;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				B58026352446B58000659F58 /* TaskShowingViewFit.swift in Sources */,
 				A128D87F24449CBF007999F9 /* SceneDelegate.swift in Sources */,
 				A1FB25D62445AE390038BDAF /* TagContent.swift in Sources */,
+				A17F1C2A24B9A8B100A3A45C /* PostLogin.swift in Sources */,
 				A1B1DF0D2448A8CF00921A1D /* MatchingView.swift in Sources */,
 				A11270F324449F8700DC10B2 /* GUIDEIG.swift in Sources */,
 				A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */,
