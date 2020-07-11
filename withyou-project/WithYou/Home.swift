@@ -13,13 +13,20 @@ class UserSettings: ObservableObject {
     @Published var count = 0
 }
 
-
+class timer: ObservableObject {
+    @Published var time = 0
+}
 
 struct HomeView_together: View {
+    @Environment(\.imageCache) var cache: ImageCache
     @State var showingaddtask = false
     @State var showingprofile = false
     @State var showingnavi = false
+    @State var timing: timer = timer()
     @Binding var view_swither: Int
+    @ObservedObject var settings = UserSettings()
+    
+    let Clock = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
     var body: some View {
       NavigationView {
             VStack {
@@ -29,20 +36,25 @@ struct HomeView_together: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
-                    Choose
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .scaledToFit()
-                        .offset(y: 5)
-                        .clipShape(Circle())
-                        .overlay(
-                            Circle().stroke(Color.gray, lineWidth: 2))
-                        .padding(.horizontal,15)
-                        .onTapGesture {
-                            self.showingprofile.toggle()
-                    }.sheet(isPresented: $showingprofile) {
-                        profileview(showingprofile: self.$showingprofile)
-                    }
+                        AsyncImage(
+                            url: URL(string: "https://img.cetacis.dev/uploads/big/eb1dc98270f647c1e236ecb56b51a98a.jpg")!,
+                            cache: self.cache,
+                            placeholder: Text("laoding"),
+                            configuration: {
+                                $0.resizable()
+                            }
+                        ).frame(width: 50, height: 50)
+                            .scaledToFit()
+                            .offset(y: 5)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color.gray, lineWidth: 2))
+                            .padding(.horizontal,15)
+                            .onTapGesture {
+                                self.showingprofile.toggle()
+                        }.sheet(isPresented: self.$showingprofile) {
+                            profileview(showingprofile: self.$showingprofile)
+                        }
                 }.frame(width: 380)
                 Divider()
                 HStack {

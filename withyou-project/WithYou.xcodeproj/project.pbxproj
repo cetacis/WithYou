@@ -12,7 +12,6 @@
 		A1115FA52445F2B900B943B8 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1115FA42445F2B900B943B8 /* login.swift */; };
 		A1115FA92445F34400B943B8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1115FA82445F34400B943B8 /* Coordinator.swift */; };
 		A1115FAB2445F39300B943B8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1115FAA2445F39300B943B8 /* Home.swift */; };
-		A11270ED24449D8C00DC10B2 /* HHGuidePageHUD in Resources */ = {isa = PBXBuildFile; fileRef = A11270EC24449D8C00DC10B2 /* HHGuidePageHUD */; };
 		A11270EF24449DB900DC10B2 /* introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11270EE24449DB900DC10B2 /* introduction.swift */; };
 		A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11270F024449F3800DC10B2 /* GUIDE.swift */; };
 		A11270F324449F8700DC10B2 /* GUIDEIG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11270F224449F8700DC10B2 /* GUIDEIG.swift */; };
@@ -37,6 +36,11 @@
 		A15107DF2447BF9400D08DD2 /* addNewPrivateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107DE2447BF9400D08DD2 /* addNewPrivateTask.swift */; };
 		A15EA44124459E5D00EC4CEB /* CurrentAndFinishTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EA44024459E5D00EC4CEB /* CurrentAndFinishTask.swift */; };
 		A17F1C2A24B9A8B100A3A45C /* PostLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C2924B9A8B100A3A45C /* PostLogin.swift */; };
+		A17F1C2C24B9B59F00A3A45C /* PostRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */; };
+		A17F1C4124BA21F900A3A45C /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C3D24BA21F900A3A45C /* EnvironmentValues+ImageCache.swift */; };
+		A17F1C4224BA21F900A3A45C /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C3E24BA21F900A3A45C /* AsyncImage.swift */; };
+		A17F1C4324BA21F900A3A45C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C3F24BA21F900A3A45C /* ImageLoader.swift */; };
+		A17F1C4424BA21F900A3A45C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17F1C4024BA21F900A3A45C /* ImageCache.swift */; };
 		A1B1DF0D2448A8CF00921A1D /* MatchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF0C2448A8CF00921A1D /* MatchingView.swift */; };
 		A1B1DF0F24496EB100921A1D /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF0E24496EB100921A1D /* Friends.swift */; };
 		A1B1DF112449766D00921A1D /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF102449766D00921A1D /* FriendProfile.swift */; };
@@ -90,7 +94,6 @@
 		A1115FA42445F2B900B943B8 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		A1115FA82445F34400B943B8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A1115FAA2445F39300B943B8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		A11270EC24449D8C00DC10B2 /* HHGuidePageHUD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HHGuidePageHUD; sourceTree = "<group>"; };
 		A11270EE24449DB900DC10B2 /* introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = introduction.swift; sourceTree = "<group>"; };
 		A11270F024449F3800DC10B2 /* GUIDE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIDE.swift; sourceTree = "<group>"; };
 		A11270F224449F8700DC10B2 /* GUIDEIG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIDEIG.swift; sourceTree = "<group>"; };
@@ -119,6 +122,11 @@
 		A15107DE2447BF9400D08DD2 /* addNewPrivateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewPrivateTask.swift; sourceTree = "<group>"; };
 		A15EA44024459E5D00EC4CEB /* CurrentAndFinishTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAndFinishTask.swift; sourceTree = "<group>"; };
 		A17F1C2924B9A8B100A3A45C /* PostLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLogin.swift; sourceTree = "<group>"; };
+		A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegister.swift; sourceTree = "<group>"; };
+		A17F1C3D24BA21F900A3A45C /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
+		A17F1C3E24BA21F900A3A45C /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		A17F1C3F24BA21F900A3A45C /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		A17F1C4024BA21F900A3A45C /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A1B1DF0C2448A8CF00921A1D /* MatchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingView.swift; sourceTree = "<group>"; };
 		A1B1DF0E24496EB100921A1D /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A1B1DF102449766D00921A1D /* FriendProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
@@ -185,7 +193,6 @@
 		A128D87B24449CBF007999F9 /* WithYou */ = {
 			isa = PBXGroup;
 			children = (
-				A11270EC24449D8C00DC10B2 /* HHGuidePageHUD */,
 				A128D87C24449CBF007999F9 /* AppDelegate.swift */,
 				A128D87E24449CBF007999F9 /* SceneDelegate.swift */,
 				A128D88024449CBF007999F9 /* ContentView.swift */,
@@ -202,6 +209,10 @@
 				B58026322446AC3600659F58 /* addNewTask.swift */,
 				B58026382446CF4600659F58 /* TaskShowingViewDefault.swift */,
 				B58026362446C2EE00659F58 /* TaskShowingViewStu.swift */,
+				A17F1C3E24BA21F900A3A45C /* AsyncImage.swift */,
+				A17F1C3D24BA21F900A3A45C /* EnvironmentValues+ImageCache.swift */,
+				A17F1C4024BA21F900A3A45C /* ImageCache.swift */,
+				A17F1C3F24BA21F900A3A45C /* ImageLoader.swift */,
 				B58026342446B58000659F58 /* TaskShowingViewFit.swift */,
 				A15107DA24475D3800D08DD2 /* AddScheduleDetail.swift */,
 				A1FB25D52445AE390038BDAF /* TagContent.swift */,
@@ -222,6 +233,7 @@
 				A1B1DF102449766D00921A1D /* FriendProfile.swift */,
 				B5D85215244C5340007D0655 /* Md5Encrypt.swift */,
 				B5BBF181245163320016FD83 /* File.swift */,
+				A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */,
 				A17F1C2924B9A8B100A3A45C /* PostLogin.swift */,
 			);
 			path = WithYou;
@@ -369,7 +381,6 @@
 			files = (
 				A128D88924449CC1007999F9 /* LaunchScreen.storyboard in Resources */,
 				A128D88624449CC1007999F9 /* Preview Assets.xcassets in Resources */,
-				A11270ED24449D8C00DC10B2 /* HHGuidePageHUD in Resources */,
 				A128D88324449CC1007999F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,9 +415,11 @@
 				B58026392446CF4600659F58 /* TaskShowingViewDefault.swift in Sources */,
 				B58026352446B58000659F58 /* TaskShowingViewFit.swift in Sources */,
 				A128D87F24449CBF007999F9 /* SceneDelegate.swift in Sources */,
+				A17F1C4124BA21F900A3A45C /* EnvironmentValues+ImageCache.swift in Sources */,
 				A1FB25D62445AE390038BDAF /* TagContent.swift in Sources */,
 				A17F1C2A24B9A8B100A3A45C /* PostLogin.swift in Sources */,
 				A1B1DF0D2448A8CF00921A1D /* MatchingView.swift in Sources */,
+				A17F1C2C24B9B59F00A3A45C /* PostRegister.swift in Sources */,
 				A11270F324449F8700DC10B2 /* GUIDEIG.swift in Sources */,
 				A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */,
 				A1115FAB2445F39300B943B8 /* Home.swift in Sources */,
@@ -419,8 +432,11 @@
 				B58026372446C2EE00659F58 /* TaskShowingViewStu.swift in Sources */,
 				A15EA44124459E5D00EC4CEB /* CurrentAndFinishTask.swift in Sources */,
 				B5D85216244C5340007D0655 /* Md5Encrypt.swift in Sources */,
+				A17F1C4324BA21F900A3A45C /* ImageLoader.swift in Sources */,
 				A100399A24461BA200AF8363 /* checklogin.swift in Sources */,
+				A17F1C4424BA21F900A3A45C /* ImageCache.swift in Sources */,
 				A1B1DF112449766D00921A1D /* FriendProfile.swift in Sources */,
+				A17F1C4224BA21F900A3A45C /* AsyncImage.swift in Sources */,
 				A1003998244618B100AF8363 /* profile.swift in Sources */,
 				A15107D52446F93200D08DD2 /* ChangeProfile.swift in Sources */,
 				A15107D72447002100D08DD2 /* changelink.swift in Sources */,
