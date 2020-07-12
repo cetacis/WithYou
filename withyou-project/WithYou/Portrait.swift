@@ -14,9 +14,9 @@ struct CaptureImageView {
     /// MARK: - Properties
     @Binding var isShown: Bool
     @Binding var image: Image?
-    
+    @Binding var imagePath: URL?
     func makeCoordinator() -> Coordinator {
-        return Coordinator(isShown: $isShown, image: $image)
+        return Coordinator(isShown: $isShown, image: $image,imagePath:$imagePath)
     }
 }
 
@@ -30,14 +30,18 @@ extension CaptureImageView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIImagePickerController,
                                 context: UIViewControllerRepresentableContext<CaptureImageView>) {
         
+        
     }
+    
+    
 }
 
 struct Portrait: View {
     @State var image: Image? = nil
     @State var showCaptureImageView: Bool = false
+    @State var imagePath: URL? = nil
+    
     var body: some View {
-        
         ZStack {
             VStack {
                 Button(action: {
@@ -45,7 +49,7 @@ struct Portrait: View {
                 }) {
                     Text("Choose photos as your portrait")
                 }.sheet(isPresented: self.$showCaptureImageView) {
-                    CaptureImageView(isShown: self.$showCaptureImageView, image: self.$image)
+                    CaptureImageView(isShown: self.$showCaptureImageView, image: self.$image,imagePath: self.$imagePath)
                 }
                 image?.resizable()
                     .frame(width: 250, height: 200)
@@ -54,7 +58,9 @@ struct Portrait: View {
                     .shadow(radius: 10)
                     .onAppear() {
                         Choose = self.image ?? Image("player1")
+                         print(self.imagePath ?? "path didn't exit") //在首次布局的时候打印
                 }
+                
             }
         }
         
@@ -63,6 +69,7 @@ struct Portrait: View {
 
 struct Portrait_change: View {
     @Binding var image: Image?
+    @State var imagePath: URL?
     @State var showCaptureImageView: Bool = false
     @State var showAlert = false
     var body: some View {
@@ -81,7 +88,7 @@ struct Portrait_change: View {
                     }) {
                         Text("Change ").foregroundColor(Color(red: 162/255, green: 215/255, blue: 33/255))
                     }.sheet(isPresented: self.$showCaptureImageView) {
-                        CaptureImageView(isShown: self.$showCaptureImageView, image: self.$image)
+                        CaptureImageView(isShown: self.$showCaptureImageView, image: self.$image, imagePath: self.$imagePath)
                     }
                     Button(" Save"){
                         Choose = self.image ?? Choose
