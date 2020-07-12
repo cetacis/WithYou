@@ -57,18 +57,15 @@ struct HomeView_together: View {
                     Spacer()
                     // message button
                     NavigationLink(destination: Messageview().onAppear() {
-                                           self.showingnavi = false
-                                       }) {
-                                           HStack {
-                                               Image(systemName: "message.fill")
-                                               .font(.headline)
-                                           }
-                                           .foregroundColor(.blue)
-                                           .background(Color(red: 1, green: 1, blue: 1))
-                                       }
-                    
-                                                       
-                    
+                        self.showingnavi = false
+                    }) {
+                        HStack {
+                            Image(systemName: "message.fill")
+                                .font(.headline)
+                        }
+                        .foregroundColor(.blue)
+                        .background(Color(red: 1, green: 1, blue: 1))
+                    }
                     
                     image
                         .onAppear(perform: loader.load)
@@ -98,7 +95,7 @@ struct HomeView_together: View {
                             .font(.subheadline)
                         List {
                             ForEach(User.TogetherTasks, id: \.self){
-                            task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
+                                task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
                                     self.showingnavi = false
                                 }) {
                                     if (!task.IsFinished) {
@@ -119,7 +116,7 @@ struct HomeView_together: View {
                             .font(.subheadline)
                         List {
                             ForEach(User.TogetherTasks, id: \.self){
-                            task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
+                                task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
                                     self.showingnavi = false
                                 }) {
                                     if (!task.IsFinished) {
@@ -233,9 +230,10 @@ struct HomeView_person: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
-<<<<<<< HEAD
-                    Choose
-                        .resizable()
+                    
+                    image
+                        .onAppear(perform: loader.load)
+                        .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
                         .offset(y: 5)
                         .clipShape(Circle())
@@ -244,19 +242,7 @@ struct HomeView_person: View {
                         .padding(.horizontal,15)
                         .onTapGesture {
                             self.showingprofile.toggle()
-=======
-                    image
-                    .onAppear(perform: loader.load)
-                    .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
-                    .scaledToFit()
-                    .offset(y: 5)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle().stroke(Color.gray, lineWidth: 2))
-                    .padding(.horizontal,15)
-                    .onTapGesture {
-                        self.showingprofile.toggle()
->>>>>>> 4d4c775b3a3083b87582193ff8838cdc0c2ba6da
+                            
                     }.sheet(isPresented: self.$showingprofile) {
                         profileview(showingprofile: self.$showingprofile)
                     }
@@ -286,70 +272,71 @@ struct HomeView_person: View {
                                 Image(systemName: "checkmark.circle")
                                     .onTapGesture {
                                         self.settings.count -= 1
+                                }
                             }
                         }
                     }
-                }
+                        
+                    .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
+                    .cornerRadius(10)
+                    .frame(width: 380)
                     
-                .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
-                .cornerRadius(10)
-                .frame(width: 380)
-                
-                HStack {
-                    NavigationLink(destination: FriendView().onAppear() {
-                        self.showingnavi = false
-                    }) {
-                        HStack {
-                            Image(systemName: "person.circle")
-                                .font(.headline)
-                            Text("Your Friend")
-                                .fontWeight(.semibold)
-                                .font(.headline)
-                            
-                            
+                    HStack {
+                        NavigationLink(destination: FriendView().onAppear() {
+                            self.showingnavi = false
+                        }) {
+                            HStack {
+                                Image(systemName: "person.circle")
+                                    .font(.headline)
+                                Text("Your Friend")
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                
+                                
+                            }
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(.orange))
+                            .cornerRadius(10)
                         }
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(.orange))
-                        .cornerRadius(10)
-                    }
-                    Spacer()
-                    Button(action: {
-                        self.view_swither = 2
-                    }) {
-                        HStack {
-                            Image(systemName: "pencil.and.outline")
-                                .font(.headline)
-                            Text("private Schedule")
-                                .fontWeight(.semibold)
-                                .font(.headline)
-                            
+                        Spacer()
+                        Button(action: {
+                            self.view_swither = 2
+                        }) {
+                            HStack {
+                                Image(systemName: "pencil.and.outline")
+                                    .font(.headline)
+                                Text("private Schedule")
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                
+                            }
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(.orange))
+                            .cornerRadius(10)
                         }
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(.orange))
-                        .cornerRadius(10)
-                    }
-                }.frame(width:380)
-                Spacer()
-                HStack{
+                    }.frame(width:380)
                     Spacer()
-                    Button(action: {
-                        self.showingaddtask.toggle()
-                    }) {
-                        Text("Add Tasks")
-                    }.sheet(isPresented: $showingaddtask) {
-                        addNewPrivateTask(addingtask: self.$showingaddtask, IsChanging: self.$IsChanging)
-                    }
-                    if IsChanging {
-                        Text("")
-                    }
-                }.frame(width:300)
-            }
-            .navigationBarTitle(Text("Home"),displayMode: .inline)
-            .navigationBarHidden(showingnavi)
-            .onAppear() {
-                self.showingnavi = true
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.showingaddtask.toggle()
+                        }) {
+                            Text("Add Tasks")
+                        }.sheet(isPresented: $showingaddtask) {
+                            addNewPrivateTask(addingtask: self.$showingaddtask, IsChanging: self.$IsChanging)
+                        }
+                        if IsChanging {
+                            Text("")
+                        }
+                    }.frame(width:300)
+                }
+                .navigationBarTitle(Text("Home"),displayMode: .inline)
+                .navigationBarHidden(showingnavi)
+                .onAppear() {
+                    self.showingnavi = true
+                }
             }
         }
     }
