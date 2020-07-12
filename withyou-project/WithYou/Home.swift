@@ -94,14 +94,15 @@ struct HomeView_together: View {
                         Text("Your")
                             .font(.subheadline)
                         List {
-                            ForEach(User.TogetherTasks, id: \.self){
-                                task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
+                            ForEach(0..<User.TogetherTasks, id: \.self){
+                                index in
+                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    if (!task.IsFinished) {
-                                        Text(task.name)
+                                    if (!User.TogetherTasks[index].IsFinished) {
+                                        Text(User.TogetherTasks[index].name)
                                     } else {
-                                        Text(task.name).foregroundColor(Color.gray).strikethrough()
+                                        Text(User.TogetherTasks[index].name).foregroundColor(Color.gray).strikethrough()
                                     }
                                 }
                             }
@@ -114,15 +115,16 @@ struct HomeView_together: View {
                     VStack {
                         Text("Friends")
                             .font(.subheadline)
-                        List {
-                            ForEach(User.TogetherTasks, id: \.self){
-                                task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
+                        List {//0..<User.Friends.count, id: \.self
+                            ForEach(0..<User.TogetherTasks.count, id: \.self){
+                                index in
+                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    if (!task.IsFinished) {
-                                        Text(task.name)
+                                    if (!User.TogetherTasks[index].IsFinished) {
+                                        Text(User.TogetherTasks[index].name)
                                     } else {
-                                        Text(task.name).foregroundColor(Color.gray).strikethrough()
+                                        Text(User.TogetherTasks[index].name).foregroundColor(Color.gray).strikethrough()
                                     }
                                 }
                             }
@@ -133,7 +135,7 @@ struct HomeView_together: View {
                 }
                 .frame(width: 380)
                 HStack {
-                    NavigationLink(destination: FriendView().onAppear() {
+                   NavigationLink(destination: FriendView().onAppear() {
                         self.showingnavi = false
                     }) {
                         HStack {

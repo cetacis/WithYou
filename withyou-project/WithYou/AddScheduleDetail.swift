@@ -21,22 +21,24 @@ struct AddScheduleDetail: View {
         }
     }
     private func addNewTask(name:String){
-        let new_task = TogetherTasks()
-        new_task.Name = name
-        new_task.friend_email = "Admin@cetacis.dev"
+        var new_task = TogetherTask()
+        new_task.name = name
+        //todo: 匹配的好友邮箱（匹配函数）
+        new_task.friendEmail = "Admin@cetacis.dev"
         var flag = false
         for index in 0..<User.Friends.count {
-            if User.Friends[index] == new_task.friend_email {
+            if User.Friends[index] == new_task.friendEmail {
                 flag = true
                 break
             }
         }
-        try! realm.write {
+        //todo: 向togethertasks 发送 new_task 并加入非好友友人
+        /*try! realm.write {
             User.togethertasks.append(new_task)
             if !flag {
                 User.Friends.append(new_task.friend_email)
             }
-        }
+        }*/
     }
     var body: some View {
         
@@ -66,11 +68,11 @@ struct AddScheduleDetail: View {
                     Text("You can share your schedule with your partner, you can do these difficult tasks with your frinds. Someone in the world is fighting with you. Now, let's find your partner, who will do these tasks")
                     Text("withYou").fontWeight(.heavy).foregroundColor(.blue)
                 }
-                if(User.togethertasks.count != 0){Text("You already have a partner, you can't match a new partner before you finish the schedule")}
+                if(User.TogetherTasks.count != 0){Text("You already have a partner, you can't match a new partner before you finish the schedule")}
                 Button(
                     action: {
                         print("button")
-                        if(User.togethertasks.count == 0){
+                        if(User.TogetherTasks.count == 0){
                         self.matching.toggle()
                         self.addNewTask(name: "Leg bent")
                         self.addNewTask(name: "Knee flexion")

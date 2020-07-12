@@ -14,7 +14,7 @@ import SwiftUI
 struct Friendprofileview: View {
     @Binding var showingprofile: Bool
     @State var showmoreprofile = false
-    @State var User: PersonInfo
+    @State var User: UserInfo
     var body: some View {
         NavigationView {
             VStack {

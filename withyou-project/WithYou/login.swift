@@ -111,7 +111,8 @@ struct LoginView: View {
                 )
                
                 Button("     log in     "){
-                        let users = realm.objects(PersonInfo.self).filter("email = '\(self.emailIn)'")
+                        //todo: login 发送 根据$emailIn 和 $passpordIn 进行加密后利用post发送
+                        /*let users = realm.objects(PersonInfo.self).filter("email = '\(self.emailIn)'")
                         if users.count == 0 {
                             self.showingAlertNU = true
                         } else {
@@ -123,7 +124,7 @@ struct LoginView: View {
                                 print("password wrong")
                                 self.showingAlertNU = true
                             }
-                        }
+                        }*/
                 }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text("Login failed, please check the email and password."), dismissButton: .default(Text("OK")))
                 }
@@ -191,21 +192,25 @@ struct LoginView: View {
                         
                         if (name.count>4 && isValidEmail(email)&&isMatchedPasspord(password1, password2)){
                             Button("Submit"){
-                                let admin_email = realm.objects(PersonInfo.self).filter("email = 'Admin@cetacis.dev'")
+                                //todo: 创建新的管理员邮箱。管理员邮箱用于之后进行匹配，因为前期用户数量少，管理员邮箱用于伪装用户
+                                //如果管理员邮箱已经创建，则无需再创造多余管理员邮箱
+                                /*let admin_email = realm.objects(PersonInfo.self).filter("email = 'Admin@cetacis.dev'")
                                 if admin_email.count == 0 {
-                                    let new_admin: PersonInfo = PersonInfo()
+                                    let new_admin: UserInfo
                                     new_admin.username = "Admin"
                                     new_admin.password = "5f4dcc3b5aa765d61d8327deb882cf99"
                                     new_admin.email = "Admin@cetacis.dev"
                                     try! realm.write {
                                         realm.add(new_admin)
                                     }
-                                }
-                                let new_user: PersonInfo = PersonInfo()
+                                }*/
+                                
+                                var new_user: UserInfo = UserInfo()
                                 new_user.username = self.name
                                 new_user.password = self.password1
                                 new_user.email = self.email
-                                let users_email = realm.objects(PersonInfo.self).filter("email = '\(self.email)'")
+                                //todo: 发送新的用户 new_user 这个过程中应该判断是否已经有此邮箱注册，如果已经注册，则进行alert提醒（alert可复用）
+                                /*let users_email = realm.objects(PersonInfo.self).filter("email = '\(self.email)'")
                                 var flag = 0
                                 if users_email.count != 0 {
                                     self.showingAlertRP = true
@@ -218,7 +223,7 @@ struct LoginView: View {
                                         realm.add(User)
                                     }
                                     self.view_switcher = 1
-                                }
+                                }*/
                                 self.isalert = true
                             }.alert(isPresented: self.$isalert) {
                                 Alert(title: self.showingAlertRP ? Text("The Email has being used to register") : Text("Log Succeed"), dismissButton: .default(Text("OK")))

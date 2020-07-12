@@ -17,9 +17,8 @@ struct ChangeProfile: View {
     @State var changingMobile = User.mobile
     @State var changingAge = User.age
     @State var changingSex = User.sex
-    @State var changingBirth = User.BirthDay
-    @State var changingStar = User.star
-    @State var changingBlood = User.Blood
+    @State var changingBirth = User.birthday
+    @State var changingStar = User.constellation
     var body: some View {
         VStack {
             Portrait_change(image: $image)
@@ -109,7 +108,7 @@ struct ChangeProfile: View {
                     }.frame(width: 365)
                 }
                 Divider()
-                NavigationLink(destination: ChangeLinkStar(change_star: $changingStar)) {
+                NavigationLink(destination: ChangeLinkConstellation(change_star: $changingStar)) {
                     VStack{
                         HStack {
                             Text("Star")
@@ -117,20 +116,6 @@ struct ChangeProfile: View {
                         }
                         HStack {
                             Text(changingStar)
-                                .font(.headline)
-                            Spacer()
-                        }
-                    }.frame(width: 365)
-                }
-                Divider()
-                NavigationLink(destination: ChangeLinkBlood(change_blood: $changingBlood)) {
-                    VStack{
-                        HStack {
-                            Text("Blood")
-                            Spacer()
-                        }
-                        HStack {
-                            Text(changingBlood)
                                 .font(.headline)
                             Spacer()
                         }
