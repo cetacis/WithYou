@@ -33,7 +33,7 @@ struct MoreProfile: View {
                     Spacer()
                 }
                 HStack {
-                    Text(User.BirthDay)
+                    Text(User.birthday)
                         .font(.headline)
                     Spacer()
                 }
@@ -45,7 +45,7 @@ struct MoreProfile: View {
                     Spacer()
                 }
                 HStack {
-                    Text(User.star)
+                    Text(User.constellation)
                         .font(.headline)
                     Spacer()
                 }
@@ -57,7 +57,7 @@ struct MoreProfile: View {
                     Spacer()
                 }
                 HStack {
-                    Text(User.Blood)
+                    Text(User.blood)
                         .font(.headline)
                     Spacer()
                 }

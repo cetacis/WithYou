@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'WithYou' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for WithYou
+  pod 'Alamofire', '~> 5.2'
+  pod 'RealmSwift'
+  target 'WithYouTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'WithYouUITests' do
+    # Pods for testing
+  end
+
+end

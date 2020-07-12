@@ -15,6 +15,6 @@ struct TagContent: View {
     var isFriend: Bool
     var taskid: Int
     var body: some View {
-        TaskDetail(taskid: taskid, isFriend: isFriend, isFinished: User.togethertasks[taskid].isFinished)
+        TaskDetail(taskid: taskid, isFriend: isFriend, isFinished: User.TogetherTasks[taskid].IsFinished)
     }
 }

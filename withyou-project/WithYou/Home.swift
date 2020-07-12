@@ -80,14 +80,14 @@ struct HomeView_together: View {
                         Text("Your")
                             .font(.subheadline)
                         List {
-                            ForEach(0..<Array(User.togethertasks).count, id: \.self) {
-                                index in NavigationLink(destination: TagContent(TagName: User.togethertasks[index].Name, isFriend: false, taskid: index).onAppear(){
+                            ForEach(User.TogetherTasks, id: \.self){
+                            task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    if (!User.togethertasks[index].isFinished) {
-                                        Text(User.togethertasks[index].Name)
+                                    if (!task.IsFinished) {
+                                        Text(task.name)
                                     } else {
-                                        Text(User.togethertasks[index].Name).foregroundColor(Color.gray).strikethrough()
+                                        Text(task.name).foregroundColor(Color.gray).strikethrough()
                                     }
                                 }
                             }
@@ -101,11 +101,15 @@ struct HomeView_together: View {
                         Text("Friends")
                             .font(.subheadline)
                         List {
-                            ForEach(0..<Array(User.togethertasks).count, id: \.self) {
-                                index in NavigationLink(destination: TagContent(TagName: User.togethertasks[index].Name, isFriend: true, taskid: index).onAppear(){
+                            ForEach(User.TogetherTasks, id: \.self){
+                            task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    Text(User.togethertasks[index].Name)
+                                    if (!task.IsFinished) {
+                                        Text(task.name)
+                                    } else {
+                                        Text(task.name).foregroundColor(Color.gray).strikethrough()
+                                    }
                                 }
                             }
                         }
@@ -182,6 +186,27 @@ struct HomeView_person: View {
     @State var taskcontent = ""
     @ObservedObject var settings = UserSettings()
     
+    @ObservedObject private var loader: ImageLoader
+    private let placeholder: Image?
+    private let configuration: (Image) -> Image
+    
+    init(url: URL, cache: ImageCache? = nil, view_swither: Binding<Int>) {
+        loader = ImageLoader(url: url, cache: cache)
+        self.placeholder = Choose
+        self.configuration = {$0.resizable()}
+        self._view_swither = view_swither
+    }
+    
+    private var image: some View {
+        Group {
+            if loader.image != nil  {
+                configuration(Image(uiImage: loader.image!))
+            } else {
+                placeholder
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -191,8 +216,9 @@ struct HomeView_person: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
-                    Choose
-                    .resizable()
+                    image
+                    .onAppear(perform: loader.load)
+                    .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                     .scaledToFit()
                     .offset(y: 5)
                     .clipShape(Circle())
@@ -221,10 +247,7 @@ struct HomeView_person: View {
                                 Spacer()
                                 Image(systemName: "circle")
                                     .onTapGesture {
-                                        try! realm.write {
-                                            message.number = 1
-                                            self.settings.count += 1
-                                        }
+                                        self.settings.count += 1
                                 }
                             }
                             if message.number == 1 {
@@ -232,11 +255,7 @@ struct HomeView_person: View {
                                 Spacer()
                                 Image(systemName: "checkmark.circle")
                                     .onTapGesture {
-                                        try! realm.write {
-                                            message.number = 0
-                                            self.settings.count -= 1
-                                        }
-                                }
+                                        self.settings.count -= 1
                             }
                         }
                     }

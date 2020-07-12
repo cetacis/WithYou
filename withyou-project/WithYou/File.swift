@@ -15,83 +15,65 @@
 //
 
 import Foundation
-import Realm
-import RealmSwift
 
-class PrivateTasks:Object {
-    @objc dynamic var Name: String
-    @objc dynamic var number: Int
-    @objc dynamic var comment: String
-    required init() {
-        self.comment = ""
-        self.number = 0
-        self.Name = ""
-    }
-    let owners = LinkingObjects(fromType: PersonInfo.self, property: "privatetasks")
+
+
+var PostImagePath : URL? = nil
+
+struct TogetherTask {
+    var name: String
+    var number: Int
+    var comment: String
+    var FriendEmail: String
+    var IsFinished: Bool
 }
 
-class TogetherTasks:Object {
-    @objc dynamic var Name: String
-    @objc dynamic var number: Int
-    @objc dynamic var comment: String
-    @objc dynamic var friend_email: String
-    @objc dynamic var isFinished: Bool
-    required init() {
-        self.comment = ""
-        self.number = 0
-        self.Name = ""
-        self.friend_email = ""
-        self.isFinished = false
-    }
-    let owners = LinkingObjects(fromType: PersonInfo.self, property: "togethertasks")
+struct PrivateTask {
+    var name: String
+    var number: Int
+    var IsFinished: Bool
 }
 
-class PersonInfo: Object {
-    @objc dynamic var username: String
-    @objc dynamic var email: String
-    @objc dynamic var password: String
-    @objc dynamic var age: String
-    @objc dynamic var bio: String
-    @objc dynamic var mobile: String
-    @objc dynamic var star: String
-    @objc dynamic var Blood: String
-    @objc dynamic var BirthDay: String
-    @objc dynamic var sex: String
-    required init() {
+struct Message {
+    var msg: String
+    var IsUser: Bool
+    var IsRead: Bool
+}
+
+struct UserInfo {
+    var username: String
+    var email: String
+    var mobile: String
+    var password: String
+    var bio: String
+    var age: String
+    var sex: String
+    var birthday: String
+    var constellation: String
+    var blood: String
+    var imgpath: String
+    var TogetherTasks: [TogetherTask]
+    var PrivateTasks: [PrivateTask]
+    var Messages: [Message]
+    var Friends: [String]
+    
+    init() {
         self.username = "Cetacis"
         self.email = "kelo@cetacis.dev"
         self.password = "password"
         self.age = "20"
         self.bio = "life is cetacis. Prprpr"
         self.mobile = "+86 15358764577"
-        self.star = "tiger"
-        self.Blood = "A"
-        self.BirthDay = "2000-1-1"
+        self.constellation = "tiger"
+        self.blood = "A"
+        self.birthday = "2000-1-1"
         self.sex = "male"
+        self.imgpath = ""
+        self.TogetherTasks = [TogetherTask]()
+        self.PrivateTasks = [PrivateTask]()
+        self.Messages = [Message]()
+        self.Friends = [String]()
     }
-    override static func primaryKey() -> String? {
-        return "email"
-    }
-    let privatetasks = List<PrivateTasks>()
-    let togethertasks = List<TogetherTasks>()
-    let Friends = List<String>()
 }
 
-
-var User = PersonInfo()
-let syncServerURL = URL(string: "https://withyou.us1.cloud.realm.io/")!
-let credentials = SyncCredentials.usernamePassword(username: "Kimi", password: "711224")
-var flag = true
-let login: () = SyncUser.logIn(with: credentials, server: syncServerURL, onCompletion: { user, err in
-    if let _ = user {
-        // User is logged in
-    } else if let error = err {
-        flag = false
-        print("false")
-        print(err)
-    }
-})
-let DBURL = URL(string: "realms://withyou.us1.cloud.realm.io/IOS")!
-let user = SyncUser.current!
-let config = flag ? user.configuration(realmURL: DBURL, fullSynchronization: true) : Realm.Configuration()
-let realm = flag ? try! Realm(configuration: config) : try! Realm()
+var User = UserInfo()
