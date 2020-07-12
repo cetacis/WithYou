@@ -21,6 +21,8 @@ struct HomeView_together: View {
     @State var showingaddtask = false
     @State var showingprofile = false
     @State var showingnavi = false
+    @State var showingmessage = false
+    
     @Binding var view_swither: Int
     
     @ObservedObject private var loader: ImageLoader
@@ -45,7 +47,7 @@ struct HomeView_together: View {
     }
     
     var body: some View {
-      NavigationView {
+        NavigationView {
             VStack {
                 HStack {
                     Text("withYou")
@@ -53,7 +55,22 @@ struct HomeView_together: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
-                        image
+                    // message button
+                    NavigationLink(destination: Messageview().onAppear() {
+                                           self.showingnavi = false
+                                       }) {
+                                           HStack {
+                                               Image(systemName: "message.fill")
+                                               .font(.headline)
+                                           }
+                                           .foregroundColor(.blue)
+                                           .background(Color(red: 1, green: 1, blue: 1))
+                                       }
+                    
+                                                       
+                    
+                    
+                    image
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
@@ -64,9 +81,9 @@ struct HomeView_together: View {
                         .padding(.horizontal,15)
                         .onTapGesture {
                             self.showingprofile.toggle()
-                        }.sheet(isPresented: self.$showingprofile) {
-                            profileview(showingprofile: self.$showingprofile)
-                        }
+                    }.sheet(isPresented: self.$showingprofile) {
+                        profileview(showingprofile: self.$showingprofile)
+                    }
                 }.frame(width: 380)
                 Divider()
                 HStack {
@@ -94,7 +111,7 @@ struct HomeView_together: View {
                         }
                         .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
                         .cornerRadius(10)
-                      
+                        
                     }
                     Divider()
                     VStack {
@@ -166,8 +183,8 @@ struct HomeView_together: View {
             .onAppear() {
                 self.showingnavi = true
             }
-            }
         }
+    }
     
 }
 
@@ -192,15 +209,15 @@ struct HomeView_person: View {
                         .offset(y: 5)
                     Spacer()
                     Choose
-                    .resizable()
-                    .scaledToFit()
-                    .offset(y: 5)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle().stroke(Color.gray, lineWidth: 2))
-                    .padding(.horizontal,15)
-                    .onTapGesture {
-                        self.showingprofile.toggle()
+                        .resizable()
+                        .scaledToFit()
+                        .offset(y: 5)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.gray, lineWidth: 2))
+                        .padding(.horizontal,15)
+                        .onTapGesture {
+                            self.showingprofile.toggle()
                     }.sheet(isPresented: self.$showingprofile) {
                         profileview(showingprofile: self.$showingprofile)
                     }
@@ -241,11 +258,11 @@ struct HomeView_person: View {
                         }
                     }
                 }
-             
+                    
                 .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
                 .cornerRadius(10)
                 .frame(width: 380)
-     
+                
                 HStack {
                     NavigationLink(destination: FriendView().onAppear() {
                         self.showingnavi = false
@@ -271,7 +288,7 @@ struct HomeView_person: View {
                         HStack {
                             Image(systemName: "pencil.and.outline")
                                 .font(.headline)
-                            Text("private tasktask")
+                            Text("private Schedule")
                                 .fontWeight(.semibold)
                                 .font(.headline)
                             
