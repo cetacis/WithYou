@@ -58,8 +58,9 @@ struct Portrait: View {
                     .shadow(radius: 10)
                     .onAppear() {
                         Choose = self.image ?? Image("player1")
-                         print(self.imagePath ?? "path didn't exit") //在首次布局的时候打印
-                }
+                        print(self.imagePath ?? "path didn't exit") //在首次布局的时候打印
+                        PostImagePath = self.imagePath
+                    }
                 
             }
         }

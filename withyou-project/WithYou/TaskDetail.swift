@@ -15,14 +15,13 @@ struct TaskDetail: View {
     @State var isFinished: Bool
     var body: some View {
         VStack{
-            
             List{
                 Image("exercise").resizable().frame(width:250, height: 400).shadow(radius: 13).overlay(
                     Rectangle().stroke(Color.white, lineWidth: 4)).offset(x:50)
                 
                 HStack{
                     Text("Task:").fontWeight(.heavy)
-                    Text( User.togethertasks[self.taskid].Name)
+                    Text( User.TogetherTasks[self.taskid].name)
                     
                 }
                 HStack{Text("Estamited time: ").fontWeight(.heavy)
@@ -43,11 +42,9 @@ struct TaskDetail: View {
                                 .background(Color(red: 235/255, green: 235/255, blue: 255/255))
                                 .cornerRadius(8)
                                 .onAppear() {
-                                    self.comment = User.togethertasks[self.taskid].comment
-                                    try! realm.write {
-                                        User.togethertasks[self.taskid].isFinished = self.isFinished
-                                        User.togethertasks[self.taskid].comment = self.comment
-                                    }
+                                    self.comment = User.TogetherTasks[self.taskid].comment
+                                    User.TogetherTasks[self.taskid].IsFinished = self.isFinished
+                                    User.TogetherTasks[self.taskid].comment = self.comment
                                 }
                         } else {
                             VStack {
@@ -57,10 +54,7 @@ struct TaskDetail: View {
                                 .background(Color(red: 235/255, green: 235/255, blue: 255/255))
                                 .cornerRadius(8)
                                 .onAppear() {
-                                    try! realm.write {
-                                        User.togethertasks[self.taskid].isFinished = self.isFinished
-                                        User.togethertasks[self.taskid].comment = self.comment
-                                    }
+                                    
                                     
                             }
                         }

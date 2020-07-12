@@ -8,7 +8,6 @@
 
 import Foundation
 import Realm
-import RealmSwift
 import SwiftUI
 
 var Tmp_Choose: Image = Image("player2")
