@@ -112,6 +112,14 @@ struct LoginView: View {
                
                 Button("     log in     "){
                         //todo: login 发送 根据$emailIn 和 $passpordIn 进行加密后利用post发送
+                    
+                        //you should encryt the passowrd locally
+                        //just likie enpass = encryt_sha256 self.pass
+                        // then you post the check login
+                        // use the API postlogin
+                        // if you get the login success
+                        // you should use the PostGetUserInfo API to get the user info
+                        // user info will returned by the json, this is an unsolved problem
                         /*let users = realm.objects(PersonInfo.self).filter("email = '\(self.emailIn)'")
                         if users.count == 0 {
                             self.showingAlertNU = true
@@ -125,6 +133,11 @@ struct LoginView: View {
                                 self.showingAlertNU = true
                             }
                         }*/
+                        
+                    
+                    
+                    
+                    
                 }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text("Login failed, please check the email and password."), dismissButton: .default(Text("OK")))
                 }
@@ -209,7 +222,8 @@ struct LoginView: View {
                                 new_user.username = self.name
                                 new_user.password = self.password1
                                 new_user.email = self.email
-                                PostRegister(name: new_user.username, email: new_user.email, password: new_user.password)
+                                // post register
+                                print(PostRegister(name: new_user.username, email: new_user.email, password: new_user.password))
                                 //todo: 发送新的用户 new_user 这个过程中应该判断是否已经有此邮箱注册，如果已经注册，则进行alert提醒（alert可复用）
                                 /*let users_email = realm.objects(PersonInfo.self).filter("email = '\(self.email)'")
                                 var flag = 0

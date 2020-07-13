@@ -11,6 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 func PostRegister(name: String, email:String, password: String) -> (Int, String) {
+    // create semaphore to ensure the response reached
+    let semaphore = DispatchSemaphore(value: 0)
     var code = 0
     var msg = ""
     AF.upload(multipartFormData: { (MultipartFormData) in
@@ -23,7 +25,12 @@ func PostRegister(name: String, email:String, password: String) -> (Int, String)
         let json = JSON(reponse.data!)
         code = json["code"].intValue
         msg = json["msg"].string!
+        semaphore.signal()
     }
     
-    return (code, msg)
+    if semaphore.wait(timeout: .now() + 15) == .success {
+        return (code, msg)
+    } else {
+        return (500, "Connection Timed out")
+    }
 }
