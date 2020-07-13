@@ -52,10 +52,6 @@ struct Message {
     var msg: String
     var IsUser:Bool
     var IsRead: Bool
-<<<<<<< HEAD
-   
-=======
->>>>>>> ee59ea50112e6c1aa27c5027b7965524b36d6d44
 }
 
 let Msg = Message(msg: "", IsUser: false, IsRead: false)
@@ -95,8 +91,3 @@ struct UserInfo {
 }
 
 var User = UserInfo()
-
-<<<<<<< HEAD
-=======
-
->>>>>>> ee59ea50112e6c1aa27c5027b7965524b36d6d44
