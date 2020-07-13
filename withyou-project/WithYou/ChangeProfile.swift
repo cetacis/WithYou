@@ -17,9 +17,9 @@ struct ChangeProfile: View {
     @State var changingMobile = User.mobile
     @State var changingAge = User.age
     @State var changingSex = User.sex
-    @State var changingBirth = User.BirthDay
-    @State var changingStar = User.star
-    @State var changingBlood = User.Blood
+    @State var changingBirth = User.birthday
+    @State var changingStar = User.constellation
+    @State var changingBlood = User.blood
     var body: some View {
         VStack {
             Portrait_change(image: $image)

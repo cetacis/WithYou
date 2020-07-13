@@ -259,6 +259,7 @@ struct HomeView_person: View {
                             }
                         }
                     }
+                    }
                 }
              
                 .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
