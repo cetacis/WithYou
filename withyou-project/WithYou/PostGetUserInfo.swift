@@ -9,11 +9,9 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-func PostGetUserInfo(email: String, pass:String) -> UserInfo {
-    // user semaphore to ensure get the user info
-    let semaphore = DispatchSemaphore(value: 0)
-    
-    //userinfo
+
+
+func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:String, pass: String) {
     var UserData: UserInfo = UserInfo()
     let para = LoginInfo(email: email, pass: pass)
     AF.request("http://127.0.0.1:8080/api/UserInfo",
@@ -21,7 +19,6 @@ func PostGetUserInfo(email: String, pass:String) -> UserInfo {
                parameters: para
     ).responseJSON { (response) in
         let json = JSON(response.data!)
-        print(json)
         UserData.birthday = json["birthday"].string!
         UserData.constellation = json["constellation"].string!
         UserData.bio = json["bio"].string!
@@ -35,10 +32,6 @@ func PostGetUserInfo(email: String, pass:String) -> UserInfo {
         UserData.sex = json["sex"].string!
         UserData.email = json["email"].string!
         UserData.age = json["age"].string!
-        print(UserData)
-        semaphore.signal()
-        print("semaphore increased")
+        completion(UserData)
     }
-    semaphore.wait()
-    return UserData
 }

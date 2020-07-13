@@ -27,6 +27,7 @@
 		A128D89424449CC1007999F9 /* WithYouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128D89324449CC1007999F9 /* WithYouTests.swift */; };
 		A128D89F24449CC1007999F9 /* WithYouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128D89E24449CC1007999F9 /* WithYouUITests.swift */; };
 		A13FBE4424BC831100B68CF2 /* PostGetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FBE4324BC831100B68CF2 /* PostGetUserInfo.swift */; };
+		A13FBE4624BC986400B68CF2 /* sync request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FBE4524BC986400B68CF2 /* sync request.swift */; };
 		A15107D32446F75D00D08DD2 /* MoreProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107D22446F75D00D08DD2 /* MoreProfile.swift */; };
 		A15107D52446F93200D08DD2 /* ChangeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107D42446F93200D08DD2 /* ChangeProfile.swift */; };
 		A15107D72447002100D08DD2 /* changelink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107D62447002100D08DD2 /* changelink.swift */; };
@@ -107,6 +108,7 @@
 		A128D89E24449CC1007999F9 /* WithYouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithYouUITests.swift; sourceTree = "<group>"; };
 		A128D8A024449CC1007999F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13FBE4324BC831100B68CF2 /* PostGetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGetUserInfo.swift; sourceTree = "<group>"; };
+		A13FBE4524BC986400B68CF2 /* sync request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "sync request.swift"; sourceTree = "<group>"; };
 		A15107C72446D91100D08DD2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "realm-swift-4.4.0/realm-swift-4.4.0/ios/swift-11.4/Realm.framework"; sourceTree = "<group>"; };
 		A15107CA2446D91500D08DD2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "realm-swift-4.4.0/realm-swift-4.4.0/ios/swift-11.4/RealmSwift.framework"; sourceTree = "<group>"; };
 		A15107D22446F75D00D08DD2 /* MoreProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreProfile.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				A1B1DF102449766D00921A1D /* FriendProfile.swift */,
 				B5D85215244C5340007D0655 /* Md5Encrypt.swift */,
 				B5BBF181245163320016FD83 /* File.swift */,
+				A13FBE4524BC986400B68CF2 /* sync request.swift */,
 				A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */,
 				A17F1C2924B9A8B100A3A45C /* PostLogin.swift */,
 			);
@@ -541,6 +544,7 @@
 				A1115FA52445F2B900B943B8 /* login.swift in Sources */,
 				B5A3F486244881E700A999EE /* MultilineTextField.swift in Sources */,
 				A15107D924474EC400D08DD2 /* animation.swift in Sources */,
+				A13FBE4624BC986400B68CF2 /* sync request.swift in Sources */,
 				B5BBF182245163320016FD83 /* File.swift in Sources */,
 				B58026392446CF4600659F58 /* TaskShowingViewDefault.swift in Sources */,
 				B58026352446B58000659F58 /* TaskShowingViewFit.swift in Sources */,
