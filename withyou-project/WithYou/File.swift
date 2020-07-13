@@ -52,12 +52,9 @@ struct Message {
     var msg: String
     var IsUser:Bool
     var IsRead: Bool
-    init() {
-        self.msg = ""
-        self.IsUser = false
-        self.IsRead = false
-    }
 }
+
+let Msg = Message(msg: "", IsUser: false, IsRead: false)
 
 struct UserInfo {
     var username: String
@@ -94,3 +91,5 @@ struct UserInfo {
 }
 
 var User = UserInfo()
+
+
