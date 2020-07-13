@@ -26,6 +26,7 @@
 		A128D88924449CC1007999F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A128D88724449CC1007999F9 /* LaunchScreen.storyboard */; };
 		A128D89424449CC1007999F9 /* WithYouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128D89324449CC1007999F9 /* WithYouTests.swift */; };
 		A128D89F24449CC1007999F9 /* WithYouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128D89E24449CC1007999F9 /* WithYouUITests.swift */; };
+		A13FBE4424BC831100B68CF2 /* PostGetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FBE4324BC831100B68CF2 /* PostGetUserInfo.swift */; };
 		A15107D32446F75D00D08DD2 /* MoreProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107D22446F75D00D08DD2 /* MoreProfile.swift */; };
 		A15107D52446F93200D08DD2 /* ChangeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107D42446F93200D08DD2 /* ChangeProfile.swift */; };
 		A15107D72447002100D08DD2 /* changelink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15107D62447002100D08DD2 /* changelink.swift */; };
@@ -104,6 +105,7 @@
 		A128D89A24449CC1007999F9 /* WithYouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WithYouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A128D89E24449CC1007999F9 /* WithYouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithYouUITests.swift; sourceTree = "<group>"; };
 		A128D8A024449CC1007999F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A13FBE4324BC831100B68CF2 /* PostGetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGetUserInfo.swift; sourceTree = "<group>"; };
 		A15107C72446D91100D08DD2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "realm-swift-4.4.0/realm-swift-4.4.0/ios/swift-11.4/Realm.framework"; sourceTree = "<group>"; };
 		A15107CA2446D91500D08DD2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "realm-swift-4.4.0/realm-swift-4.4.0/ios/swift-11.4/RealmSwift.framework"; sourceTree = "<group>"; };
 		A15107D22446F75D00D08DD2 /* MoreProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreProfile.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				A15107DC2447B00900D08DD2 /* Tasks.swift */,
 				A1B1DF0C2448A8CF00921A1D /* view_Matching.swift */,
 				A1B1DF0E24496EB100921A1D /* Friends.swift */,
+				A13FBE4324BC831100B68CF2 /* PostGetUserInfo.swift */,
 				A1B1DF102449766D00921A1D /* FriendProfile.swift */,
 				B5D85215244C5340007D0655 /* Md5Encrypt.swift */,
 				B5BBF181245163320016FD83 /* File.swift */,
@@ -545,6 +548,7 @@
 				A17F1C2A24B9A8B100A3A45C /* PostLogin.swift in Sources */,
 				A1B1DF0D2448A8CF00921A1D /* view_Matching.swift in Sources */,
 				A17F1C2C24B9B59F00A3A45C /* PostRegister.swift in Sources */,
+				A13FBE4424BC831100B68CF2 /* PostGetUserInfo.swift in Sources */,
 				A11270F324449F8700DC10B2 /* GUIDEIG.swift in Sources */,
 				A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */,
 				A1115FAB2445F39300B943B8 /* Home.swift in Sources */,

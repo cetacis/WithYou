@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Messageview: View {
     @State var showingMessage = false
-    @State var message = Message()
+    @State var message = Message(msg: "", IsUser: true, IsRead: true)
     var body: some View {
         
         VStack {
