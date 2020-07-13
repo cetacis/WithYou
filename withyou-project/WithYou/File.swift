@@ -52,11 +52,7 @@ struct Message {
     var msg: String
     var IsUser:Bool
     var IsRead: Bool
-    init() {
-        self.msg = ""
-        self.IsUser = false
-        self.IsRead = false
-    }
+   
 }
 
 struct UserInfo {
@@ -88,9 +84,10 @@ struct UserInfo {
         self.imgpath = ""
         self.TogetherTasks = [TogetherTask]()
         self.PrivateTasks = [PrivateTask]()
-        self.Messages = [Message]()
+        self.Messages = [Message(msg: "123", IsUser: true, IsRead: false),Message(msg: "", IsUser: true, IsRead: false),Message(msg: "", IsUser: false, IsRead: false)]
         self.Friends = [String]()
     }
 }
 
 var User = UserInfo()
+
