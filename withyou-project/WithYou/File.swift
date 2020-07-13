@@ -20,6 +20,11 @@ import Foundation
 
 var PostImagePath : URL? = nil
 
+struct LoginInfo: Encodable {
+    var email: String
+    var pass: String
+}
+
 struct TogetherTask {
     var name: String
     var number: Int
