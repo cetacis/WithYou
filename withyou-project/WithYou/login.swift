@@ -223,11 +223,28 @@ struct LoginView: View {
                                 new_user.username = self.name
                                 new_user.password = self.password1
                                 new_user.email = self.email
+                                // the usage of get user info is
+                                PostGetUserInfo(completion: { (RtData) in
+                                    User = RtData // the userinfo get from the backend
+                                    print(User)
+                                }, email: new_user.email, pass: new_user.password)
+                                // another example
+                                // the usage of postregister is
+                                PostRegister(completion: { (code, msg) in
+                                    // print msg
+                                    // or // if code == 0 self.alert = true
+                                    // altert message
+                                    // print code
+                                    // tell user we have registed
+                                }, name: new_user.username, email: new_user.email, password: new_user.password)
+                                
                                 // this is the test area please do not user
-                                print(PostGetUserInfo(email: new_user.email, pass: new_user.password))
+                                //print(PostGetUserInfo(email: new_user.email, pass: new_user.password))
+                                //test(email: new_user.email, pass: new_user.password)
+                                //print(PostLogin(email: new_user.email, pass: new_user.password))
                                 // test area end.
                                 // post register like this
-                                // print(PostRegister(name: new_user.username, email: new_user.email, password: new_user.password))
+                                //print(PostRegister(name: new_user.username, email: new_user.email, password: new_user.password))
                                 //todo: 发送新的用户 new_user 这个过程中应该判断是否已经有此邮箱注册，如果已经注册，则进行alert提醒（alert可复用）
                                 /*let users_email = realm.objects(PersonInfo.self).filter("email = '\(self.email)'")
                                 var flag = 0

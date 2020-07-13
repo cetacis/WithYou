@@ -59,8 +59,6 @@ struct Message {
     var IsRead: Bool
 }
 
-let Msg = Message(msg: "", IsUser: false, IsRead: false)
-
 struct UserInfo {
     var username: String
     var email: String
