@@ -15,6 +15,7 @@ struct ContentView: View {
     let Clock = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
     var body: some View {
         HStack {
+            /*
             if view_switcher == 0 && self.timing.time >= 0 {
                 SignUpView(view_switcher: $view_switcher)
             }
@@ -35,10 +36,10 @@ struct ContentView: View {
                     self.view_switcher = 3
                 }
             }
-            
-            
+            */
+            SignUpView(view_switcher: $view_switcher)
         }.onAppear(){
-    
+            
         }
     }
 }

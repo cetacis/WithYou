@@ -7,10 +7,23 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 func PostRegister(name: String, email:String, password: String) -> (Int, String) {
     var code = 0
-    var string = ""
+    var msg = ""
+    AF.upload(multipartFormData: { (MultipartFormData) in
+        MultipartFormData.append(PostImagePath!, withName: "file")
+        MultipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "name")
+        MultipartFormData.append(email.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "email")
+        MultipartFormData.append(password.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "pass")
+    }, to: "http://127.0.0.1:8080/api/register")
+    .responseJSON { (reponse) in
+        let json = JSON(reponse.data!)
+        code = json["code"].intValue
+        msg = json["msg"].string!
+    }
     
-    return (code, string)
+    return (code, msg)
 }

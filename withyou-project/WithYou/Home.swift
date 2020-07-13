@@ -17,6 +17,7 @@ class timer: ObservableObject {
     @Published var time = 0
 }
 
+/*
 struct HomeView_together: View {
     @State var showingaddtask = false
     @State var showingprofile = false
@@ -343,3 +344,4 @@ struct HomeView_person: View {
         }
     }
 }
+*/
