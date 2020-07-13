@@ -57,6 +57,10 @@ struct Message {
     var msg: String
     var IsUser:Bool
     var IsRead: Bool
+<<<<<<< HEAD
+   
+=======
+>>>>>>> ee59ea50112e6c1aa27c5027b7965524b36d6d44
 }
 
 let Msg = Message(msg: "", IsUser: false, IsRead: false)
@@ -90,11 +94,14 @@ struct UserInfo {
         self.imgpath = ""
         self.TogetherTasks = [TogetherTask]()
         self.PrivateTasks = [PrivateTask]()
-        self.Messages = [Message]()
+        self.Messages = [Message(msg: "123", IsUser: true, IsRead: false),Message(msg: "", IsUser: true, IsRead: false),Message(msg: "", IsUser: false, IsRead: false)]
         self.Friends = [String]()
     }
 }
 
 var User = UserInfo()
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> ee59ea50112e6c1aa27c5027b7965524b36d6d44

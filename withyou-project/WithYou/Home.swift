@@ -17,7 +17,18 @@ class timer: ObservableObject {
     @Published var time = 0
 }
 
-/*
+func checkNewMessage() -> Bool {
+    var hasNewMessage = false
+    for i in 0..<User.Messages.count {
+        
+        if (User.Messages[i].IsRead == true){hasNewMessage = true}
+        hasNewMessage = false
+        break
+    }
+    return hasNewMessage
+}
+
+
 struct HomeView_together: View {
     @State var showingaddtask = false
     @State var showingprofile = false
@@ -63,9 +74,11 @@ struct HomeView_together: View {
                         HStack {
                             Image(systemName: "message.fill")
                                 .font(.headline)
+                             
                         }
                         .foregroundColor(.blue)
                         .background(Color(red: 1, green: 1, blue: 1))
+                        .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -23) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
                     }
                     
                     image
@@ -192,7 +205,7 @@ struct HomeView_together: View {
     
 }
 
-
+/*
 struct HomeView_person: View {
     @Environment(\.imageCache) var cache: ImageCache
     @State var showingaddtask = false
@@ -342,6 +355,10 @@ struct HomeView_person: View {
                 }
             }
         }
-    }
-}
-*/
+ }
+ }*/
+
+
+
+
+
