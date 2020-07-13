@@ -52,9 +52,11 @@ struct ChangeLinkName:View {
             LabelTextField(label: "Name", placeHolder: "name longer than 5", icon: "person.circle.fill", text: $changing).foregroundColor(isValidName(changing) ? .green : .black)
             if (isValidName(changing)) {
                 Button("Save"){
-                    try! realm.write {
+                    
+                    //todo:将changing写入username 发送post
+                    /*try! realm.write {
                         User.username = self.changing
-                    }
+                    }*/
                     self.change_name = self.changing
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
@@ -75,9 +77,10 @@ struct ChangeLinkAge:View {
             LabelTextField(label: "Age", placeHolder: "valid age", icon: "a.circle.fill", text: $changing).foregroundColor(isValidAge(changing) ? .green : .black)
             if (isValidAge(changing)) {
                 Button("Save"){
-                    try! realm.write {
+                     //todo:将changing写入age 发送post
+                    /*try! realm.write {
                         User.age = self.changing
-                    }
+                    }*/
                     self.change_age = self.changing
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
@@ -99,9 +102,10 @@ struct ChangeLinkbio:View {
             LabelTextField(label: "Bio", placeHolder: "valid bio", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBio(changing) ? .green : .black)
             if (isValidBio(changing)) {
                 Button("Save"){
-                    try! realm.write {
+                    //todo:将changing写入age 发送post
+                    /*try! realm.write {
                         User.bio = self.changing
-                    }
+                    }*/
                     self.change_bio = self.changing
                     self.showingAlertBio = true
                 } .alert(isPresented: $showingAlertBio) {
@@ -123,9 +127,10 @@ struct ChangeLinkMobile:View {
             LabelTextField(label: "Mobile", placeHolder: "valid mobile", icon: "m.circle.fill", text: $changing).foregroundColor(isValidMobile(changing) ? .green : .black)
             if (isValidMobile(changing)) {
                 Button("Save"){
-                    try! realm.write {
+                    //todo:将changing写入bio 发送post
+                    /*try! realm.write {
                         User.mobile = self.changing
-                    }
+                    }*/
                     self.change_mobile = self.changing
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
@@ -137,7 +142,7 @@ struct ChangeLinkMobile:View {
     }
 }
 
-struct ChangeLinkStar:View {
+struct ChangeLinkConstellation:View {
     @Binding var change_star: String
     @State var showingAlert = false
     @State var changing = ""
@@ -146,34 +151,11 @@ struct ChangeLinkStar:View {
             LabelTextField(label: "Constellation", placeHolder: "valid Constellation", icon: "s.circle.fill", text: $changing).foregroundColor(isValidStar(changing) ? .green : .black)
             if (isValidStar(changing)) {
                 Button("Save"){
-                    try! realm.write {
-                        User.star = self.changing
-                    }
+                    //todo:将changing写入constellation 发送post
+                    /*try! realm.write {
+                        User.constellation = self.changing
+                    }*/
                     self.change_star = self.changing
-                    self.showingAlert = true
-                } .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
-                } .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).offset(x:20).font(.system(size:15,design:.rounded))
-            }
-            Spacer()
-        }
-    }
-}
-
-
-struct ChangeLinkBlood:View {
-    @Binding var change_blood: String
-    @State var showingAlert = false
-    @State var changing = ""
-    var body: some View {
-        VStack {
-            LabelTextField(label: "Blood", placeHolder: "valid blood", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBlood(changing) ? .green : .black)
-            if (isValidBlood(changing)) {
-                Button("Save"){
-                    try! realm.write {
-                        User.Blood = self.changing
-                    }
-                    self.change_blood = self.changing
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
@@ -193,9 +175,10 @@ struct ChangeLinkBirthDay:View {
             LabelTextField(label: "BirthDay", placeHolder: "xxxx-xx-xx", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBirthDay(changing) ? .green : .black)
     
                 Button("Save"){
-                    try! realm.write {
+                    //todo:将changing写入birthday 发送post
+                    /*try! realm.write {
                         User.BirthDay = self.changing
-                    }
+                    }*/
                     self.change_birthDay = self.changing
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
@@ -216,9 +199,10 @@ struct ChangeLinkSex:View {
             LabelTextField(label: "Sex", placeHolder: "male/female", icon: "s.circle.fill", text: $changing).foregroundColor(isValidSex(changing) ? .green : .black)
             if (isValidSex(changing)) {
                 Button("Save"){
-                    try! realm.write {
+                    //todo:将changing写入birthday 发送post
+                    /*try! realm.write {
                         User.sex = self.changing
-                    }
+                    }*/
                     self.change_sex = self.changing
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {

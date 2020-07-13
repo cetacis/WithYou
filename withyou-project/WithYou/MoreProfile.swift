@@ -41,23 +41,11 @@ struct MoreProfile: View {
             Divider()
             VStack{
                 HStack {
-                    Text("Star")
+                    Text("Constellation")
                     Spacer()
                 }
                 HStack {
                     Text(User.constellation)
-                        .font(.headline)
-                    Spacer()
-                }
-            }.frame(width: 365)
-            Divider()
-            VStack{
-                HStack {
-                    Text("Blood")
-                    Spacer()
-                }
-                HStack {
-                    Text(User.blood)
                         .font(.headline)
                     Spacer()
                 }

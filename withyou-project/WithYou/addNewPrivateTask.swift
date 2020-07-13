@@ -29,11 +29,12 @@ struct addNewPrivateTask:View {
                 if (isnotempty(taskcontent)){
                    
                         Button(action: {
-                        let new_task = PrivateTasks()
-                        new_task.Name = self.taskcontent
-                        try! realm.write {
+                        var new_task = PrivateTask()
+                        new_task.name = self.taskcontent
+                        //todo 将new_task 加入 post
+                        /*try! realm.write {
                             User.privatetasks.append(new_task)
-                        }
+                        }*/
                         self.IsChanging.toggle()
                         self.addingtask.toggle()
                     }) {

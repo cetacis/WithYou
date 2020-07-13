@@ -21,6 +21,8 @@ struct HomeView_together: View {
     @State var showingaddtask = false
     @State var showingprofile = false
     @State var showingnavi = false
+    @State var showingmessage = false
+    
     @Binding var view_swither: Int
     
     @ObservedObject private var loader: ImageLoader
@@ -45,7 +47,7 @@ struct HomeView_together: View {
     }
     
     var body: some View {
-      NavigationView {
+        NavigationView {
             VStack {
                 HStack {
                     Text("withYou")
@@ -53,7 +55,19 @@ struct HomeView_together: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
-                        image
+                    // message button
+                    NavigationLink(destination: Messageview().onAppear() {
+                        self.showingnavi = false
+                    }) {
+                        HStack {
+                            Image(systemName: "message.fill")
+                                .font(.headline)
+                        }
+                        .foregroundColor(.blue)
+                        .background(Color(red: 1, green: 1, blue: 1))
+                    }
+                    
+                    image
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
@@ -64,9 +78,9 @@ struct HomeView_together: View {
                         .padding(.horizontal,15)
                         .onTapGesture {
                             self.showingprofile.toggle()
-                        }.sheet(isPresented: self.$showingprofile) {
-                            profileview(showingprofile: self.$showingprofile)
-                        }
+                    }.sheet(isPresented: self.$showingprofile) {
+                        profileview(showingprofile: self.$showingprofile)
+                    }
                 }.frame(width: 380)
                 Divider()
                 HStack {
@@ -80,35 +94,37 @@ struct HomeView_together: View {
                         Text("Your")
                             .font(.subheadline)
                         List {
-                            ForEach(User.TogetherTasks, id: \.self){
-                            task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
+                            ForEach(0..<User.TogetherTasks, id: \.self){
+                                index in
+                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    if (!task.IsFinished) {
-                                        Text(task.name)
+                                    if (!User.TogetherTasks[index].IsFinished) {
+                                        Text(User.TogetherTasks[index].name)
                                     } else {
-                                        Text(task.name).foregroundColor(Color.gray).strikethrough()
+                                        Text(User.TogetherTasks[index].name).foregroundColor(Color.gray).strikethrough()
                                     }
                                 }
                             }
                         }
                         .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
                         .cornerRadius(10)
-                      
+                        
                     }
                     Divider()
                     VStack {
                         Text("Friends")
                             .font(.subheadline)
-                        List {
-                            ForEach(User.TogetherTasks, id: \.self){
-                            task in NavigationLink(destination: TagContent(TagName: task.name, isFriend: false, taskid: task.number).onAppear(){
+                        List {//0..<User.Friends.count, id: \.self
+                            ForEach(0..<User.TogetherTasks.count, id: \.self){
+                                index in
+                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    if (!task.IsFinished) {
-                                        Text(task.name)
+                                    if (!User.TogetherTasks[index].IsFinished) {
+                                        Text(User.TogetherTasks[index].name)
                                     } else {
-                                        Text(task.name).foregroundColor(Color.gray).strikethrough()
+                                        Text(User.TogetherTasks[index].name).foregroundColor(Color.gray).strikethrough()
                                     }
                                 }
                             }
@@ -119,7 +135,7 @@ struct HomeView_together: View {
                 }
                 .frame(width: 380)
                 HStack {
-                    NavigationLink(destination: FriendView().onAppear() {
+                   NavigationLink(destination: FriendView().onAppear() {
                         self.showingnavi = false
                     }) {
                         HStack {
@@ -170,8 +186,8 @@ struct HomeView_together: View {
             .onAppear() {
                 self.showingnavi = true
             }
-            }
         }
+    }
     
 }
 
@@ -216,17 +232,19 @@ struct HomeView_person: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
+                    
                     image
-                    .onAppear(perform: loader.load)
-                    .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
-                    .scaledToFit()
-                    .offset(y: 5)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle().stroke(Color.gray, lineWidth: 2))
-                    .padding(.horizontal,15)
-                    .onTapGesture {
-                        self.showingprofile.toggle()
+                        .onAppear(perform: loader.load)
+                        .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
+                        .scaledToFit()
+                        .offset(y: 5)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.gray, lineWidth: 2))
+                        .padding(.horizontal,15)
+                        .onTapGesture {
+                            self.showingprofile.toggle()
+                            
                     }.sheet(isPresented: self.$showingprofile) {
                         profileview(showingprofile: self.$showingprofile)
                     }
@@ -256,71 +274,71 @@ struct HomeView_person: View {
                                 Image(systemName: "checkmark.circle")
                                     .onTapGesture {
                                         self.settings.count -= 1
+                                }
                             }
                         }
                     }
-                    }
+                        
+                    .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
+                    .cornerRadius(10)
+                    .frame(width: 380)
+                    
+                    HStack {
+                        NavigationLink(destination: FriendView().onAppear() {
+                            self.showingnavi = false
+                        }) {
+                            HStack {
+                                Image(systemName: "person.circle")
+                                    .font(.headline)
+                                Text("Your Friend")
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                
+                                
+                            }
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(.orange))
+                            .cornerRadius(10)
+                        }
+                        Spacer()
+                        Button(action: {
+                            self.view_swither = 2
+                        }) {
+                            HStack {
+                                Image(systemName: "pencil.and.outline")
+                                    .font(.headline)
+                                Text("private Schedule")
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                
+                            }
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(.orange))
+                            .cornerRadius(10)
+                        }
+                    }.frame(width:380)
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.showingaddtask.toggle()
+                        }) {
+                            Text("Add Tasks")
+                        }.sheet(isPresented: $showingaddtask) {
+                            addNewPrivateTask(addingtask: self.$showingaddtask, IsChanging: self.$IsChanging)
+                        }
+                        if IsChanging {
+                            Text("")
+                        }
+                    }.frame(width:300)
                 }
-             
-                .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
-                .cornerRadius(10)
-                .frame(width: 380)
-     
-                HStack {
-                    NavigationLink(destination: FriendView().onAppear() {
-                        self.showingnavi = false
-                    }) {
-                        HStack {
-                            Image(systemName: "person.circle")
-                                .font(.headline)
-                            Text("Your Friend")
-                                .fontWeight(.semibold)
-                                .font(.headline)
-                            
-                            
-                        }
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(.orange))
-                        .cornerRadius(10)
-                    }
-                    Spacer()
-                    Button(action: {
-                        self.view_swither = 2
-                    }) {
-                        HStack {
-                            Image(systemName: "pencil.and.outline")
-                                .font(.headline)
-                            Text("private tasktask")
-                                .fontWeight(.semibold)
-                                .font(.headline)
-                            
-                        }
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(.orange))
-                        .cornerRadius(10)
-                    }
-                }.frame(width:380)
-                Spacer()
-                HStack{
-                    Spacer()
-                    Button(action: {
-                        self.showingaddtask.toggle()
-                    }) {
-                        Text("Add Tasks")
-                    }.sheet(isPresented: $showingaddtask) {
-                        addNewPrivateTask(addingtask: self.$showingaddtask, IsChanging: self.$IsChanging)
-                    }
-                    if IsChanging {
-                        Text("")
-                    }
-                }.frame(width:300)
-            }
-            .navigationBarTitle(Text("Home"),displayMode: .inline)
-            .navigationBarHidden(showingnavi)
-            .onAppear() {
-                self.showingnavi = true
+                .navigationBarTitle(Text("Home"),displayMode: .inline)
+                .navigationBarHidden(showingnavi)
+                .onAppear() {
+                    self.showingnavi = true
+                }
             }
         }
     }

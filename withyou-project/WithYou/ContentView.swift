@@ -35,6 +35,8 @@ struct ContentView: View {
                     self.view_switcher = 3
                 }
             }
+            
+            
         }.onAppear(){
     
         }

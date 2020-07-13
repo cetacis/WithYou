@@ -11,33 +11,42 @@ import SwiftUI
 
 struct FriendView:View {
     @State var showingprofile = false
-    @State var Friend: PersonInfo = PersonInfo()
+    @State var Friend: UserInfo = UserInfo()
     var body: some View {
         VStack {
-            Text("YouFriend")
-                .font(.title)
-            List {
-                ForEach(0..<User.Friends.count, id: \.self){
-                    index in
-                    HStack {
-                        Image("player2")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle().stroke(Color.gray, lineWidth: 2))
-                            .padding(.horizontal,15)
-                            .onTapGesture {
-                                let users = realm.objects(PersonInfo.self).filter("email = '\(User.Friends[index])'")
-                                self.Friend = users[0]
-                                self.showingprofile.toggle()
-                        }.sheet(isPresented: self.$showingprofile) {
-                            Friendprofileview(showingprofile: self.$showingprofile, User: self.Friend)
+            Group{
+                Text("YouFriend")
+                    .font(.title)
+                List {
+                    ForEach(0..<User.Friends.count, id: \.self){
+                        index in
+                        HStack {
+                            Image("player2")
+                                .resizable()
+                                .frame(width: 80, height: 80)
+                                .scaledToFit()
+                                .clipShape(Circle())
+                                .overlay(
+                                    Circle().stroke(Color.gray, lineWidth: 2))
+                                .padding(.horizontal,15)
+                                .onTapGesture {
+                            // To do: get the friend by the Friends[index](email)
+                            //post email=friend.email
+                            // api/getfriend
+                                    let friend = UserInfo()
+                                    self.Friend = friend
+                                    self.showingprofile.toggle()
+                                }.sheet(isPresented: self.$showingprofile) {
+                                    
+                                    Friendprofileview(showingprofile: self.$showingprofile, User: self.Friend)
+                                }
+                            Text(User.Friends[index])
                         }
-                        Text(User.Friends[index])
                     }
+                    
+                    
                 }
+                
             }
         }
     }

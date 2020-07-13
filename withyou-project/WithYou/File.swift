@@ -24,20 +24,39 @@ struct TogetherTask {
     var name: String
     var number: Int
     var comment: String
-    var FriendEmail: String
+    var friendEmail: String
     var IsFinished: Bool
+    init() {
+        self.name = ""
+        self.number = -1
+        self.comment = ""
+        self.friendEmail =  ""
+        self.IsFinished = false
+    }
+    
 }
 
 struct PrivateTask {
     var name: String
     var number: Int
     var IsFinished: Bool
+    init() {
+        self.name = ""
+        self.number = -1
+        self.IsFinished = false
+    }
+    
 }
 
 struct Message {
     var msg: String
-    var IsUser: Bool
+    var IsUser:Bool
     var IsRead: Bool
+    init() {
+        self.msg = ""
+        self.IsUser = false
+        self.IsRead = false
+    }
 }
 
 struct UserInfo {
@@ -50,7 +69,6 @@ struct UserInfo {
     var sex: String
     var birthday: String
     var constellation: String
-    var blood: String
     var imgpath: String
     var TogetherTasks: [TogetherTask]
     var PrivateTasks: [PrivateTask]
@@ -65,7 +83,6 @@ struct UserInfo {
         self.bio = "life is cetacis. Prprpr"
         self.mobile = "+86 15358764577"
         self.constellation = "tiger"
-        self.blood = "A"
         self.birthday = "2000-1-1"
         self.sex = "male"
         self.imgpath = ""
