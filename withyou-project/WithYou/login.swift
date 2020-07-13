@@ -111,6 +111,7 @@ struct LoginView: View {
                 )
                
                 Button("     log in     "){
+                    
                         //todo: login 发送 根据$emailIn 和 $passpordIn 进行加密后利用post发送
                     
                         //you should encryt the passowrd locally

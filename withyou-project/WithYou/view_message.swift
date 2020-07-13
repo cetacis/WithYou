@@ -34,7 +34,7 @@ struct Messageview: View {
                                 self.showingMessage.toggle()
                                 self.message = User.Messages[index]
                         }.sheet(isPresented: self.$showingMessage) {
-                            MessageviewDetail()
+                            MessageviewDetail(message: self.$message)
                         }
                         Text(User.Messages[index].IsUser ? "From you" : "From admin")
                         Spacer()
@@ -46,9 +46,7 @@ struct Messageview: View {
             }.padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
                 .offset(y:-270)
             HStack{
-                Button(action: {
-                        
-                              }) {
+               NavigationLink(destination: Messageview()) {
                                   HStack {
                                       Image(systemName: "pencil.and.outline")
                                           .font(.headline)

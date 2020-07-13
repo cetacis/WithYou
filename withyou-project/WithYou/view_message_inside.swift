@@ -10,14 +10,20 @@ import Foundation
 import SwiftUI
 
 struct MessageviewDetail: View {
-
+    @Binding var message:Message
     @State var showmoreprofile = false
-    @State var text:String = "  Type here: Your advice is important to our improvement."
+    @State var text:String = ""
+    
+    func getText() -> Binding<String> {
+        self.text = self.message.msg
+        return self.$text
+    }
+    
     var body: some View {
        VStack {
             Text("New Message").font(.system(size: 30)).foregroundColor(Color.gray).multilineTextAlignment(.center).lineLimit(nil).padding(.top,8)
             TextView(
-                text: $text
+                text:getText()
                 )
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         }.frame(height:500)
@@ -31,10 +37,3 @@ struct MessageviewDetail: View {
     }
 }
 
-struct view_message_inside_Previews: PreviewProvider {
-    @State var showMessage:Bool = false
-    @State var message:Message = Message(msg: "", IsUser: false, IsRead: false)
-    static var previews: some View {
-        MessageviewDetail()
-    }
-}
