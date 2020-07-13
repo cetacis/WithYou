@@ -94,7 +94,7 @@ struct HomeView_together: View {
                         Text("Your")
                             .font(.subheadline)
                         List {
-                            ForEach(0..<User.TogetherTasks, id: \.self){
+                            ForEach(0..<User.TogetherTasks.count, id: \.self){
                                 index in
                                 NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
                                     self.showingnavi = false

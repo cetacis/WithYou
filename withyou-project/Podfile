@@ -7,7 +7,6 @@ target 'WithYou' do
 
   # Pods for WithYou
   pod 'Alamofire', '~> 5.2'
-  pod 'RealmSwift'
   target 'WithYouTests' do
     inherit! :search_paths
     # Pods for testing

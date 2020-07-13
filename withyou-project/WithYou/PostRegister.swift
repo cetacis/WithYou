@@ -8,5 +8,9 @@
 
 import Foundation
 
-
-
+func PostRegister(name: String, email:String, password: String) -> (Int, String) {
+    var code = 0
+    var string = ""
+    
+    return (code, string)
+}
