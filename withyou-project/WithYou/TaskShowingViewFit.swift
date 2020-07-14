@@ -11,7 +11,7 @@ import SwiftUI
 struct TaskShowingViewFit: View {
     var body: some View {
         List {
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination: AddScheduleDetailFit()) {
                 HStack
                     { Image("exercise2").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -22,7 +22,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination: AddScheduleDetailFit()) {
                 HStack
                     { Image("think").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -33,7 +33,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination: AddScheduleDetailFit()) {
                 HStack
                     { Image("yg1").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -44,7 +44,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination:AddScheduleDetailFit()) {
                 HStack
                     { Image("yg2").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -55,7 +55,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination: AddScheduleDetailFit()) {
                 HStack
                     { Image("bike3").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -66,7 +66,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination: AddScheduleDetailFit()) {
                            HStack
                                { Image("walk").resizable().frame(width:80, height: 100, alignment: .bottom)
                                    VStack(alignment: .leading){
@@ -77,7 +77,7 @@ struct TaskShowingViewFit: View {
                                    }
                            }
                        }
-            NavigationLink(destination: AddScheduleDetail()) {
+            NavigationLink(destination: AddScheduleDetailFit()) {
                            HStack
                                { Image("exercise5").resizable().frame(width:80, height: 100, alignment: .bottom)
                                    VStack(alignment: .leading){
@@ -93,5 +93,11 @@ struct TaskShowingViewFit: View {
             
             
         }
+    }
+}
+
+struct TaskShowingViewFit_Previews: PreviewProvider {
+    static var previews: some View {
+       TaskShowingViewFit()
     }
 }

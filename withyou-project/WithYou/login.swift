@@ -63,6 +63,7 @@ struct Validation<Value>: ViewModifier {
         }
     }
 }
+
 struct LabelTextField : View {
     var label:String
     var placeHolder: String
@@ -111,6 +112,7 @@ struct LoginView: View {
                 )
                
                 Button("     log in     "){
+                    
                         //todo: login 发送 根据$emailIn 和 $passpordIn 进行加密后利用post发送
                     
                         //you should encryt the passowrd locally
@@ -236,7 +238,9 @@ struct LoginView: View {
                                     // print code
                                     // tell user we have registed
                                 }, name: new_user.username, email: new_user.email, password: new_user.password)
-                                
+                                // one exception is postlogin
+                                // (code, msg) = postlogin
+                                // then process code and msg
                                 // this is the test area please do not user
                                 //print(PostGetUserInfo(email: new_user.email, pass: new_user.password))
                                 //test(email: new_user.email, pass: new_user.password)
