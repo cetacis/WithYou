@@ -87,6 +87,7 @@ struct LabelTextField : View {
 
 struct LoginView: View {
     @State private var showingAlertNU = false
+    @State private var alertMsg:String = ""
     @State var emailIn = ""
     @State var passpordIn = ""
     @Binding var view_switcher: Int
@@ -112,36 +113,18 @@ struct LoginView: View {
                 )
                
                 Button("     log in     "){
-                    
-                        //todo: login 发送 根据$emailIn 和 $passpordIn 进行加密后利用post发送
-                    
-                        //you should encryt the passowrd locally
-                        //just likie enpass = encryt_sha256 self.pass
-                        // then you post the check login
-                        // use the API postlogin
-                        // if you get the login success
-                        // you should use the PostGetUserInfo API to get the user info
-                        // user info will returned by the json, this is an unsolved problem
-                        /*let users = realm.objects(PersonInfo.self).filter("email = '\(self.emailIn)'")
-                        if users.count == 0 {
-                            self.showingAlertNU = true
-                        } else {
-                            let enpass = Encrypt_sha256(data:self.passpordIn)
-                            if users[0].password == enpass {
-                                User = users[0]
-                                self.view_switcher = 2
-                            } else {
-                                print("password wrong")
-                                self.showingAlertNU = true
-                            }
-                        }*/
+                    var code:Int
+                    var masg:String
+                    (code,masg) = PostLogin(email: self.emailIn, pass: self.passpordIn)
+                    if code == 0 || code == -1{
+                        self.showingAlertNU = true
+                        self.alertMsg = masg
+                    }else{
                         
-                    
-                    
-                    
-                    
+                    }
+ 
                 }.alert(isPresented: $showingAlertNU) {
-                    Alert(title: Text("Login failed, please check the email and password."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
                 }
                 .padding().background(Color.yellow).cornerRadius(100)
                 .foregroundColor(Color(red: 215/255, green: 86/255, blue: 33/255))
