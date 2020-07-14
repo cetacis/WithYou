@@ -1,8 +1,8 @@
 //
-//  PostGetUserInfo.swift
+//  GetFriendInfo.swift
 //  WithYou
 //
-//  Created by 邓萌达 on 13/7/20.
+//  Created by 邓萌达 on 14/7/20.
 //  Copyright © 2020 邓萌达. All rights reserved.
 //
 
@@ -10,11 +10,10 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-
-func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:String, pass: String) {
+func GetFriendInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:String) {
     var UserData: UserInfo = UserInfo()
-    let para = LoginInfo(email: email, pass: pass)
-    AF.request("http://127.0.0.1:8080/api/UserInfo",
+    let para = LoginInfo(email: email, pass: "")
+    AF.request("http://127.0.0.1:8080/api/GetFriend",
                method: .post,
                parameters: para
     ).responseJSON { (response) in
@@ -35,4 +34,3 @@ func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Str
         completion(UserData)
     }
 }
-

@@ -207,20 +207,29 @@ struct LoginView: View {
                                 new_user.username = self.name
                                 new_user.password = self.password1
                                 new_user.email = self.email
+                                // user info
+                                //GetFriendInfo(completion: { (UserInfo) in
+                                //    print(UserInfo)
+                                //}, email: new_user.email)
                                 // the usage of get user info is
-                                PostGetUserInfo(completion: { (RtData) in
-                                    User = RtData // the userinfo get from the backend
-                                    print(User)
-                                }, email: new_user.email, pass: new_user.password)
+                                //PostGetUserInfo(completion: { (RtData) in
+                                //    User = RtData // the userinfo get from the backend
+                                //    print(User)
+                                //    User.username = "changed!"
+                                //    // change the user's info
+                                //    PostChangeProfile(completion: { (code, msg) in
+                                //        print(code, msg)
+                                //    }, UserData: User)
+                                //}, email: new_user.email, pass: new_user.password)
                                 // another example
                                 // the usage of postregister is
-                                PostRegister(completion: { (code, msg) in
+                                // PostRegister(completion: { (code, msg) in
                                     // print msg
                                     // or // if code == 0 self.alert = true
                                     // altert message
                                     // print code
                                     // tell user we have registed
-                                }, name: new_user.username, email: new_user.email, password: new_user.password)
+                                // }, name: new_user.username, email: new_user.email, password: new_user.password)
                                 // one exception is postlogin
                                 // (code, msg) = postlogin
                                 // then process code and msg
