@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.2.1)
+  - SSZipArchive (2.2.3)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - SSZipArchive
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - SSZipArchive
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 40e391c1d769504be3e6a49dce5f3e9bd3421240
+PODFILE CHECKSUM: 69a1a1ed03d2d421d57e015513408845f5641707
 
 COCOAPODS: 1.9.3

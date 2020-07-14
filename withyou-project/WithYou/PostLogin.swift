@@ -13,7 +13,7 @@ func PostLogin(email:String, pass:String) -> (Int, String) {
     let semaphore = DispatchSemaphore(value: 0);
     
     let session = URLSession(configuration: .default)
-    let url = "http://127.0.0.1:8080/api/login"
+    let url = "https://mbp.cetacis.dev/api/login"
     var request = URLRequest(url: URL(string: url)!)
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     request.httpMethod = "POST"

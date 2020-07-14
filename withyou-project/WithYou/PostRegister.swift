@@ -9,16 +9,23 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-
+import SSZipArchive
+func zip()->URL
+{   let PostImagePathString :String  = PostImagePath!.path
+    let PostImagePathZipString:String = "/User/picture.zip"
+    SSZipArchive.createZipFile(atPath: PostImagePathZipString, withContentsOfDirectory:PostImagePathString)
+    let PostImagePathZip = NSURL.fileURL(withPath: PostImagePathZipString)
+    return PostImagePathZip
+}
 func PostRegister(completion: @escaping (_ code: Int, _ msg: String) -> (), name: String, email:String, password: String) {
-    var code = 0
+    var code = 100
     var msg = ""
     AF.upload(multipartFormData: { (MultipartFormData) in
-        MultipartFormData.append(PostImagePath!, withName: "file")
+        MultipartFormData.append(zip(), withName: "file")
         MultipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "name")
         MultipartFormData.append(email.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "email")
         MultipartFormData.append(password.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "pass")
-    }, to: "http://127.0.0.1:8080/api/register")
+    }, to: "https://mbp.cetacis.dev/api/register")
     .responseJSON { (reponse) in
         let json = JSON(reponse.data!)
         code = json["code"].intValue

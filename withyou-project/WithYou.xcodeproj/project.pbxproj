@@ -134,6 +134,7 @@
 		A1B1DF102449766D00921A1D /* FriendProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
 		A1FB25D52445AE390038BDAF /* TagContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagContent.swift; sourceTree = "<group>"; };
 		B517E74424BAEFC50060329B /* view_message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_message.swift; sourceTree = "<group>"; };
+		B51FFB8B24BD9BC5003FB03C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B546405A2448446C000C844A /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
 		B5689D8D24BB48C8006A99F1 /* view_message_inside.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_message_inside.swift; sourceTree = "<group>"; };
 		B58026322446AC3600659F58 /* addNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewTask.swift; sourceTree = "<group>"; };
@@ -253,18 +254,19 @@
 				A100399924461BA200AF8363 /* checklogin.swift */,
 				A15107D62447002100D08DD2 /* changelink.swift */,
 				A15107D824474EC400D08DD2 /* animation.swift */,
-				A191803924BD7A6100C34AC4 /* PostChangeProfile.swift */,
-				A191803B24BD8A1C00C34AC4 /* GetFriendInfo.swift */,
-				A191803724BD78A100C34AC4 /* PostGetUserInfo.swift */,
 				A15107DC2447B00900D08DD2 /* Tasks.swift */,
 				A1B1DF0C2448A8CF00921A1D /* view_Matching.swift */,
 				A1B1DF0E24496EB100921A1D /* Friends.swift */,
 				A1B1DF102449766D00921A1D /* FriendProfile.swift */,
 				B5D85215244C5340007D0655 /* Md5Encrypt.swift */,
 				B5BBF181245163320016FD83 /* File.swift */,
+				A191803724BD78A100C34AC4 /* PostGetUserInfo.swift */,
+				A191803924BD7A6100C34AC4 /* PostChangeProfile.swift */,
+				A191803B24BD8A1C00C34AC4 /* GetFriendInfo.swift */,
 				A13FBE4524BC986400B68CF2 /* sync request.swift */,
 				A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */,
 				A17F1C2924B9A8B100A3A45C /* PostLogin.swift */,
+				B51FFB8B24BD9BC5003FB03C /* README.md */,
 			);
 			path = WithYou;
 			sourceTree = "<group>";

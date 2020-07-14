@@ -15,7 +15,7 @@ struct ContentView: View {
     let Clock = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
     var body: some View {
         HStack {
-            /*
+            
             if view_switcher == 0 && self.timing.time >= 0 {
                 SignUpView(view_switcher: $view_switcher)
             }
@@ -23,21 +23,20 @@ struct ContentView: View {
                 LoginView(view_switcher: $view_switcher)
             }
             if view_switcher == 2 && self.timing.time >= 0 {
-                HomeView_together(url: URL(string: "https://img.cetacis.dev/uploads/big/eb1dc98270f647c1e236ecb56b51a98a.jpg")!,cache: self.cache ,view_swither: $view_switcher)
+                HomeView_together(url: URL(string: "https://mbp.cetacis.dev/api + User.Imgpath")!,cache: self.cache ,view_swither: $view_switcher)
             }
-            if view_switcher == 3 && self.timing.time >= 0 {
-                HomeView_person(url: URL(string: "https://img.cetacis.dev/uploads/big/eb1dc98270f647c1e236ecb56b51a98a.jpg")!,cache: self.cache ,view_swither: $view_switcher)
-            }
+            /*if view_switcher == 3 && self.timing.time >= 0 {
+                HomeView_person(url: URL(string: "https://mbp.cetacis.dev/api + User.Imgpath")!,cache: self.cache ,view_swither: $view_switcher)
+            }*/
             if view_switcher == 4 && self.timing.time >= 0 {
                 AnimationView(view_swither: $view_switcher)
             }
-            if view_switcher == 5 && self.timing.time >= 0 {
-                HomeView_person(url: URL(string: "https://img.cetacis.dev/uploads/big/eb1dc98270f647c1e236ecb56b51a98a.jpg")!,cache: self.cache ,view_swither: $view_switcher).onAppear() {
+            /*if view_switcher == 5 && self.timing.time >= 0 {
+                HomeView_person(url: URL(string: "https://mbp.cetacis.dev/api + User.Imgpath")!,cache: self.cache ,view_swither: $view_switcher).onAppear() {
                     self.view_switcher = 3
                 }
-            }
-            */
-            SignUpView(view_switcher: $view_switcher)
+            }*/
+        
         }.onAppear(){
             
         }
