@@ -20,6 +20,7 @@ func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Str
     ).responseJSON { (response) in
         let json = JSON(response.data!)
         print(json)
+        /*
         UserData.birthday = json["birthday"].string!
         UserData.constellation = json["constellation"].string!
         UserData.bio = json["bio"].string!
@@ -34,6 +35,9 @@ func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Str
         UserData.email = json["email"].string!
         UserData.age = json["age"].string!
         UserData.Messages = json["messages"].arrayObject! as! [Message]
+ */
+        UserData = json.arrayObject! as! [UserInfo]
+        print(UserData)
         completion(UserData)
     }
 }

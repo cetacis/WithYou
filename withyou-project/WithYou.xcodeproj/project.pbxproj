@@ -585,16 +585,8 @@
 				B5CEE68B24BC5730002945D6 /* view_message_newmsg.swift in Sources */,
 				A17F1C2C24B9B59F00A3A45C /* PostRegister.swift in Sources */,
 				A11270F324449F8700DC10B2 /* GUIDEIG.swift in Sources */,
-<<<<<<< HEAD
-				A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */
-=======
 				A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */,
-<<<<<<< HEAD
-				B5D34D5424BF2ACD0089BFB3 /* TaskShowingViewLive.swift in Sources */,
-=======
->>>>>>> 44001d1c508728dea2c7816529f006c5dc660a0d
 				A1B950E724BF274600D561DA /* PostChangeProt.swift in Sources */,
->>>>>>> 284be85d6c7f30cdd8295916fbf909da511b5d31
 				A1115FAB2445F39300B943B8 /* Home.swift in Sources */,
 				A1B1DF0F24496EB100921A1D /* Friends.swift in Sources */,
 				A15107DF2447BF9400D08DD2 /* addNewPrivateTask.swift in Sources */,
