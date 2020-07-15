@@ -12,6 +12,27 @@ import SwiftUI
 struct profileview: View {
     @Binding var showingprofile: Bool
     @State var showmoreprofile = false
+    
+    @ObservedObject private var loader: ImageLoader
+    private let placeholder: Image?
+    private let configuration: (Image) -> Image
+    private var image: some View {
+        Group {
+            if loader.image != nil  {
+                configuration(Image(uiImage: loader.image!))
+            } else {
+                placeholder
+            }
+        }
+    }
+    
+    init(url: URL, cache: ImageCache? = nil, showingprofile: Binding<Bool>) {
+        loader = ImageLoader(url: url, cache: cache)
+        self.placeholder = Choose
+        self.configuration = {$0.resizable()}
+        self._showingprofile = showingprofile
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -25,10 +46,11 @@ struct profileview: View {
                 }.frame(width: 365).padding(.top,10)
                 Divider()
                 VStack {
-                    Choose
-                        .resizable()
-                        .frame(width: 80, height: 80)
+                    image
+                        .onAppear(perform: loader.load)
+                        .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
+                      
                         .clipShape(Circle())
                         .overlay(
                             Circle().stroke(Color.gray, lineWidth: 2))
