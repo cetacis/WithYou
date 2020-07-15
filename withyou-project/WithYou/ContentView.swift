@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-func check()->String{
-    print(User.imgpath == "" ? "nil" : User.imgpath)
-    print("123")
-    return "https://mbp.cetacis.dev/api"+User.imgpath
-}
-
 struct ContentView: View {
     @State var view_switcher = UserDefaults.isFirstLaunch() ? 4 : 1
     @State var timing: timer = timer()
@@ -29,7 +23,7 @@ struct ContentView: View {
                 LoginView(view_switcher: $view_switcher)
             }
             if view_switcher == 2 && self.timing.time >= 0 {
-                HomeView_together(url: URL(string: check())!,cache: self.cache ,view_swither: $view_switcher)
+                HomeView_together(url: URL(string: "https://mbp.cetacis.dev/api"+User.imgpath)!,cache: self.cache ,view_swither: $view_switcher)
             }
             /*if view_switcher == 3 && self.timing.time >= 0 {
                 HomeView_person(url: URL(string: "https://mbp.cetacis.dev/api + User.imgpath")!,cache: self.cache ,view_swither: $view_switcher)

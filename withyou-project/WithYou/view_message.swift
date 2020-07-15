@@ -52,7 +52,7 @@ struct Messageview: View {
         
         VStack {
             HStack{
-                          NavigationLink(destination: Messageview()) {
+                          NavigationLink(destination: NewMessage()) {
                                              HStack {
                                                  Image(systemName: "pencil.and.outline")
                                                      .font(.headline)

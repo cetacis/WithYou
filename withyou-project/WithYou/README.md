@@ -51,6 +51,13 @@ func compress(){
 }
 
 
+<<<<<<< HEAD
+
+
+如果成功匹配，从后端发消息到前端，前端收到信息。
+前端监听怎么完成？
+
+=======
 // postChangeprot 
 
 
@@ -59,3 +66,4 @@ PostChangeProt(completion: { (code, msg) in
         User.imgpath = msg
     }
 }, email: User.email, password: User.password)
+>>>>>>> 284be85d6c7f30cdd8295916fbf909da511b5d31

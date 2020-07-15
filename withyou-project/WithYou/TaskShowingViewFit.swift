@@ -9,9 +9,18 @@
 import SwiftUI
 
 struct TaskShowingViewFit: View {
+    @State var taskID1:Int = 101
+    @State var taskID2:Int = 102
+    @State var taskID3:Int = 103
+    @State var taskID4:Int = 104
+    @State var taskID5:Int = 105
+    @State var taskID6:Int = 106
+    @State var taskID7:Int = 107
+    
     var body: some View {
+        
         List {
-            NavigationLink(destination: AddScheduleDetailFit()) {
+            NavigationLink(destination: AddScheduleDetailFit(taskId: self.$taskID1)) {
                 HStack
                     { Image("exercise2").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -22,7 +31,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetailFit()) {
+            NavigationLink(destination: AddScheduleDetailFit(taskId: self.$taskID2)) {
                 HStack
                     { Image("think").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -33,7 +42,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetailFit()) {
+            NavigationLink(destination: AddScheduleDetailFit(taskId: self.$taskID3)) {
                 HStack
                     { Image("yg1").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -44,7 +53,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination:AddScheduleDetailFit()) {
+            NavigationLink(destination:AddScheduleDetailFit(taskId: self.$taskID4)) {
                 HStack
                     { Image("yg2").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -55,7 +64,7 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetailFit()) {
+            NavigationLink(destination: AddScheduleDetailFit(taskId: self.$taskID5)) {
                 HStack
                     { Image("bike3").resizable().frame(width:80, height: 100, alignment: .bottom)
                         VStack(alignment: .leading){
@@ -66,28 +75,28 @@ struct TaskShowingViewFit: View {
                         }
                 }
             }
-            NavigationLink(destination: AddScheduleDetailFit()) {
-                           HStack
-                               { Image("walk").resizable().frame(width:80, height: 100, alignment: .bottom)
-                                   VStack(alignment: .leading){
-                                       Text("Walk Quickly").font(.system(size:30, design: .rounded)).foregroundColor(.blue)
-                                       Text("main purpose:develop heart and lung function")
-                                       Text("everyday tasks sum:1-2")
-                                       Text("time: 7days")
-                                   }
-                           }
-                       }
-            NavigationLink(destination: AddScheduleDetailFit()) {
-                           HStack
-                               { Image("exercise5").resizable().frame(width:80, height: 100, alignment: .bottom)
-                                   VStack(alignment: .leading){
-                                       Text("Keep Fit").font(.system(size:30, design: .rounded)).foregroundColor(.blue)
-                                       Text("main purpose: build muscle")
-                                       Text("everyday tasks sum:10-12")
-                                       Text("time: 21days")
-                                   }
-                           }
-                       }
+            NavigationLink(destination: AddScheduleDetailFit(taskId: self.$taskID6)) {
+                HStack
+                    { Image("walk").resizable().frame(width:80, height: 100, alignment: .bottom)
+                        VStack(alignment: .leading){
+                            Text("Walk Quickly").font(.system(size:30, design: .rounded)).foregroundColor(.blue)
+                            Text("main purpose:develop heart and lung function")
+                            Text("everyday tasks sum:1-2")
+                            Text("time: 7days")
+                        }
+                }
+            }
+            NavigationLink(destination: AddScheduleDetailFit(taskId: self.$taskID7)) {
+                HStack
+                    { Image("exercise5").resizable().frame(width:80, height: 100, alignment: .bottom)
+                        VStack(alignment: .leading){
+                            Text("Keep Fit").font(.system(size:30, design: .rounded)).foregroundColor(.blue)
+                            Text("main purpose: build muscle")
+                            Text("everyday tasks sum:10-12")
+                            Text("time: 21days")
+                        }
+                }
+            }
             
             
             
@@ -98,6 +107,6 @@ struct TaskShowingViewFit: View {
 
 struct TaskShowingViewFit_Previews: PreviewProvider {
     static var previews: some View {
-       TaskShowingViewFit()
+        TaskShowingViewFit()
     }
 }

@@ -73,14 +73,14 @@ struct addNewTask: View {
         case "fitness":
             return AnyView(TaskShowingViewFit())
             
-        case "study":
+      /*  case "study":
             return AnyView(TaskShowingViewStu())
             
         case "read":
             return AnyView(TaskShowingViewStu())
             
         case "life":
-            return AnyView(TaskShowingViewStu())
+            return AnyView(TaskShowingViewStu())*/
             
         default:
             return AnyView(TaskShowingViewDefault())

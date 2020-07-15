@@ -52,12 +52,11 @@ struct ChangeLinkName:View {
             LabelTextField(label: "Name", placeHolder: "name longer than 5", icon: "person.circle.fill", text: $changing).foregroundColor(isValidName(changing) ? .green : .black)
             if (isValidName(changing)) {
                 Button("Save"){
-                    
-                    //todo:将changing写入username 发送post
-                    /*try! realm.write {
-                        User.username = self.changing
-                    }*/
+                
                     self.change_name = self.changing
+                    PostChangeProfile(completion: { (code, msg) in
+                                                print(code, msg)
+                                            }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
@@ -200,10 +199,6 @@ struct ChangeLinkSex:View {
             LabelTextField(label: "Sex", placeHolder: "male/female", icon: "s.circle.fill", text: $changing).foregroundColor(isValidSex(changing) ? .green : .black)
             if (isValidSex(changing)) {
                 Button("Save"){
-                    //todo:将changing写入birthday 发送post
-                    /*try! realm.write {
-                        User.sex = self.changing
-                    }*/
                     self.change_sex = self.changing
                     PostChangeProfile(completion: { (code, msg) in
                                            print(code, msg)
