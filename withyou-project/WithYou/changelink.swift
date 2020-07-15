@@ -77,12 +77,13 @@ struct ChangeLinkAge:View {
             LabelTextField(label: "Age", placeHolder: "valid age", icon: "a.circle.fill", text: $changing).foregroundColor(isValidAge(changing) ? .green : .black)
             if (isValidAge(changing)) {
                 Button("Save"){
-                     //todo:将changing写入age 发送post
-                    /*try! realm.write {
-                        User.age = self.changing
-                    }*/
+                   
                     self.change_age = self.changing
+                   PostChangeProfile(completion: { (code, msg) in
+                             print(code, msg)
+                         }, UserData: User)
                     self.showingAlert = true
+                    
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
                 } .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).offset(x:20).font(.system(size:15,design:.rounded))
@@ -102,11 +103,11 @@ struct ChangeLinkbio:View {
             LabelTextField(label: "Bio", placeHolder: "valid bio", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBio(changing) ? .green : .black)
             if (isValidBio(changing)) {
                 Button("Save"){
-                    //todo:将changing写入age 发送post
-                    /*try! realm.write {
-                        User.bio = self.changing
-                    }*/
+                  
                     self.change_bio = self.changing
+                    PostChangeProfile(completion: { (code, msg) in
+                        print(code, msg)
+                    }, UserData: User)
                     self.showingAlertBio = true
                 } .alert(isPresented: $showingAlertBio) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
@@ -127,11 +128,11 @@ struct ChangeLinkMobile:View {
             LabelTextField(label: "Mobile", placeHolder: "valid mobile", icon: "m.circle.fill", text: $changing).foregroundColor(isValidMobile(changing) ? .green : .black)
             if (isValidMobile(changing)) {
                 Button("Save"){
-                    //todo:将changing写入bio 发送post
-                    /*try! realm.write {
-                        User.mobile = self.changing
-                    }*/
+                    
                     self.change_mobile = self.changing
+                    PostChangeProfile(completion: { (code, msg) in
+                        print(code, msg)
+                    }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
@@ -151,11 +152,11 @@ struct ChangeLinkConstellation:View {
             LabelTextField(label: "Constellation", placeHolder: "valid Constellation", icon: "s.circle.fill", text: $changing).foregroundColor(isValidStar(changing) ? .green : .black)
             if (isValidStar(changing)) {
                 Button("Save"){
-                    //todo:将changing写入constellation 发送post
-                    /*try! realm.write {
-                        User.constellation = self.changing
-                    }*/
+                   
                     self.change_star = self.changing
+                    PostChangeProfile(completion: { (code, msg) in
+                        print(code, msg)
+                    }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
@@ -175,11 +176,11 @@ struct ChangeLinkBirthDay:View {
             LabelTextField(label: "BirthDay", placeHolder: "xxxx-xx-xx", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBirthDay(changing) ? .green : .black)
     
                 Button("Save"){
-                    //todo:将changing写入birthday 发送post
-                    /*try! realm.write {
-                        User.BirthDay = self.changing
-                    }*/
+                    
                     self.change_birthDay = self.changing
+                    PostChangeProfile(completion: { (code, msg) in
+                        print(code, msg)
+                    }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))

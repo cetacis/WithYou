@@ -15,7 +15,9 @@ func PostRegister(completion: @escaping (_ code: Int, _ msg: String) -> (), name
     var code = 100
     var msg = ""
     print(getSize(url: PostImagePath!))
+    print(type(of: PostImagePath!))
     AF.upload(multipartFormData: { (MultipartFormData) in
+        print(type(of: PostImagePath!))
         MultipartFormData.append(PostImagePath!, withName: "file")
         MultipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "name")
         MultipartFormData.append(email.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "email")

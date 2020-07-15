@@ -56,13 +56,13 @@ func compress(){
     let getImg = UIImage(contentsOfFile:PostImagePath!.path)
     print(getSize(url: PostImagePath!))
     let zipImageData = getImg!.jpegData(compressionQuality: 0.5)
-    let PostImagePathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/portrait.jpeg"
+    let PostImagePathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "portrait.jpeg"
     do {
-        try zipImageData!.write(to: URL(fileURLWithPath: PostImagePathString))
+        try zipImageData!.write(to: URL(fileURLWithPath: "/Users/una/1.jpeg"))
     }catch {
     }
     print(PostImagePathString)
-    PostImagePath = URL(string: PostImagePathString)
+    PostImagePath = URL(string: "/Users/una/1.jpeg")
     print(PostImagePath!)
     print(getSize(url: PostImagePath!))
 }
