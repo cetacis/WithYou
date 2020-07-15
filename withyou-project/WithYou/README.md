@@ -49,3 +49,10 @@ func compress(){
     print(PostImagePath!)
     print(getSize(url: PostImagePath!))
 }
+
+
+
+
+如果成功匹配，从后端发消息到前端，前端收到信息。
+前端监听怎么完成？
+

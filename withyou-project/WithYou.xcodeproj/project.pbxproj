@@ -58,6 +58,8 @@
 		B5A3F486244881E700A999EE /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A3F485244881E700A999EE /* MultilineTextField.swift */; };
 		B5BBF182245163320016FD83 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBF181245163320016FD83 /* File.swift */; };
 		B5CEE68B24BC5730002945D6 /* view_message_newmsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEE68A24BC5730002945D6 /* view_message_newmsg.swift */; };
+		B5D34D5224BF2AB10089BFB3 /* TaskShowingViewRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D34D5124BF2AB10089BFB3 /* TaskShowingViewRead.swift */; };
+		B5D34D5424BF2ACD0089BFB3 /* TaskShowingViewLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D34D5324BF2ACD0089BFB3 /* TaskShowingViewLive.swift */; };
 		B5D85214244C4334007D0655 /* Portrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D85213244C4334007D0655 /* Portrait.swift */; };
 		B5D85216244C5340007D0655 /* Md5Encrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D85215244C5340007D0655 /* Md5Encrypt.swift */; };
 /* End PBXBuildFile section */
@@ -144,6 +146,8 @@
 		B5A3F485244881E700A999EE /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		B5BBF181245163320016FD83 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B5CEE68A24BC5730002945D6 /* view_message_newmsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_message_newmsg.swift; sourceTree = "<group>"; };
+		B5D34D5124BF2AB10089BFB3 /* TaskShowingViewRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskShowingViewRead.swift; sourceTree = "<group>"; };
+		B5D34D5324BF2ACD0089BFB3 /* TaskShowingViewLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskShowingViewLive.swift; sourceTree = "<group>"; };
 		B5D85213244C4334007D0655 /* Portrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portrait.swift; sourceTree = "<group>"; };
 		B5D85215244C5340007D0655 /* Md5Encrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Md5Encrypt.swift; sourceTree = "<group>"; };
 		C61D10BA9542B83F23172F3E /* Pods_WithYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WithYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +238,8 @@
 				B58026382446CF4600659F58 /* TaskShowingViewDefault.swift */,
 				B58026362446C2EE00659F58 /* TaskShowingViewStu.swift */,
 				B58026342446B58000659F58 /* TaskShowingViewFit.swift */,
+				B5D34D5124BF2AB10089BFB3 /* TaskShowingViewRead.swift */,
+				B5D34D5324BF2ACD0089BFB3 /* TaskShowingViewLive.swift */,
 				A15107DA24475D3800D08DD2 /* AddScheduleDetail.swift */,
 				A1FB25D52445AE390038BDAF /* TagContent.swift */,
 				B546405A2448446C000C844A /* TaskDetail.swift */,
@@ -577,9 +583,11 @@
 				A17F1C2C24B9B59F00A3A45C /* PostRegister.swift in Sources */,
 				A11270F324449F8700DC10B2 /* GUIDEIG.swift in Sources */,
 				A11270F124449F3800DC10B2 /* GUIDE.swift in Sources */,
+				B5D34D5424BF2ACD0089BFB3 /* TaskShowingViewLive.swift in Sources */,
 				A1115FAB2445F39300B943B8 /* Home.swift in Sources */,
 				A1B1DF0F24496EB100921A1D /* Friends.swift in Sources */,
 				A15107DF2447BF9400D08DD2 /* addNewPrivateTask.swift in Sources */,
+				B5D34D5224BF2AB10089BFB3 /* TaskShowingViewRead.swift in Sources */,
 				A15107DB24475D3800D08DD2 /* AddScheduleDetail.swift in Sources */,
 				A128D88124449CBF007999F9 /* ContentView.swift in Sources */,
 				B5689D8E24BB48C8006A99F1 /* view_message_inside.swift in Sources */,
