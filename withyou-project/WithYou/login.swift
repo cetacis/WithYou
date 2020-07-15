@@ -215,14 +215,14 @@ struct LoginView: View {
                                 //}, email: new_user.email, pass: new_user.password)
                                 // another example
                                 // the usage of postregister is
-                                PostRegister(completion: { (code, msg) in
+                                //PostRegister(completion: { (code, msg) in
                                     // print msg
                                     // or // if code == 0 self.alert = true
                                     // altert message
                                     // print code
                                     // tell user we have registed
-                                    print(code, msg)
-                                }, name: new_user.username, email: new_user.email, password: new_user.password)
+                                //    print(code, msg)
+                                //}, name: new_user.username, email: new_user.email, password: new_user.password)
                                 // one exception is postlogin
                                 // (code, msg) = postlogin
                                 // then process code and msg
