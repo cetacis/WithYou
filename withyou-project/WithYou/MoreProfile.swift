@@ -14,13 +14,12 @@ struct MoreProfile: View {
         VStack {
             VStack {
                 Choose
-                    .resizable()
-                    .frame(width: 80, height: 80)
                     .scaledToFit()
                     .clipShape(Circle())
                     .overlay(
                         Circle().stroke(Color.gray, lineWidth: 2))
                     .padding(.horizontal,15)
+        
                 Text(User.username)
                     .font(.title)
                 Text(User.bio)

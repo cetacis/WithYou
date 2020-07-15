@@ -41,15 +41,18 @@ struct HomeView_together: View {
     @ObservedObject private var loader: ImageLoader
     private let placeholder: Image?
     private let configuration: (Image) -> Image
-    
+    private let url: URL
+    private let cache: ImageCache?
     init(url: URL, cache: ImageCache? = nil, view_swither: Binding<Int>) {
         loader = ImageLoader(url: url, cache: cache)
         self.placeholder = Choose
         self.configuration = {$0.resizable()}
         self._view_swither = view_swither
+        self.url = url
+        self.cache = cache
     }
     
-    private var image: some View {
+    var image: some View {
         Group {
             if loader.image != nil  {
                 configuration(Image(uiImage: loader.image!))
@@ -94,7 +97,7 @@ struct HomeView_together: View {
                         .onTapGesture {
                             self.showingprofile.toggle()
                     }.sheet(isPresented: self.$showingprofile) {
-                        profileview(showingprofile: self.$showingprofile)
+                        profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
                     }
                 }.frame(width: 380)
                 Divider()
