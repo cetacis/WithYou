@@ -24,10 +24,10 @@ func PostRegister(completion: @escaping (_ code: Int, _ msg: String) -> (), name
         MultipartFormData.append(password.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "pass")
     }, to: "https://mbp.cetacis.dev/api/register")
     .responseJSON { (reponse) in
-        print(reponse.error)
         let json = JSON(reponse.data!)
         code = json["code"].intValue
         msg = json["msg"].string!
+        print(code)
         completion(code, msg)
     }
 }
