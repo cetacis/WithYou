@@ -32,6 +32,7 @@ func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Str
         UserData.sex = json["sex"].string!
         UserData.email = json["email"].string!
         UserData.age = json["age"].string!
+        UserData.Messages = json["messages"].arrayObject! as! [Message]
         completion(UserData)
     }
 }

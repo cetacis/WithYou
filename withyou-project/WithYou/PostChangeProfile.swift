@@ -25,6 +25,7 @@ func PostChangeProfile(completion: @escaping (_ code: Int, _ msg: String) -> (),
         "together_tasks": UserData.TogetherTasks,
         "private_tasks": UserData.PrivateTasks,
         "email": UserData.email
+        "messages": UserData.Messages
     ] as [String : Any]
     var msg = ""
     var code = 0
