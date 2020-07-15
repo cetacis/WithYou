@@ -46,7 +46,7 @@ struct NewMessage: View {
                         } .offset(y:230)
                         
                         Button(action: {
-                            //todo:post清空message
+                            User.Messages = [] // clear up the messages
                             self.text = ""
                         }) {
                             HStack {

@@ -8,10 +8,12 @@
 //    print(User)
 //    User.username = "changed!"
 //    // change the user's info
-//    PostChangeProfile(completion: { (code, msg) in
-//        print(code, msg)
-//    }, UserData: User)
-//}, email: new_user.email, pass: new_user.password)
+
+   PostChangeProfile(completion: { (code, msg) in
+        print(code, msg)
+    }, UserData: User)
+}, email: new_user.email, pass: new_user.password)
+
 // another example
 // the usage of postregister is
 // PostRegister(completion: { (code, msg) in
@@ -33,3 +35,17 @@
 //print(PostRegister(name: new_user.username, email: new_user.email, password: new_user.password))
 
 
+func compress(){
+    let getImg = UIImage(contentsOfFile:PostImagePath!.path)
+    print(getSize(url: PostImagePath!))
+    let zipImageData = getImg!.jpegData(compressionQuality: 0.5)
+    let PostImagePathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "portrait.jpeg"
+    do {
+        try zipImageData!.write(to: URL(fileURLWithPath: "/Users/una/1.jpeg"))
+    }catch {
+    }
+    print(PostImagePathString)
+    PostImagePath = URL(string: "/Users/una/1.jpeg")
+    print(PostImagePath!)
+    print(getSize(url: PostImagePath!))
+}

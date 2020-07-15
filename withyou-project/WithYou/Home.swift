@@ -29,6 +29,7 @@ func checkNewMessage() -> Bool {
 }
 
 
+
 struct HomeView_together: View {
     @State var showingaddtask = false
     @State var showingprofile = false
@@ -85,7 +86,7 @@ struct HomeView_together: View {
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
-                        .offset(y: 5)
+                      
                         .clipShape(Circle())
                         .overlay(
                             Circle().stroke(Color.gray, lineWidth: 2))

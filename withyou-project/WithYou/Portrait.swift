@@ -55,14 +55,18 @@ func getSize(url: URL)->UInt64
 func compress(){
     let getImg = UIImage(contentsOfFile:PostImagePath!.path)
     print(getSize(url: PostImagePath!))
-    let zipImageData = getImg!.jpegData(compressionQuality: 0.5)
+
+    let zipImageData = getSize(url: PostImagePath!) > 15000000 ? getImg!.jpegData(compressionQuality: 0.1) :getImg!.jpegData(compressionQuality: 0.2)
     let PostImagePathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/\(UUID().uuidString).jpeg"
+
     do {
         try zipImageData!.write(to: URL(fileURLWithPath: PostImagePathString))
     }catch {
     }
     print(PostImagePathString)
+
     PostImagePath = NSURL.fileURL(withPath: PostImagePathString)
+
     print(PostImagePath!)
     print(getSize(url: PostImagePath!))
 }
@@ -71,7 +75,6 @@ struct Portrait: View {
     @State var image: Image? = nil
     @State var showCaptureImageView: Bool = false
     @State var imagePath: URL? = nil
-    
     
    
     var body: some View {
