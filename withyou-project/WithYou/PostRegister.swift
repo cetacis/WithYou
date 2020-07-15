@@ -18,7 +18,7 @@ func PostRegister(completion: @escaping (_ code: Int, _ msg: String) -> (), name
         MultipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "name")
         MultipartFormData.append(email.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "email")
         MultipartFormData.append(password.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "pass")
-    }, to: "http://127.0.0.1:8080/api/register")
+    }, to: "https://mbp.cetacis.dev/api/register")
     .responseJSON { (reponse) in
         let json = JSON(reponse.data!)
         code = json["code"].intValue
