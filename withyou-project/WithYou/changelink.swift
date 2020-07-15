@@ -205,6 +205,9 @@ struct ChangeLinkSex:View {
                         User.sex = self.changing
                     }*/
                     self.change_sex = self.changing
+                    PostChangeProfile(completion: { (code, msg) in
+                                           print(code, msg)
+                                       }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))

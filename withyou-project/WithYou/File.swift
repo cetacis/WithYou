@@ -19,6 +19,7 @@ import Foundation
 
 
 var PostImagePath : URL? = nil
+var PostImagePathString : String = PostImagePath!.path 
 
 struct LoginInfo: Encodable {
     var email: String
@@ -88,7 +89,7 @@ struct UserInfo {
         self.imgpath = ""
         self.TogetherTasks = [TogetherTask]()
         self.PrivateTasks = [PrivateTask]()
-        self.Messages = [Message(msg: "123", IsUser: true, IsRead: false),Message(msg: "", IsUser: true, IsRead: false),Message(msg: "", IsUser: false, IsRead: false)]
+        self.Messages = [Message(msg: "123", IsUser: true, IsRead: false),Message(msg: "", IsUser: true, IsRead: false),Message(msg: "", IsUser: false, IsRead: false),Message(msg: "", IsUser: true, IsRead: false)]
         self.Friends = [String]()
     }
 }

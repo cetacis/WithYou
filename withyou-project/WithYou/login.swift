@@ -123,8 +123,10 @@ struct LoginView: View {
                     }else{
                         PostGetUserInfo(completion: {
                             (RtData) in
-                            User = RtData}, email: self.emailIn, pass: self.passpordIn)
+                            User = RtData
                             self.view_switcher = 2
+                        }, email: self.emailIn, pass: self.passpordIn)
+                            
                     }
                 }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
@@ -201,6 +203,7 @@ struct LoginView: View {
                                         self.alertMsg = msg
                                         self.isalert = true
                                     if code == 0 {
+                                        
                                         self.view_switcher = 1
                                     }
                                 }, name: new_user.username, email: new_user.email, password: new_user.password)
