@@ -8,6 +8,7 @@ target 'WithYou' do
   # Pods for WithYou
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'SSZipArchive'
   target 'WithYouTests' do
     inherit! :search_paths
     # Pods for testing

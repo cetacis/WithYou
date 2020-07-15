@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-WithYou/Pods-WithYou-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

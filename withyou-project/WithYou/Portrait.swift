@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import SSZipArchive
 //Mark:take potoes
 struct CaptureImageView {
     
@@ -35,12 +35,45 @@ extension CaptureImageView: UIViewControllerRepresentable {
     
     
 }
+func getSize(url: URL)->UInt64
+{
+    var fileSize : UInt64 = 0
+     
+    do {
+        let attr = try FileManager.default.attributesOfItem(atPath: url.path)
+        fileSize = attr[FileAttributeKey.size] as! UInt64
+         
+        let dict = attr as NSDictionary
+        fileSize = dict.fileSize()
+    } catch {
+        print("Error: \(error)")
+    }
+     
+    return fileSize
+}
+
+func compress(){
+    let getImg = UIImage(contentsOfFile:PostImagePath!.path)
+    print(getSize(url: PostImagePath!))
+    let zipImageData = getImg!.jpegData(compressionQuality: 0.5)
+    let PostImagePathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/portrait.jpeg"
+    do {
+        try zipImageData!.write(to: URL(fileURLWithPath: PostImagePathString))
+    }catch {
+    }
+    print(PostImagePathString)
+    PostImagePath = URL(string: PostImagePathString)
+    print(PostImagePath!)
+    print(getSize(url: PostImagePath!))
+}
 
 struct Portrait: View {
     @State var image: Image? = nil
     @State var showCaptureImageView: Bool = false
     @State var imagePath: URL? = nil
     
+    
+   
     var body: some View {
         ZStack {
             VStack {
@@ -58,8 +91,9 @@ struct Portrait: View {
                     .shadow(radius: 10)
                     .onAppear() {
                         Choose = self.image ?? Image("player1")
-                        print(self.imagePath ?? "path didn't exit") //在首次布局的时候打印
                         PostImagePath = self.imagePath
+                        print(PostImagePath!)
+                        compress()
                     }
                 
             }

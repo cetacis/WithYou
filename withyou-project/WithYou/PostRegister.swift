@@ -9,10 +9,12 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SSZipArchive
 
 func PostRegister(completion: @escaping (_ code: Int, _ msg: String) -> (), name: String, email:String, password: String) {
-    var code = 0
+    var code = 100
     var msg = ""
+    print(getSize(url: PostImagePath!))
     AF.upload(multipartFormData: { (MultipartFormData) in
         MultipartFormData.append(PostImagePath!, withName: "file")
         MultipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "name")
@@ -20,6 +22,7 @@ func PostRegister(completion: @escaping (_ code: Int, _ msg: String) -> (), name
         MultipartFormData.append(password.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "pass")
     }, to: "https://mbp.cetacis.dev/api/register")
     .responseJSON { (reponse) in
+        print(reponse.error)
         let json = JSON(reponse.data!)
         code = json["code"].intValue
         msg = json["msg"].string!

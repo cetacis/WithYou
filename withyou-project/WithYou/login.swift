@@ -87,12 +87,14 @@ struct LabelTextField : View {
 
 struct LoginView: View {
     @State private var showingAlertNU = false
+    @State private var alertMsg:String = ""
     @State var emailIn = ""
     @State var passpordIn = ""
     @Binding var view_switcher: Int
     var body: some View {
         VStack{
             Text("withYou").offset(y:-100).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
+            Text("login")
             
             VStack{
                 TextField("email", text: self.$emailIn)
@@ -112,44 +114,25 @@ struct LoginView: View {
                 )
                
                 Button("     log in     "){
-                    
-                        //todo: login 发送 根据$emailIn 和 $passpordIn 进行加密后利用post发送
-                    
-                        //you should encryt the passowrd locally
-                        //just likie enpass = encryt_sha256 self.pass
-                        // then you post the check login
-                        // use the API postlogin
-                        // if you get the login success
-                        // you should use the PostGetUserInfo API to get the user info
-                        // user info will returned by the json, this is an unsolved problem
-                        /*let users = realm.objects(PersonInfo.self).filter("email = '\(self.emailIn)'")
-                        if users.count == 0 {
-                            self.showingAlertNU = true
-                        } else {
-                            let enpass = Encrypt_sha256(data:self.passpordIn)
-                            if users[0].password == enpass {
-                                User = users[0]
-                                self.view_switcher = 2
-                            } else {
-                                print("password wrong")
-                                self.showingAlertNU = true
-                            }
-                        }*/
-                        
-                    
-                    
-                    
-                    
+                    var code:Int
+                    var masg:String
+                    (code,masg) = PostLogin(email: self.emailIn, pass: self.passpordIn)
+                    if code == 0 || code == -1{
+                        self.showingAlertNU = true
+                        self.alertMsg = masg
+                    }else{
+                        PostGetUserInfo(completion: {
+                            (RtData) in
+                            User = RtData}, email: self.emailIn, pass: self.passpordIn)
+                            self.view_switcher = 2
+                    }
                 }.alert(isPresented: $showingAlertNU) {
-                    Alert(title: Text("Login failed, please check the email and password."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
                 }
                 .padding().background(Color.yellow).cornerRadius(100)
                 .foregroundColor(Color(red: 215/255, green: 86/255, blue: 33/255))
                 .offset(x:-20).font(.system(size:15,design:.rounded)).offset(x:50).padding(.horizontal)
-                
-                    
-            
-            }.offset(y: -100)
+          }.offset(y: -100)
         }
     }
     
@@ -166,6 +149,7 @@ struct LoginView: View {
         @State private var showingAlertRP = false
         @State var isalert = false
         @Binding var view_switcher: Int
+        @State private var alertMsg: String = ""
         
         var body: some View{
             NavigationView{
@@ -174,6 +158,7 @@ struct LoginView: View {
                 VStack{
                     Text("withYou").offset(y:-90).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
                     Text("Register").offset(y:-90).font(.headline)
+                     
                     
                     
                     VStack{
@@ -207,19 +192,6 @@ struct LoginView: View {
                         
                         if (name.count>4 && isValidEmail(email)&&isMatchedPasspord(password1, password2)){
                             Button("Submit"){
-                                //todo: 创建新的管理员邮箱。管理员邮箱用于之后进行匹配，因为前期用户数量少，管理员邮箱用于伪装用户
-                                //如果管理员邮箱已经创建，则无需再创造多余管理员邮箱
-                                /*let admin_email = realm.objects(PersonInfo.self).filter("email = 'Admin@cetacis.dev'")
-                                if admin_email.count == 0 {
-                                    let new_admin: UserInfo
-                                    new_admin.username = "Admin"
-                                    new_admin.password = "5f4dcc3b5aa765d61d8327deb882cf99"
-                                    new_admin.email = "Admin@cetacis.dev"
-                                    try! realm.write {
-                                        realm.add(new_admin)
-                                    }
-                                }*/
-                                
                                 var new_user: UserInfo = UserInfo()
                                 new_user.username = self.name
                                 new_user.password = self.password1
@@ -261,6 +233,9 @@ struct LoginView: View {
                                 // test area end.
                                 // post register like this
                                 //print(PostRegister(name: new_user.username, email: new_user.email, password: new_user.password))
+                                
+                                
+                                
                                 //todo: 发送新的用户 new_user 这个过程中应该判断是否已经有此邮箱注册，如果已经注册，则进行alert提醒（alert可复用）
                                 /*let users_email = realm.objects(PersonInfo.self).filter("email = '\(self.email)'")
                                 var flag = 0
@@ -276,9 +251,17 @@ struct LoginView: View {
                                     }
                                     self.view_switcher = 1
                                 }*/
-                                self.isalert = true
+                                
+                                PostRegister(completion: { (code, msg) in
+                                        self.alertMsg = msg
+                                        self.isalert = true
+                                    if code == 0 {
+                                        self.view_switcher = 1
+                                    }
+                                }, name: new_user.username, email: new_user.email, password: new_user.password)
+                                
                             }.alert(isPresented: self.$isalert) {
-                                Alert(title: self.showingAlertRP ? Text("The Email has being used to register") : Text("Log Succeed"), dismissButton: .default(Text("OK")))
+                                Alert(title: Text(self.alertMsg), dismissButton: .default(Text("OK")))
                                 }
                             .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).font(.system(size:15,design:.rounded))
                         }
