@@ -31,6 +31,7 @@ func GetFriendInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Strin
         UserData.sex = json["sex"].string!
         UserData.email = json["email"].string!
         UserData.age = json["age"].string!
+        UserData.Messages = json["messages"].arrayObject! as! [Message]
         completion(UserData)
     }
 }
