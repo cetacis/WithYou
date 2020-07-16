@@ -16,6 +16,17 @@ struct profileview: View {
     @ObservedObject private var loader: ImageLoader
     private let placeholder: Image?
     private let configuration: (Image) -> Image
+    private let url: URL
+    private let cache: ImageCache?
+    init(url: URL, cache: ImageCache? = nil, showingprofile: Binding<Bool>) {
+        loader = ImageLoader(url: url, cache: cache)
+        self.placeholder = Choose
+        self.configuration = {$0.resizable()}
+        self.url = url
+        self.cache = cache
+        self._showingprofile = showingprofile
+    }
+    
     private var image: some View {
         Group {
             if loader.image != nil  {
@@ -24,13 +35,6 @@ struct profileview: View {
                 placeholder
             }
         }
-    }
-    
-    init(url: URL, cache: ImageCache? = nil, showingprofile: Binding<Bool>) {
-        loader = ImageLoader(url: url, cache: cache)
-        self.placeholder = Choose
-        self.configuration = {$0.resizable()}
-        self._showingprofile = showingprofile
     }
     
     var body: some View {
@@ -111,7 +115,7 @@ struct profileview: View {
                     }.frame(width: 365)
                     VStack{
                         Divider()
-                        NavigationLink(destination: MoreProfile().onAppear() {
+                        NavigationLink(destination: MoreProfile(url: self.url, cache: self.cache).onAppear() {
                             self.showmoreprofile = false
                         }) {
                             HStack {
@@ -121,7 +125,7 @@ struct profileview: View {
                             }.frame(width:365)
                         }
                         Divider()
-                        NavigationLink(destination: ChangeProfile().onAppear() {
+                        NavigationLink(destination: MoreProfile(url: self.url, cache: self.cache).onAppear() {
                             self.showmoreprofile = false
                         }) {
                             HStack {

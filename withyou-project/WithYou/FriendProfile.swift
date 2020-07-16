@@ -92,7 +92,7 @@ struct Friendprofileview: View {
                     }.frame(width: 365)
                     VStack{
                         Divider()
-                        NavigationLink(destination: MoreProfile().onAppear() {
+                        /*NavigationLink(destination: MoreProfile(url: self.url, cache: self.cache).onAppear() {
                             self.showmoreprofile = false
                         }) {
                             HStack {
@@ -100,7 +100,7 @@ struct Friendprofileview: View {
                                     .font(.headline)
                                 Spacer()
                             }.frame(width:365)
-                        }
+                        }*/
                     }
                 }
                 Spacer()
