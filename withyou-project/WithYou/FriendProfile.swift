@@ -92,7 +92,7 @@ struct Friendprofileview: View {
                     }.frame(width: 365)
                     VStack{
                         Divider()
-                        NavigationLink(destination: MoreProfile(Img: Choose).onAppear() {
+                        NavigationLink(destination: MoreProfile().onAppear() {
                             self.showmoreprofile = false
                         }) {
                             HStack {
