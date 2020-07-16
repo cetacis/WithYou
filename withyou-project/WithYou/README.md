@@ -51,13 +51,7 @@ func compress(){
 }
 
 
-<<<<<<< HEAD
-
-
-如果成功匹配，从后端发消息到前端，前端收到信息。
-前端监听怎么完成？
-
-=======
+=
 // postChangeprot 
 
 
@@ -66,6 +60,7 @@ PostChangeProt(completion: { (code, msg) in
         User.imgpath = msg
     }
 }, email: User.email, password: User.password)
+<<<<<<< HEAD
 >>>>>>> 284be85d6c7f30cdd8295916fbf909da511b5d31
 
 // the psot add match queue and post get match usage is similar
@@ -100,3 +95,10 @@ RtData := RtMsg {
                                             Code: 0,
                                         }
                                         // code 0 means success add queue sucess 
+=======
+
+
+
+todo: 安全性检验：当输入为空的时候捕捉错误
+
+>>>>>>> c7967c60cd23eab15ffadc13a00eb3e847089f36

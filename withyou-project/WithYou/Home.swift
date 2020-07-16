@@ -78,7 +78,6 @@ struct HomeView_together: View {
                         HStack {
                             Image(systemName: "message.fill")
                                 .font(.headline)
-                             
                         }
                         .foregroundColor(.blue)
                         .background(Color(red: 1, green: 1, blue: 1))
@@ -89,7 +88,6 @@ struct HomeView_together: View {
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
-                      
                         .clipShape(Circle())
                         .overlay(
                             Circle().stroke(Color.gray, lineWidth: 2))
@@ -103,10 +101,10 @@ struct HomeView_together: View {
                 Divider()
                 HStack {
                     Text("Together Schedule")
-                        .font(.title)
+                        .font(.headline)
                         .foregroundColor(.blue)
-                    Spacer()
-                }.frame(width:380).padding(.top,20)
+
+                }.frame(width:380)
                 HStack {
                     VStack{
                         Text("Your")
@@ -153,7 +151,7 @@ struct HomeView_together: View {
                 }
                 .frame(width: 380)
                 HStack {
-                   NavigationLink(destination: FriendView().onAppear() {
+                    NavigationLink(destination: FriendView().onAppear() {
                         self.showingnavi = false
                     }) {
                         HStack {
@@ -208,6 +206,7 @@ struct HomeView_together: View {
     }
     
 }
+
 
 /*
 struct HomeView_person: View {
@@ -359,10 +358,11 @@ struct HomeView_person: View {
                 }
             }
         }
- }
- }*/
+    }
+}
 
 
 
 
 
+*/

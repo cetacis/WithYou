@@ -123,6 +123,9 @@ struct LoginView: View {
                         self.showingAlertNU = true
                         self.alertMsg = masg
                     }else{
+                         
+                      
+                        
                         PostGetUserInfo(completion: {
                             (RtData) in
                             User = RtData
@@ -215,7 +218,7 @@ struct SignUpView: View {
                             new_user.username = self.name
                             new_user.password = self.password1
                             new_user.email = self.email
-                            
+                        
                             PostRegister(completion: { (code, msg) in
                                 self.alertMsg = msg
                                 self.isalert = true
