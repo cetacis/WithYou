@@ -67,3 +67,36 @@ PostChangeProt(completion: { (code, msg) in
     }
 }, email: User.email, password: User.password)
 >>>>>>> 284be85d6c7f30cdd8295916fbf909da511b5d31
+
+// the psot add match queue and post get match usage is similar
+// code and msg are as follows
+
+RtData := RtMsg {
+                Msg: "Server Error!",
+                Code: 2,
+            }
+            
+            RtData := RtMsg {
+                        Msg: "No queue info",
+                        Code: 1,
+                    }
+                    
+                    
+                    RtData := RtMsg {
+                            Msg: "Haven't find out. Plz wait",
+                            Code: -1,
+                        }
+                        
+                        
+                        RtData := RtMsg {
+                                        Msg: result.Email,
+                                        Code: 0,
+                                    }
+                                    // code 0 means success and result.email is the friend's email
+                                    
+                                    
+                                    RtData := RtMsg {
+                                            Msg: "add queue success",
+                                            Code: 0,
+                                        }
+                                        // code 0 means success add queue sucess 
