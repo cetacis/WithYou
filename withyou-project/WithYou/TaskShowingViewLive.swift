@@ -1,15 +1,15 @@
 //
-//  TaskShowingViewStu.swift
+//  TaskShowingViewLive.swift
 //  WithYou
 //
-//  Created by una on 2020/4/15.
+//  Created by una on 2020/7/15.
 //  Copyright © 2020 邓萌达. All rights reserved.
 //
-/*
+
 import SwiftUI
 
-struct TaskShowingViewStu: View {
-    var body: some View {
+struct TaskShowingViewLive: View {
+    var body: some View {/*
         List {
             NavigationLink(destination: AddScheduleDetailStu()) {
                 HStack
@@ -55,18 +55,7 @@ struct TaskShowingViewStu: View {
                         }
                 }
             }
-            
-            
-            
-            
-            
-        }
+        }*/Text("default")
     }
 }
 
-struct TaskShowingViewStu_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskShowingViewStu()
-    }
-}
-*/

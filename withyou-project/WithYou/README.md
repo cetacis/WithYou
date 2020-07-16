@@ -49,3 +49,19 @@ func compress(){
     print(PostImagePath!)
     print(getSize(url: PostImagePath!))
 }
+
+
+=
+// postChangeprot 
+
+
+PostChangeProt(completion: { (code, msg) in
+    if (code == 0) {
+        User.imgpath = msg
+    }
+}, email: User.email, password: User.password)
+
+
+
+todo: 安全性检验：当输入为空的时候捕捉错误
+

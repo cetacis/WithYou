@@ -41,15 +41,18 @@ struct HomeView_together: View {
     @ObservedObject private var loader: ImageLoader
     private let placeholder: Image?
     private let configuration: (Image) -> Image
-    
+    private let url: URL
+    private let cache: ImageCache?
     init(url: URL, cache: ImageCache? = nil, view_swither: Binding<Int>) {
         loader = ImageLoader(url: url, cache: cache)
         self.placeholder = Choose
         self.configuration = {$0.resizable()}
         self._view_swither = view_swither
+        self.url = url
+        self.cache = cache
     }
     
-    private var image: some View {
+    var image: some View {
         Group {
             if loader.image != nil  {
                 configuration(Image(uiImage: loader.image!))
@@ -75,7 +78,6 @@ struct HomeView_together: View {
                         HStack {
                             Image(systemName: "message.fill")
                                 .font(.headline)
-                             
                         }
                         .foregroundColor(.blue)
                         .background(Color(red: 1, green: 1, blue: 1))
@@ -86,7 +88,6 @@ struct HomeView_together: View {
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
-                      
                         .clipShape(Circle())
                         .overlay(
                             Circle().stroke(Color.gray, lineWidth: 2))
@@ -94,16 +95,16 @@ struct HomeView_together: View {
                         .onTapGesture {
                             self.showingprofile.toggle()
                     }.sheet(isPresented: self.$showingprofile) {
-                        profileview(showingprofile: self.$showingprofile)
+                        profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
                     }
                 }.frame(width: 380)
                 Divider()
                 HStack {
                     Text("Together Schedule")
-                        .font(.title)
+                        .font(.headline)
                         .foregroundColor(.blue)
-                    Spacer()
-                }.frame(width:380).padding(.top,20)
+
+                }.frame(width:380)
                 HStack {
                     VStack{
                         Text("Your")
@@ -150,7 +151,7 @@ struct HomeView_together: View {
                 }
                 .frame(width: 380)
                 HStack {
-                   NavigationLink(destination: FriendView().onAppear() {
+                    NavigationLink(destination: FriendView().onAppear() {
                         self.showingnavi = false
                     }) {
                         HStack {
@@ -205,6 +206,7 @@ struct HomeView_together: View {
     }
     
 }
+
 
 /*
 struct HomeView_person: View {
@@ -356,10 +358,11 @@ struct HomeView_person: View {
                 }
             }
         }
- }
- }*/
+    }
+}
 
 
 
 
 
+*/

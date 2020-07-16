@@ -101,18 +101,20 @@ struct LoginView: View {
                     .prefixedWithIcon(named: "person.circle.fill")
                     .padding(.all)
                     .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                    .cornerRadius(50)
                 SecureField("passpord", text: self.$passpordIn)
                     .prefixedWithIcon(named:  "p.circle.fill")
                     .padding(.all)
                     .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                    .cornerRadius(50)
             }.offset(y: -110)
-                .padding(.horizontal,20)
+             .padding(.horizontal,20)
             HStack{
                 Button(action: {
                     self.view_switcher = 0
                 },label: { Text("    sign up    ").padding().background(Color.yellow).cornerRadius(100).foregroundColor(Color(red: 215/255, green: 86/255, blue: 33/255)).offset(x:20).font(.system(size:15,design:.rounded)).offset(x:-50) .padding(.horizontal)}
                 )
-               
+                
                 Button("     log in     "){
                     var code:Int
                     var masg:String
@@ -121,12 +123,15 @@ struct LoginView: View {
                         self.showingAlertNU = true
                         self.alertMsg = masg
                     }else{
+                         
+                      
+                        
                         PostGetUserInfo(completion: {
                             (RtData) in
                             User = RtData
                             self.view_switcher = 2
                         }, email: self.emailIn, pass: self.passpordIn)
-                            
+                        
                     }
                 }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
@@ -134,99 +139,114 @@ struct LoginView: View {
                 .padding().background(Color.yellow).cornerRadius(100)
                 .foregroundColor(Color(red: 215/255, green: 86/255, blue: 33/255))
                 .offset(x:-20).font(.system(size:15,design:.rounded)).offset(x:50).padding(.horizontal)
-          }.offset(y: -100)
+            }.offset(y: -100)
         }
     }
     
 }
+
+struct SignUpView: View {
+    @State var email = ""
+    @State var name = ""
+    @State var description = ""
+    @State var password1 = ""
+    @State var password2 = ""
+    @State var image: Image? = nil
+    @State var showCaptureImageView: Bool = false
+    @State private var showingAlertRP = false
+    @State var isalert = false
+    @Binding var view_switcher: Int
+    @State private var alertMsg: String = ""
     
-    struct SignUpView: View {
-        @State var email = ""
-        @State var name = ""
-        @State var description = ""
-        @State var password1 = ""
-        @State var password2 = ""
-        @State var image: Image? = nil
-        @State var showCaptureImageView: Bool = false
-        @State private var showingAlertRP = false
-        @State var isalert = false
-        @Binding var view_switcher: Int
-        @State private var alertMsg: String = ""
-        
-        var body: some View{
-            NavigationView{
-                
+    var body: some View{
+        NavigationView{
+            
+            
+            VStack{
+                VStack{
+                Text("withYou").offset(y:-90).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
+                Text("Register").offset(y:-90).font(.headline)
+                }.offset(y:20)
+            
                 
                 VStack{
-                    Text("withYou").offset(y:-90).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
-                    Text("Register").offset(y:-90).font(.headline)
-                     
+                    VStack(alignment: .leading) {
+                        Text("name")
+                        TextField("name longer than 5", text: self.$name)
+                            .prefixedWithIcon(named: "person.circle.fill")
+                            .padding(.all)
+                            .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                            .cornerRadius(50)
+                    }.padding(.horizontal, 15).foregroundColor(isValidName(name) ? .green:.black)
+                    VStack(alignment: .leading) {
+                        Text("email")
+                        TextField("please enter the available", text: self.$email)
+                            .prefixedWithIcon(named: "envelope.circle.fill")
+                            .padding(.all)
+                            .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                            .cornerRadius(50)
+                    }  .padding(.horizontal, 15).foregroundColor(isValidEmail(email) ? .green:.black)
                     
                     
-                    VStack{
+                    
+                    VStack(alignment: .leading) {
+                        Text("password for the first time")
+                        SecureField("password1", text: $password1)
+                            .prefixedWithIcon(named: "1.circle.fill")
+                            .padding(.all)
+                            .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                            .cornerRadius(50)
                         
+                    }
+                    .padding(.horizontal, 15).foregroundColor(isMatchedPasspord(password1, password2) ? .green:.black)
+                    
+                    VStack(alignment: .leading) {
+                        Text("password for the second time")
+                        SecureField("password2", text: $password2)
+                            .prefixedWithIcon(named: "2.circle.fill")
+                            .padding(.all)
+                            .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                            .cornerRadius(50)
                         
-                        LabelTextField(label:"name",placeHolder:"name longer than 5",icon:"person.circle.fill", text: $name).foregroundColor(isValidName(name) ? .green : .black)
+                    }
+                    .padding(.horizontal, 15).foregroundColor(isMatchedPasspord(password1, password2) ? .green:.black)
+                    
+                    
+                    if (name.count>4 && isValidEmail(email)&&isMatchedPasspord(password1, password2)){
+                        Button("Submit"){
+                            var new_user: UserInfo = UserInfo()
+                            new_user.username = self.name
+                            new_user.password = self.password1
+                            new_user.email = self.email
                         
-                        LabelTextField(label:"emali",placeHolder:"please enter the available",icon: "envelope.circle.fill", text: $email).foregroundColor(isValidEmail(email) ? .green : .black)
-                        
-                        
-                        VStack(alignment: .leading) {
-                            Text("password for the first time")
-                            SecureField("password1", text: $password1)
-                                .prefixedWithIcon(named: "1.circle.fill")
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                            
-                        }
-                        .padding(.horizontal, 15).foregroundColor(isMatchedPasspord(password1, password2) ? .green:.black)
-                        
-                        VStack(alignment: .leading) {
-                            Text("password for the second time")
-                            SecureField("password2", text: $password2)
-                                .prefixedWithIcon(named: "2.circle.fill")
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                            
-                        }
-                        .padding(.horizontal, 15).foregroundColor(isMatchedPasspord(password1, password2) ? .green:.black)
-                        
-                        
-                        if (name.count>4 && isValidEmail(email)&&isMatchedPasspord(password1, password2)){
-                            Button("Submit"){
-                                var new_user: UserInfo = UserInfo()
-                                new_user.username = self.name
-                                new_user.password = self.password1
-                                new_user.email = self.email
-                                
-                                PostRegister(completion: { (code, msg) in
-                                        self.alertMsg = msg
-                                        self.isalert = true
-                                    if code == 0 {
-                                        
-                                        self.view_switcher = 1
-                                    }
-                                }, name: new_user.username, email: new_user.email, password: new_user.password)
-                                
-                            }.alert(isPresented: self.$isalert) {
-                                Alert(title: Text(self.alertMsg), dismissButton: .default(Text("OK")))
+                            PostRegister(completion: { (code, msg) in
+                                self.alertMsg = msg
+                                self.isalert = true
+                                if code == 0 {
+                                    
+                                    self.view_switcher = 1
                                 }
-                            .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).font(.system(size:15,design:.rounded))
+                            }, name: new_user.username, email: new_user.email, password: new_user.password)
+                            
+                        }.alert(isPresented: self.$isalert) {
+                            Alert(title: Text(self.alertMsg), dismissButton: .default(Text("OK")))
                         }
-                    }.padding(.horizontal,15)
-                        .offset(y:-80)
-                    Portrait().offset(y:-30)
-                    Button(action: {
-                        self.view_switcher = 1
-                        print(self.view_switcher)
-                    },label: { Text("Already have an account? Sign in") }
-                    ).offset(y:-15)
-                }
-                
+                        .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).font(.system(size:15,design:.rounded))
+                    }
+                }.padding(.horizontal,15)
+                    .offset(y:-50)
+                Portrait().offset(y:-30).padding()
+                Button(action: {
+                    self.view_switcher = 1
+                    print(self.view_switcher)
+                },label: { Text("Already have an account? Sign in") }
+                ).offset(y:-30)
             }
             
         }
         
-}
+    }
     
+}
+
 

@@ -13,6 +13,9 @@ struct NewMessage: View {
     
     @State var showmoreprofile = false
     @State var text:String = "  Type here: Your advice is important to our improvement."
+    @State var updatesuccess:Bool = false
+    @State var updatefail:Bool = false
+    @State var updatefailalert:String = ""
     var body: some View {
         VStack{
             VStack {
@@ -30,8 +33,23 @@ struct NewMessage: View {
                 .overlay(
                     HStack{
                         Button(action: {
+                            print(User.Messages)
+                            User.Messages.append(Message(msg: self.text, IsUser: true, IsRead: true))
+                            print(User.Messages)
+                          
+                            PostChangeProfile(completion: { (code, msg) in
+                                print("#1")
+                                if code == 0{
+                                    print("send suc")
+                                    self.updatesuccess = true
+                                }else{
+                                    self.updatefailalert = msg
+                                    self.updatefail = true
+                                }
+                            }, UserData: User)
                             
-                        }) {
+                            
+                            }) {
                             HStack {
                                 Image(systemName: "pencil.and.outline")
                                     .font(.headline)
@@ -43,7 +61,12 @@ struct NewMessage: View {
                             .foregroundColor(.white)
                             .background(Color(red: 255/255, green: 193/255, blue: 37/255))
                             .cornerRadius(10)
-                        } .offset(y:230)
+                        } .offset(y:230).alert(isPresented: self.$updatesuccess) {
+                            Alert(title: Text("Send successfully, we have receive your feedback and we will deal with them immediately."), dismissButton: .default(Text("OK")))
+                        }.alert(isPresented: self.$updatefail) {
+                            Alert(title: Text(self.updatefailalert), dismissButton: .default(Text("OK")))
+                        }
+                          
                         
                         Button(action: {
                             User.Messages = [] // clear up the messages
@@ -68,10 +91,3 @@ struct NewMessage: View {
     }
 }
 
-struct view_message_newmeg_Previews: PreviewProvider {
-    @State var showMessage:Bool = false
-    @State var message:Message = Message(msg: "", IsUser: false, IsRead: false)
-    static var previews: some View {
-        NewMessage()
-    }
-}

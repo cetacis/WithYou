@@ -19,7 +19,6 @@ import Foundation
 
 
 var PostImagePath : URL? = nil
-var PostImagePathString : String = PostImagePath!.path 
 
 struct LoginInfo: Encodable {
     var email: String
@@ -32,12 +31,14 @@ struct TogetherTask {
     var comment: String
     var friendEmail: String
     var IsFinished: Bool
+    var tasktype:Int
     init() {
         self.name = ""
         self.number = -1
         self.comment = ""
         self.friendEmail =  ""
         self.IsFinished = false
+        self.tasktype = -1
     }
     
 }

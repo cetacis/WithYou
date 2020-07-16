@@ -24,13 +24,14 @@ func PostChangeProfile(completion: @escaping (_ code: Int, _ msg: String) -> (),
         "img_path": UserData.imgpath,
         "together_tasks": UserData.TogetherTasks,
         "private_tasks": UserData.PrivateTasks,
-        "email": UserData.email
+        "email": UserData.email,
+        "messages": UserData.Messages
     ] as [String : Any]
     var msg = ""
     var code = 0
     let jsonData = try? JSONSerialization.data(withJSONObject: para)
     let session = URLSession(configuration: .default)
-    let url = "http://127.0.0.1:8080/api/ChangeProfile"
+    let url = "https://mbp.cetacis.dev/api/ChangeProfile"
     var request = URLRequest(url: URL(string: url)!)
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     request.httpMethod = "POST"
