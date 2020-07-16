@@ -124,8 +124,6 @@ struct LoginView: View {
                         self.alertMsg = masg
                     }else{
                          
-                      
-                        
                         PostGetUserInfo(completion: {
                             (RtData) in
                             User = RtData

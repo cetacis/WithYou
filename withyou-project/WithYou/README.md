@@ -64,4 +64,35 @@ PostChangeProt(completion: { (code, msg) in
 
 
 todo: 安全性检验：当输入为空的时候捕捉错误
+todo: quene没有检测是否已经有在匹配中的信息
+
+RtData := RtMsg {
+                Msg: "Server Error!",
+                Code: 2,
+            }
+            
+            RtData := RtMsg {
+                        Msg: "No queue info",
+                        Code: 1,
+                    }
+                    
+                    
+                    RtData := RtMsg {
+                            Msg: "Haven't find out. Plz wait",
+                            Code: -1,
+                        }
+                        
+                        
+                        RtData := RtMsg {
+                                        Msg: result.Email,
+                                        Code: 0,
+                                    }
+                                    // code 0 means success and result.email is the friend's email
+                                    
+                                    
+                                    RtData := RtMsg {
+                                            Msg: "add queue success",
+                                            Code: 0,
+                                        }
+                                        // code 0 means success add queue sucess 
 

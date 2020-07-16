@@ -21,7 +21,7 @@ func GetFriendInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Strin
         UserData.birthday = json["birthday"].string!
         UserData.constellation = json["constellation"].string!
         UserData.bio = json["bio"].string!
-        UserData.imgpath = json["img_path"].string!
+        UserData.img_path = json["img_path"].string!
         UserData.Friends = json["friends"].arrayObject! as! [String]
         UserData.mobile = json["mobile"].string!
         UserData.PrivateTasks = json["private_tasks"].arrayObject! as! [PrivateTask]

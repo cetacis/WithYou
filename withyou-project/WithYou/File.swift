@@ -26,21 +26,11 @@ struct LoginInfo: Encodable {
 }
 
 struct TogetherTask {
-    var name: String
+    var name: String = ""
     var number: Int
     var comment: String
     var friendEmail: String
     var IsFinished: Bool
-    var tasktype:Int
-    init() {
-        self.name = ""
-        self.number = -1
-        self.comment = ""
-        self.friendEmail =  ""
-        self.IsFinished = false
-        self.tasktype = -1
-    }
-    
 }
 
 struct PrivateTask {
@@ -71,11 +61,13 @@ struct UserInfo {
     var sex: String
     var birthday: String
     var constellation: String
-    var imgpath: String
+    var img_path: String
     var TogetherTasks: [TogetherTask]
     var PrivateTasks: [PrivateTask]
     var Messages: [Message]
     var Friends: [String]
+    var partner : String
+    
     
     init() {
         self.username = "Cetacis"
@@ -87,11 +79,12 @@ struct UserInfo {
         self.constellation = "tiger"
         self.birthday = "2000-1-1"
         self.sex = "male"
-        self.imgpath = ""
+        self.img_path = ""
         self.TogetherTasks = [TogetherTask]()
         self.PrivateTasks = [PrivateTask]()
         self.Messages = [Message(msg: "123", IsUser: true, IsRead: false),Message(msg: "", IsUser: true, IsRead: false),Message(msg: "", IsUser: false, IsRead: false),Message(msg: "", IsUser: true, IsRead: false)]
         self.Friends = [String]()
+        self.partner = ""
     }
 }
 
@@ -101,3 +94,12 @@ struct TaskQuue: Encodable {
 }
 
 var User = UserInfo()
+
+var TaskID = 0
+
+
+var Tasks = [[],
+    ["Leg bent","Knee flexion","SicilLian Belly","Pedal in air","Flat support","Stretch","Runsning","Diet control","Show diet"]
+
+]
+
