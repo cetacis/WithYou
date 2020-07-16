@@ -95,4 +95,9 @@ struct UserInfo {
     }
 }
 
+struct TaskQuue: Encodable {
+    var taskid: Int
+    var mail: String
+}
+
 var User = UserInfo()
