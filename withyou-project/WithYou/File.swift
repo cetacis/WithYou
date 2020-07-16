@@ -20,20 +20,25 @@ import Foundation
 
 var PostImagePath : URL? = nil
 
-struct LoginInfo: Encodable {
+struct LoginInfo: Codable {
     var email: String
     var pass: String
 }
 
+<<<<<<< HEAD
 struct TogetherTask {
     var name: String = ""
+=======
+struct TogetherTask: Codable {
+    var name: String
+>>>>>>> dbc8a85d4659cb31102e46aee7e79a713f60a6ca
     var number: Int
     var comment: String
     var friendEmail: String
     var IsFinished: Bool
 }
 
-struct PrivateTask {
+struct PrivateTask: Codable {
     var name: String
     var number: Int
     var IsFinished: Bool
@@ -45,13 +50,13 @@ struct PrivateTask {
     
 }
 
-struct Message {
+struct Message: Codable {
     var msg: String
     var IsUser:Bool
     var IsRead: Bool
 }
 
-struct UserInfo {
+struct UserInfo: Codable{
     var username: String
     var email: String
     var mobile: String
@@ -88,7 +93,7 @@ struct UserInfo {
     }
 }
 
-struct TaskQuue: Encodable {
+struct TaskQuue: Codable {
     var taskid: Int
     var mail: String
 }

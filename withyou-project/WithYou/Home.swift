@@ -52,7 +52,7 @@ struct HomeView_together: View {
         self.cache = cache
     }
     
-    var image: some View {
+    private var image: some View {
         Group {
             if loader.image != nil  {
                 configuration(Image(uiImage: loader.image!))
