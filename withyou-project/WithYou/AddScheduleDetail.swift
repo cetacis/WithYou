@@ -11,7 +11,7 @@ import SwiftUI
 // to ensure there is only one task for one type
 func checkType(checkedType:Int)->Bool{
     for task in User.TogetherTasks{
-        if task.tasktype == checkedType{
+        if task.number == checkedType{
             return true
         }
     }

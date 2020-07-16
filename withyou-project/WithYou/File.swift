@@ -31,14 +31,12 @@ struct TogetherTask: Codable {
     var comment: String
     var friendEmail: String
     var IsFinished: Bool
-    var tasktype:Int
     init() {
         self.name = ""
         self.number = -1
         self.comment = ""
         self.friendEmail =  ""
         self.IsFinished = false
-        self.tasktype = -1
     }
     
 }
@@ -71,7 +69,7 @@ struct UserInfo: Codable{
     var sex: String
     var birthday: String
     var constellation: String
-    var imgpath: String
+    var img_path: String
     var TogetherTasks: [TogetherTask]
     var PrivateTasks: [PrivateTask]
     var Messages: [Message]
@@ -87,10 +85,10 @@ struct UserInfo: Codable{
         self.constellation = "tiger"
         self.birthday = "2000-1-1"
         self.sex = "male"
-        self.imgpath = ""
+        self.img_path = ""
         self.TogetherTasks = [TogetherTask]()
         self.PrivateTasks = [PrivateTask]()
-        self.Messages = [Message(msg: "123", IsUser: true, IsRead: false),Message(msg: "", IsUser: true, IsRead: false),Message(msg: "", IsUser: false, IsRead: false),Message(msg: "", IsUser: true, IsRead: false)]
+        self.Messages = [Message]()
         self.Friends = [String]()
     }
 }

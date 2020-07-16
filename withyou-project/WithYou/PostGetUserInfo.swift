@@ -18,24 +18,13 @@ func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Str
                method: .post,
                parameters: para
     ).responseJSON { (response) in
-        let json = JSON(response.data!)
       //  print(json)
-        UserData.birthday = json["birthday"].string!
-        UserData.constellation = json["constellation"].string!
-        UserData.bio = json["bio"].string!
-        UserData.imgpath = json["img_path"].string!
-        UserData.Friends = json["friends"].arrayObject! as! [String]
-        UserData.mobile = json["mobile"].string!
-        UserData.PrivateTasks = json["private_tasks"].arrayObject! as! [PrivateTask]
-        UserData.username = json["username"].string!
-        UserData.password = json["password"].string!
-        UserData.TogetherTasks = json["together_tasks"].arrayObject! as! [TogetherTask]
-        UserData.sex = json["sex"].string!
-        UserData.email = json["email"].string!
-        UserData.age = json["age"].string!
-        UserData.Messages = json["messages"].arrayObject! as! [Message]
-      //  print(UserData)
-        completion(UserData)
+        do {
+            UserData = try JSONDecoder().decode(UserInfo.self, from: response.data!)
+            completion(UserData)
+        } catch {
+            print(error)
+        }
     }
 }
 
