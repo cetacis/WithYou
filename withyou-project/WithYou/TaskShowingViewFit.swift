@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct TaskShowingViewFit: View {
-    @State var taskID1:Int = 101
-    @State var taskID2:Int = 102
-    @State var taskID3:Int = 103
-    @State var taskID4:Int = 104
-    @State var taskID5:Int = 105
-    @State var taskID6:Int = 106
-    @State var taskID7:Int = 107
+    @State var taskID1:Int = 1
+    @State var taskID2:Int = 2
+    @State var taskID3:Int = 3
+    @State var taskID4:Int = 4
+    @State var taskID5:Int = 5
+    @State var taskID6:Int = 6
+    @State var taskID7:Int = 7
     
     var body: some View {
         

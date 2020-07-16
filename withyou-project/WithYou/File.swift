@@ -31,14 +31,7 @@ struct TogetherTask: Codable {
     var comment: String
     var friendEmail: String
     var IsFinished: Bool
-    init() {
-        self.name = ""
-        self.number = -1
-        self.comment = ""
-        self.friendEmail =  ""
-        self.IsFinished = false
-    }
-    
+
 }
 
 struct PrivateTask: Codable {
@@ -74,6 +67,8 @@ struct UserInfo: Codable{
     var PrivateTasks: [PrivateTask]
     var Messages: [Message]
     var Friends: [String]
+    var partner : String
+    
     
     init() {
         self.username = "Cetacis"
@@ -90,6 +85,7 @@ struct UserInfo: Codable{
         self.PrivateTasks = [PrivateTask]()
         self.Messages = [Message]()
         self.Friends = [String]()
+        self.partner = ""
     }
 }
 
@@ -99,3 +95,12 @@ struct TaskQuue: Codable {
 }
 
 var User = UserInfo()
+
+var TaskID = 0
+
+
+var Tasks = [[],
+    ["Leg bent","Knee flexion","SicilLian Belly","Pedal in air","Flat support","Stretch","Runsning","Diet control","Show diet"]
+
+]
+

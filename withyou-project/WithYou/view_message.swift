@@ -19,7 +19,8 @@ struct Street: Identifiable {
 struct StreetRow: View {
     var street: Street
     var body: some View {
-       HStack {
+        
+        HStack {
                
         Image(systemName: User.Messages[self.street.index].IsUser ? "icloud.and.arrow.up" : "icloud.and.arrow.down")
                
@@ -32,6 +33,7 @@ struct StreetRow: View {
                    .onTapGesture {
                     self.street.showingMessage.toggle()
                     self.street.message = User.Messages[self.street.index]
+                    print("sheet")
                }.sheet(isPresented:self.street.$showingMessage) {
                 MessageviewDetail(message: self.street.$message)
                }
