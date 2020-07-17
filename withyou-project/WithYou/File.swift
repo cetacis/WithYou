@@ -68,6 +68,7 @@ struct UserInfo: Codable{
     var Messages: [Message]
     var Friends: [String]
     var partner : String
+    var CurrentTaskId:Int
     
     
     init() {
@@ -86,17 +87,17 @@ struct UserInfo: Codable{
         self.Messages = [Message]()
         self.Friends = [String]()
         self.partner = ""
+        self.CurrentTaskId = -1
     }
 }
 
 struct TaskQuue: Codable {
-    var taskid: Int
-    var mail: String
+    var TaskId: Int
+    var Email: String
 }
 
 var User = UserInfo()
 
-var TaskID = 0
 
 
 var Tasks = [[],

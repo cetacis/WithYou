@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 func PostGetMatch(completion: @escaping (_ code: Int, _ msg: String) -> (), email:String, taskid: Int) {
-    let para = TaskQuue(taskid: taskid, mail: email)
+    let para = TaskQuue(TaskId: taskid, Email: email)
     AF.request("https://mbp.cetacis.dev/api/GetMatch",
                method: .post,
                parameters: para

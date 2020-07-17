@@ -53,6 +53,8 @@
 		A1FB25D62445AE390038BDAF /* TagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FB25D52445AE390038BDAF /* TagContent.swift */; };
 		B517E74524BAEFC50060329B /* view_message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517E74424BAEFC50060329B /* view_message.swift */; };
 		B546405B2448446C000C844A /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546405A2448446C000C844A /* TaskDetail.swift */; };
+		B549E5E024C17C2A00BDED97 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549E5DF24C17C2A00BDED97 /* test.swift */; };
+		B549E5E224C1AF1C00BDED97 /* MatchFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549E5E124C1AF1C00BDED97 /* MatchFunc.swift */; };
 		B5689D8E24BB48C8006A99F1 /* view_message_inside.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5689D8D24BB48C8006A99F1 /* view_message_inside.swift */; };
 		B58026332446AC3600659F58 /* addNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58026322446AC3600659F58 /* addNewTask.swift */; };
 		B58026352446B58000659F58 /* TaskShowingViewFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58026342446B58000659F58 /* TaskShowingViewFit.swift */; };
@@ -143,6 +145,8 @@
 		B517E74424BAEFC50060329B /* view_message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_message.swift; sourceTree = "<group>"; };
 		B51FFB8B24BD9BC5003FB03C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B546405A2448446C000C844A /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
+		B549E5DF24C17C2A00BDED97 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		B549E5E124C1AF1C00BDED97 /* MatchFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchFunc.swift; sourceTree = "<group>"; };
 		B5689D8D24BB48C8006A99F1 /* view_message_inside.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_message_inside.swift; sourceTree = "<group>"; };
 		B58026322446AC3600659F58 /* addNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewTask.swift; sourceTree = "<group>"; };
 		B58026342446B58000659F58 /* TaskShowingViewFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskShowingViewFit.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 			children = (
 				A128D87C24449CBF007999F9 /* AppDelegate.swift */,
 				A128D87E24449CBF007999F9 /* SceneDelegate.swift */,
+				B549E5E124C1AF1C00BDED97 /* MatchFunc.swift */,
 				A128D88024449CBF007999F9 /* ContentView.swift */,
 				A128D88224449CC1007999F9 /* Assets.xcassets */,
 				B5A3F485244881E700A999EE /* MultilineTextField.swift */,
@@ -281,6 +286,7 @@
 				A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */,
 				A17F1C2924B9A8B100A3A45C /* PostLogin.swift */,
 				B51FFB8B24BD9BC5003FB03C /* README.md */,
+				B549E5DF24C17C2A00BDED97 /* test.swift */,
 			);
 			path = WithYou;
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 				A1B1DF0F24496EB100921A1D /* Friends.swift in Sources */,
 				A15107DF2447BF9400D08DD2 /* addNewPrivateTask.swift in Sources */,
 				B5D34D5224BF2AB10089BFB3 /* TaskShowingViewRead.swift in Sources */,
+				B549E5E224C1AF1C00BDED97 /* MatchFunc.swift in Sources */,
 				A15107DB24475D3800D08DD2 /* AddScheduleDetail.swift in Sources */,
 				A128D88124449CBF007999F9 /* ContentView.swift in Sources */,
 				B5689D8E24BB48C8006A99F1 /* view_message_inside.swift in Sources */,
@@ -612,6 +619,7 @@
 				A1B1DF112449766D00921A1D /* FriendProfile.swift in Sources */,
 				A17F1C4224BA21F900A3A45C /* AsyncImage.swift in Sources */,
 				A1003998244618B100AF8363 /* profile.swift in Sources */,
+				B549E5E024C17C2A00BDED97 /* test.swift in Sources */,
 				A15107D52446F93200D08DD2 /* ChangeProfile.swift in Sources */,
 				A15107D72447002100D08DD2 /* changelink.swift in Sources */,
 				B5D85214244C4334007D0655 /* Portrait.swift in Sources */,

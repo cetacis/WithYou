@@ -123,13 +123,14 @@ struct LoginView: View {
                         self.showingAlertNU = true
                         self.alertMsg = masg
                     }else{
-                         
                         PostGetUserInfo(completion: {
                             (RtData) in
+                            print("The dafault User:\(User)")
                             User = RtData
+                            print("The changed User:\(User)")
                             self.view_switcher = 2
                         }, email: self.emailIn, pass: self.passpordIn)
-                        
+                       
                     }
                 }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
@@ -164,7 +165,7 @@ struct SignUpView: View {
                 VStack{
                 Text("withYou").offset(y:-90).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
                 Text("Register").offset(y:-90).font(.headline)
-                }.offset(y:20)
+                }.offset(y:50)
             
                 
                 VStack{
@@ -226,13 +227,13 @@ struct SignUpView: View {
                                 }
                             }, name: new_user.username, email: new_user.email, password: new_user.password)
                             
-                        }.alert(isPresented: self.$isalert) {
+                            }.padding().alert(isPresented: self.$isalert) {
                             Alert(title: Text(self.alertMsg), dismissButton: .default(Text("OK")))
                         }
-                        .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).font(.system(size:15,design:.rounded))
+                        .background(Color.yellow).cornerRadius(100).foregroundColor(.gray).font(.system(size:15,design:.rounded))
                     }
-                }.padding(.horizontal,15)
-                    .offset(y:-50)
+                }
+                    .offset(y:-20)
                 Portrait().offset(y:-30).padding()
                 Button(action: {
                     self.view_switcher = 1

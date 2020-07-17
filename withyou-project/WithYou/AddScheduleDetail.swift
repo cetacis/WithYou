@@ -9,41 +9,11 @@
 import SwiftUI
 
 
-
-func addNewTaskFunc(name:String,partnerEmail:String,tasknumeber:Int){
-    var new_task = TogetherTask(name: name, number: tasknumeber, comment: "", friendEmail: partnerEmail, IsFinished: false)
-    User.TogetherTasks.append(new_task)
-    var flag = false
-    for index in 0..<User.Friends.count {
-        if User.Friends[index] == partnerEmail {
-            flag = true
-            break
-        }
-    }
-    if flag == false {
-        User.Friends.append(partnerEmail)
-    }
-    //todo: change the profile post
-}
-
-func trymatchPartner()->String{
-    var returnString:String = ""
-    PostAddMatchQueue(completion: { (code, msg) in
-        if code == 0{
-            returnString = msg
-            User.Messages.append(Message(msg: "You have matched your partner in the task! Just do it and enjoy yourself!", IsUser: false, IsRead: false))
-        }
-        
-        }, email: User.email,taskid: TaskID)
-    TaskID = 0
-    return returnString
-}
-
 struct AddScheduleDetailFit: View {
     @State var altCannotMatching = false
     @State var hasmatched = false
     @Binding var taskId:Int
-    @State var isMatching = false
+    @State var altertMettion = false
     var body: some View {
         VStack{
             List{
@@ -52,7 +22,7 @@ struct AddScheduleDetailFit: View {
                     Text("Fat Loss Plan").font(.system(size: 28,design: .rounded)).fontWeight(.heavy).foregroundColor(.blue).offset(x:60)
                     Image("exercise").resizable().frame(width:250, height: 400).shadow(radius: 13).overlay(
                         Rectangle().stroke(Color.white, lineWidth: 4))
-                    .offset(x:60)
+                        .offset(x:60)
                     
                 }
                 
@@ -74,46 +44,27 @@ struct AddScheduleDetailFit: View {
                 }
                 Button(
                     action: {
+                        
                         //try entering the matching quene
-                        PostAddMatchQueue(completion: { (code, msg) in
+                        
+                        if User.partner == "" {   PostAddMatchQueue(completion: { (code, msg) in
                             print(code)
                             print(msg)
-                            if code == 0{
-                                
-                                if msg == "add queue success"{
-                                    TaskID = self.taskId
-                                    print(TaskID)
-                                    self.isMatching = true
-                                }else{
-                                    User.partner = msg
-                                    self.hasmatched = true
-                                }
-                            }else{
-                                self.isMatching = true
+                            if code == 0{//成功添加入队列
+                                User.CurrentTaskId = self.taskId
+                                self.altertMettion = true
+                            }else{//已经有正在配对的任务
+                                self.altertMettion = true
                                 self.altCannotMatching = true
                             }
-                        }, email: User.email,taskid: self.taskId)
-                    
-                        if(self.hasmatched){
-                            self.isMatching = true
-                            
-                            let tasks = Tasks[self.taskId]
-                            print("TaskID:")
-                            print(self.taskId)
-                            print(tasks)
-                            for task in tasks{
-                                print(task)
-                                addNewTaskFunc(name: task, partnerEmail:User.partner,tasknumeber:self.taskId)
-                            }
-                            
-                        }
+                        }, email: User.email,taskid: self.taskId)}
                 },
                     label: {Text("Find Your Partner and open the travel").font(.system(size: 17,design: .rounded)).fontWeight(.heavy).padding().background(Color.yellow).cornerRadius(100).foregroundColor(Color(red: 130/255, green: 130/255, blue: 130/255)).offset(x:20).font(.system(size:15,design:.rounded))})
-            }
-        }.offset(y: 5)
-        .alert(isPresented: $isMatching) {
-            Alert(title: self.altCannotMatching ? Text("You already have a task (or matching), you can't match a new partner before you finish the schedule") : Text("The matching request has been received, please pay attention to your Inbox to check if you have found your partner."), dismissButton: .default(Text("OK")))
-        }.onAppear(perform: {print(self.isMatching)})
+                    .alert(isPresented: $altertMettion) {
+                        Alert(title: self.altCannotMatching ? Text("You already have a task (or matching), you can't match a new partner before you finish the schedule(or find a partner)") : Text("The matching request has been received, please pay attention to your Inbox to check if you have found your partner."), dismissButton: .default(Text("OK")))
+                }
+            }.offset(y: 5)
+        }.onAppear(perform: {print(self.altertMettion)})
     }
 }
 

@@ -16,6 +16,9 @@ struct NewMessage: View {
     @State var updatesuccess:Bool = false
     @State var updatefail:Bool = false
     @State var updatefailalert:String = ""
+    @State var showAlert:Bool = false
+    @State var currentDate = "\n\n\n\n\n time: \(Date())"
+    @Binding var newMessages : [Message]
     var body: some View {
         VStack{
             VStack {
@@ -32,23 +35,24 @@ struct NewMessage: View {
                 .offset(y:-80)
                 .overlay(
                     HStack{
+                        
                         Button(action: {
-                            print(User.Messages)
-                            User.Messages.append(Message(msg: self.text, IsUser: true, IsRead: true))
-                            print(User.Messages)
-                          
+                            self.newMessages.append(Message(msg: self.text+self.currentDate, IsUser: true, IsRead: true))
+                            User.Messages = self.newMessages
                             PostChangeProfile(completion: { (code, msg) in
-                                print("#1")
                                 if code == 0{
-                                    print("send suc")
+                                    print("After append the  new Messages:")
+                                    print(User.Messages)
+                                    self.showAlert = true
                                     self.updatesuccess = true
                                 }else{
+                                    
+                                    self.showAlert = true
                                     self.updatefailalert = msg
                                     self.updatefail = true
                                 }
+                            
                             }, UserData: User)
-                            
-                            
                             }) {
                             HStack {
                                 Image(systemName: "pencil.and.outline")
@@ -61,15 +65,13 @@ struct NewMessage: View {
                             .foregroundColor(.white)
                             .background(Color(red: 255/255, green: 193/255, blue: 37/255))
                             .cornerRadius(10)
-                        } .offset(y:230).alert(isPresented: self.$updatesuccess) {
-                            Alert(title: Text("Send successfully, we have receive your feedback and we will deal with them immediately."), dismissButton: .default(Text("OK")))
-                        }.alert(isPresented: self.$updatefail) {
-                            Alert(title: Text(self.updatefailalert), dismissButton: .default(Text("OK")))
+                        } .offset(y:230)
+                            .alert(isPresented: self.$showAlert) {
+                            Alert(title: Text(self.updatesuccess ? "Send successfully, we have receive your feedback and we will deal with them immediately." : self.updatefailalert), dismissButton: .default(Text("OK")))
                         }
                           
                         
                         Button(action: {
-                            User.Messages = [] // clear up the messages
                             self.text = ""
                         }) {
                             HStack {
