@@ -50,6 +50,7 @@
 		A1B1DF0F24496EB100921A1D /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF0E24496EB100921A1D /* Friends.swift */; };
 		A1B1DF112449766D00921A1D /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1DF102449766D00921A1D /* FriendProfile.swift */; };
 		A1B950E724BF274600D561DA /* PostChangeProt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B950E624BF274600D561DA /* PostChangeProt.swift */; };
+		A1E72E1324C315E9008CDDA4 /* GetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72E1224C315E9008CDDA4 /* GetImage.swift */; };
 		A1FB25D62445AE390038BDAF /* TagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FB25D52445AE390038BDAF /* TagContent.swift */; };
 		B517E74524BAEFC50060329B /* view_message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517E74424BAEFC50060329B /* view_message.swift */; };
 		B546405B2448446C000C844A /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546405A2448446C000C844A /* TaskDetail.swift */; };
@@ -141,6 +142,7 @@
 		A1B1DF0E24496EB100921A1D /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A1B1DF102449766D00921A1D /* FriendProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
 		A1B950E624BF274600D561DA /* PostChangeProt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChangeProt.swift; sourceTree = "<group>"; };
+		A1E72E1224C315E9008CDDA4 /* GetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImage.swift; sourceTree = "<group>"; };
 		A1FB25D52445AE390038BDAF /* TagContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagContent.swift; sourceTree = "<group>"; };
 		B517E74424BAEFC50060329B /* view_message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_message.swift; sourceTree = "<group>"; };
 		B51FFB8B24BD9BC5003FB03C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				A1B950E624BF274600D561DA /* PostChangeProt.swift */,
 				A191803924BD7A6100C34AC4 /* PostChangeProfile.swift */,
 				A13FBE4524BC986400B68CF2 /* sync request.swift */,
+				A1E72E1224C315E9008CDDA4 /* GetImage.swift */,
 				A17F1C2B24B9B59F00A3A45C /* PostRegister.swift */,
 				A17F1C2924B9A8B100A3A45C /* PostLogin.swift */,
 				B51FFB8B24BD9BC5003FB03C /* README.md */,
@@ -583,6 +586,7 @@
 				A191803824BD78A100C34AC4 /* PostGetUserInfo.swift in Sources */,
 				A13FBE4624BC986400B68CF2 /* sync request.swift in Sources */,
 				B5BBF182245163320016FD83 /* File.swift in Sources */,
+				A1E72E1324C315E9008CDDA4 /* GetImage.swift in Sources */,
 				A191803C24BD8A1C00C34AC4 /* GetFriendInfo.swift in Sources */,
 				B58026392446CF4600659F58 /* TaskShowingViewDefault.swift in Sources */,
 				B58026352446B58000659F58 /* TaskShowingViewFit.swift in Sources */,
