@@ -28,7 +28,8 @@ struct TaskDetail: View {
                     Text("30 min")}
                 if (!isFriend) {
                     Section(header: Text("Completion condition").font(.headline).foregroundColor(isFinished ? .blue:.black)) {
-                        Toggle(isOn: $isFinished) { // 5
+                        Toggle(isOn: $isFinished) {
+                            // 5
                             Text("Finish").foregroundColor(isFinished ? .blue:.black)
                         }
                         if (!isFinished) {
@@ -42,10 +43,20 @@ struct TaskDetail: View {
                                 .background(Color(red: 235/255, green: 235/255, blue: 255/255))
                                 .cornerRadius(8)
                                 .onAppear() {
-                                    self.comment = User.TogetherTasks[self.taskid].comment
-                                    User.TogetherTasks[self.taskid].IsFinished = self.isFinished
-                                    User.TogetherTasks[self.taskid].comment = self.comment
-                                }
+                                    //print("没完成flag的onappear")
+                                    if User.TogetherTasks[self.taskid].IsFinished {
+                                        //print("从完成到没完成")
+                                        User.TogetherTasks[self.taskid].IsFinished.toggle()
+                                        
+                                    }else{
+                                        //print("一进来就没完成")
+                                        
+                                        
+                                    }
+                                    
+                                
+                            }
+                            
                         } else {
                             VStack {
                                 Text("comment").font(.system(size: 30)).foregroundColor(Color.gray).multilineTextAlignment(.center).lineLimit(nil).padding(.top,8)
@@ -54,8 +65,21 @@ struct TaskDetail: View {
                                 .background(Color(red: 235/255, green: 235/255, blue: 255/255))
                                 .cornerRadius(8)
                                 .onAppear() {
+                                    //print("完成flag的onappear")
+                                    if User.TogetherTasks[self.taskid].IsFinished {//当完成时进入
+                                         //print("一进来就是完成")
+                                         self.comment = User.TogetherTasks[self.taskid].comment
+                                        print(User.TogetherTasks[self.taskid].comment)
+                                    }else{//从没完成到完成
+                                       // print("从没完成到完成")
+                                        User.TogetherTasks[self.taskid].IsFinished = self.isFinished
+                                        User.TogetherTasks[self.taskid].comment = self.comment
+                                        PostChangeProfile(completion: {_,_ in }, UserData: User)
+                                         print(User.TogetherTasks[self.taskid].comment)
+                                    }
                                     
-                                    
+                       
+                                   
                             }
                         }
                     }
