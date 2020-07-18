@@ -93,7 +93,7 @@ struct HomeView_together: View {
                             Circle().stroke(Color.gray, lineWidth: 2))
                         .padding(.horizontal,15)
                         .onTapGesture {
-                            self.showingprofile.toggle()
+                            self.showingprofile = true
                     }.sheet(isPresented: self.$showingprofile) {
                         profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
                     }

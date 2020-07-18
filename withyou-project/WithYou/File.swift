@@ -87,7 +87,7 @@ struct UserInfo: Codable{
         self.Messages = [Message]()
         self.Friends = [String]()
         self.partner = ""
-        self.CurrentTaskId = -1
+        self.CurrentTaskId = 0
     }
 }
 
@@ -98,10 +98,12 @@ struct TaskQuue: Codable {
 
 var User = UserInfo()
 var Partner = UserInfo()
-
+var temFriend = UserInfo()
 
 var Tasks = [[],
     ["Leg bent","Knee flexion","SicilLian Belly","Pedal in air","Flat support","Stretch","Runsning","Diet control","Show diet"]
 
 ]
+
+
 

@@ -56,7 +56,7 @@ func compress(){
     let getImg = UIImage(contentsOfFile:PostImagePath!.path)
         //print(getSize(url: PostImagePath!))
 
-    let zipImageData = getSize(url: PostImagePath!) > 15000000 ? getImg!.jpegData(compressionQuality: 0.1) :getImg!.jpegData(compressionQuality: 0.2)
+    let zipImageData =  getImg!.jpegData(compressionQuality: 0.05) 
     let PostImagePathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/\(UUID().uuidString).jpeg"
 
     do {

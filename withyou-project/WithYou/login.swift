@@ -123,25 +123,17 @@ struct LoginView: View {
                         self.showingAlertNU = true
                         self.alertMsg = masg
                     }else{
-                        PostGetUserInfo(completion: {
+                        PostGetUserInfo(completion: { 
                             (RtData) in
                             //print("The dafault User:\(User)")
                             User = RtData
+                            print("#1")
                             print("The changed User:\(User)")
-                            
-                            if User.partner != ""{
-                                GetFriendInfo(completion: {(RtData) in
-                                    Partner = RtData
-                                    print("到这")
-                                    print(Partner)
-                                }, email: User.partner)
                             self.view_switcher = 2
-                            }
                         }, email: self.emailIn, pass: self.passpordIn)
-                        print("结束")
                     }
                     
-                }.alert(isPresented: $showingAlertNU) {
+                    }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
                 }
                 .padding().background(Color.yellow).cornerRadius(100)
