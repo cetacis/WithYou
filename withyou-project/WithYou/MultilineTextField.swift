@@ -4,6 +4,7 @@ import UIKit
 
 struct TextView: UIViewRepresentable {
     @Binding var text: String
+
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)

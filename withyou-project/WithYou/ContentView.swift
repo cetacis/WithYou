@@ -25,15 +25,7 @@ struct ContentView: View {
             if view_switcher == 2 && self.timing.time >= 0 {
                 HomeView_together(url: URL(string: "https://mbp.cetacis.dev/api"+User.img_path)!,cache: self.cache ,view_swither: $view_switcher).onAppear(perform:
                     {
-                        var trymatch : String = trymatchPartner()
-                        if trymatch != "" {
-                            let tasks = Tasks[TaskID]
-                            for task in tasks{
-                                addNewTaskFunc(name: task, partnerEmail:trymatch,tasknumeber:TaskID)
-                            }
-                           
-                        }
-                        
+                    getMatched()
                 })
             }
             /*if view_switcher == 3 && self.timing.time >= 0 {
