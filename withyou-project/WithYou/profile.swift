@@ -43,7 +43,7 @@ struct profileview: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        self.showingprofile.toggle()
+                        self.showingprofile = false
                     }) {
                         Text("Done")
                     }
