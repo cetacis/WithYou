@@ -112,7 +112,7 @@ struct HomeView_together: View {
                         List {
                             ForEach(0..<User.TogetherTasks.count, id: \.self){
                                 index in
-                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
+                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: index).onAppear(){
                                     self.showingnavi = false
                                 }) {
                                     if (!User.TogetherTasks[index].IsFinished) {
@@ -132,15 +132,15 @@ struct HomeView_together: View {
                         Text("Friends")
                             .font(.subheadline)
                         List {//0..<User.Friends.count, id: \.self
-                            ForEach(0..<User.TogetherTasks.count, id: \.self){
+                            ForEach(0..<Partner.TogetherTasks.count, id: \.self){
                                 index in
-                                NavigationLink(destination: TagContent(TagName: User.TogetherTasks[index].name, isFriend: false, taskid: User.TogetherTasks[index].number).onAppear(){
+                                NavigationLink(destination: TagContent(TagName: Partner.TogetherTasks[index].name, isFriend: true, taskid: index).onAppear(){
                                     self.showingnavi = false
                                 }) {
-                                    if (!User.TogetherTasks[index].IsFinished) {
-                                        Text(User.TogetherTasks[index].name)
+                                    if (!Partner.TogetherTasks[index].IsFinished) {
+                                        Text(Partner.TogetherTasks[index].name)
                                     } else {
-                                        Text(User.TogetherTasks[index].name).foregroundColor(Color.gray).strikethrough()
+                                        Text(Partner.TogetherTasks[index].name).foregroundColor(Color.gray).strikethrough()
                                     }
                                 }
                             }

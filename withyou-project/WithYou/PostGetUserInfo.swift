@@ -14,7 +14,7 @@ import SwiftyJSON
 func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:String, pass: String) {
     var UserData: UserInfo = UserInfo()
     let para = LoginInfo(email: email, pass: pass)
-    AF.request("https://mbp.cetacis.dev/api/UserInfo",
+    AF.request("https:/withyou.cetacis.dev/api/UserInfo",
                method: .post,
                parameters: para
     ).responseJSON { (response) in

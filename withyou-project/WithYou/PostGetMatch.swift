@@ -12,7 +12,7 @@ import Alamofire
 
 func PostGetMatch(completion: @escaping (_ code: Int, _ msg: String) -> (), email:String, taskid: Int) {
     let para = TaskQuue(TaskId: taskid, Email: email)
-    AF.request("https://mbp.cetacis.dev/api/GetMatch",
+    AF.request("https://withyou.cetacis.dev/api/GetMatch",
                method: .post,
                parameters: para
     ).responseJSON { (response) in

@@ -14,7 +14,7 @@ func PostChangeProfile(completion: @escaping (_ code: Int, _ msg: String) -> (),
     do {
         let jsonData = try JSONEncoder().encode(UserData)
         let session = URLSession(configuration: .default)
-        let url = "https://mbp.cetacis.dev/api/ChangeProfile"
+        let url = "https://withyou.cetacis.dev/api/ChangeProfile"
         var request = URLRequest(url: URL(string: url)!)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"

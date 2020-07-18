@@ -47,17 +47,26 @@ struct AddScheduleDetailFit: View {
                         
                         //try entering the matching quene
                         
-                        if User.partner == "" {   PostAddMatchQueue(completion: { (code, msg) in
+                        if User.partner == "" {
+                            User.CurrentTaskId = self.taskId
+                            PostAddMatchQueue(completion: { (code, msg) in
+                            print("The PostAddMatchQueue")
                             print(code)
                             print(msg)
                             if code == 0{//成功添加入队列
-                                User.CurrentTaskId = self.taskId
+                                User.Messages.append(Message(msg: "You are matched now \n\n your partner is on the way to you...", IsUser: false, IsRead: false))
+                                PostChangeProfile(completion: {_,_ in }, UserData: User)
+                                self.altCannotMatching = false
                                 self.altertMettion = true
+        
                             }else{//已经有正在配对的任务
                                 self.altertMettion = true
                                 self.altCannotMatching = true
                             }
-                        }, email: User.email,taskid: self.taskId)}
+                            }, email: User.email,taskid: self.taskId)}else{
+                             self.altertMettion = true
+                            self.altCannotMatching = true
+                        }
                 },
                     label: {Text("Find Your Partner and open the travel").font(.system(size: 17,design: .rounded)).fontWeight(.heavy).padding().background(Color.yellow).cornerRadius(100).foregroundColor(Color(red: 130/255, green: 130/255, blue: 130/255)).offset(x:20).font(.system(size:15,design:.rounded))})
                     .alert(isPresented: $altertMettion) {

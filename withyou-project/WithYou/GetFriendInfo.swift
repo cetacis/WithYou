@@ -13,7 +13,7 @@ import SwiftyJSON
 func GetFriendInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:String) {
     var UserData: UserInfo = UserInfo()
     let para = LoginInfo(email: email, pass: "")
-    AF.request("http://127.0.0.1:8080/api/GetFriend",
+    AF.request("https://withyou.cetacis.dev/api/GetFriend",
                method: .post,
                parameters: para
     ).responseJSON { (response) in

@@ -108,7 +108,7 @@ struct LoginView: View {
                     .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                     .cornerRadius(50)
             }.offset(y: -110)
-             .padding(.horizontal,20)
+                .padding(.horizontal,20)
             HStack{
                 Button(action: {
                     self.view_switcher = 0
@@ -125,13 +125,22 @@ struct LoginView: View {
                     }else{
                         PostGetUserInfo(completion: {
                             (RtData) in
-                            print("The dafault User:\(User)")
+                            //print("The dafault User:\(User)")
                             User = RtData
                             print("The changed User:\(User)")
+                            
+                            if User.partner != ""{
+                                GetFriendInfo(completion: {(RtData) in
+                                    Partner = RtData
+                                    print("到这")
+                                    print(Partner)
+                                }, email: User.partner)
                             self.view_switcher = 2
+                            }
                         }, email: self.emailIn, pass: self.passpordIn)
-                       
+                        print("结束")
                     }
+                    
                 }.alert(isPresented: $showingAlertNU) {
                     Alert(title: Text(alertMsg), dismissButton: .default(Text("OK")))
                 }
@@ -163,10 +172,10 @@ struct SignUpView: View {
             
             VStack{
                 VStack{
-                Text("withYou").offset(y:-90).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
-                Text("Register").offset(y:-90).font(.headline)
+                    Text("withYou").offset(y:-90).font(.system(size:60, design: .rounded)).foregroundColor(.blue)
+                    Text("Register").offset(y:-90).font(.headline)
                 }.offset(y:50)
-            
+                
                 
                 VStack{
                     VStack(alignment: .leading) {
@@ -217,7 +226,7 @@ struct SignUpView: View {
                             new_user.username = self.name
                             new_user.password = self.password1
                             new_user.email = self.email
-                        
+                            
                             PostRegister(completion: { (code, msg) in
                                 self.alertMsg = msg
                                 self.isalert = true
@@ -227,13 +236,13 @@ struct SignUpView: View {
                                 }
                             }, name: new_user.username, email: new_user.email, password: new_user.password)
                             
-                            }.padding().alert(isPresented: self.$isalert) {
+                        }.padding().alert(isPresented: self.$isalert) {
                             Alert(title: Text(self.alertMsg), dismissButton: .default(Text("OK")))
                         }
                         .background(Color.yellow).cornerRadius(100).foregroundColor(.gray).font(.system(size:15,design:.rounded))
                     }
                 }
-                    .offset(y:-20)
+                .offset(y:-20)
                 Portrait().offset(y:-30).padding()
                 Button(action: {
                     self.view_switcher = 1

@@ -97,7 +97,7 @@ struct TaskQuue: Codable {
 }
 
 var User = UserInfo()
-
+var Partner = UserInfo()
 
 
 var Tasks = [[],
