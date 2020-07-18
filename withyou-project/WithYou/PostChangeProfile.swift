@@ -11,31 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 func PostChangeProfile(completion: @escaping (_ code: Int, _ msg: String) -> (), UserData: UserInfo) {
-    print("beginupdate")
-        /*let para = [
-        "username": UserData.username,
-        "bio": UserData.bio,
-        "mobile": UserData.mobile,
-        "birthday": UserData.birthday,
-        "friends": UserData.Friends,
-        "age": UserData.age,
-        "password": UserData.password,
-        "constellation": UserData.constellation,
-        "sex": UserData.sex,
-        "img_path": UserData.img_path,
-        "together_tasks": UserData.TogetherTasks,
-        "private_tasks": UserData.PrivateTasks,
-        "email": UserData.email,
-        "messages": UserData.Messages
-    ] as [String : Any]
-    print(para)
-    var msg = ""
-    var code = 0
-    let jsonData = try? JSONSerialization.data(withJSONObject: para)*/
-    
     do {
         let jsonData = try JSONEncoder().encode(UserData)
-        print(jsonData.base64EncodedString())
         let session = URLSession(configuration: .default)
         let url = "https://mbp.cetacis.dev/api/ChangeProfile"
         var request = URLRequest(url: URL(string: url)!)
