@@ -17,8 +17,8 @@ func getMatched(){
         print("PostGetMatch")
         print(code)
         print(msg)
+        
         if code == 0{
-            
             if User.TogetherTasks.count == 0{//如果A方B方都没进行get 此时A方get
              PostChangeProfile(completion: {_,_ in
                 for friend in User.Friends{
@@ -50,7 +50,9 @@ func getMatched(){
                     }
                     part.Messages.append(Message(msg: "You have find your partner to finish the new task, hope you can finish your goal and enjoy it.\n\nYour partner's email is:\n\n\(msg) \n\n You can find him in your friends' list.\n\n\n\n\n\n\n\n\n\n\n\(date)", IsUser: false, IsRead: false))//B方加入信息
                     part.partner.append(User.email)//B方加入A方为拍档
+                    part.password = "a98f9eaa6ff801c24e30a6f4619b23b59393ceea9b7b4c65700a5a38cff95c98"
                     part.CurrentTaskId = 0 //B方taskid置为0
+                    
                      print("#5")
                     Partner = part
                     print("Partner:")
