@@ -207,8 +207,8 @@ struct HomeView_together: View {
     
 }
 
-
 /*
+
 struct HomeView_person: View {
     @Environment(\.imageCache) var cache: ImageCache
     @State var showingaddtask = false
@@ -274,28 +274,7 @@ struct HomeView_person: View {
                     Spacer()
                 }.frame(width:380).padding(.top,20)
                 List {
-                    ForEach(User.privatetasks, id: \.self) {
-                        message in
-                        HStack {
-                            if message.number == 0 {
-                                Text("\(message.Name)")
-                                Spacer()
-                                Image(systemName: "circle")
-                                    .onTapGesture {
-                                        self.settings.count += 1
-                                }
-                            }
-                            if message.number == 1 {
-                                Text("\(message.Name)").foregroundColor(Color.gray).strikethrough()
-                                Spacer()
-                                Image(systemName: "checkmark.circle")
-                                    .onTapGesture {
-                                        self.settings.count -= 1
-                                }
-                            }
-                        }
-                    }
-                        
+                    
                     .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
                     .cornerRadius(10)
                     .frame(width: 380)
@@ -360,9 +339,5 @@ struct HomeView_person: View {
         }
     }
 }
-
-
-
-
 
 */
