@@ -38,29 +38,3 @@ func PostChangeProfile(completion: @escaping (_ code: Int, _ msg: String) -> (),
 }
 
 
-func teach() {
-    // get match
-    PostGetMatch(completion: { (code, msg) in
-        if code == 0 {
-            // match success
-            let friendemail = msg // friend email
-            // add yourself task
-            User.TogetherTasks = [TogetherTask]() // do somthing // you can replace directly do not check if added
-            // change check friend info
-            GetFriendInfo(completion: { (UserInfo) in
-                if UserInfo.TogetherTasks.count == 0 {
-                    // friends haven't login
-                    var ChangeInfo = UserInfo
-                    ChangeInfo.password = "a98f9eaa6ff801c24e30a6f4619b23b59393ceea9b7b4c65700a5a38cff95c98"
-                    // change friends together task
-                    ChangeInfo.TogetherTasks = [TogetherTask]() // do something
-                    PostChangeProfile(completion: { (code, int) in
-                        if code == 114514 {
-                            print("success")
-                        }
-                    }, UserData: ChangeInfo)
-                }
-            }, email: friendemail)
-        }
-    }, email: User.email, taskid: User.CurrentTaskId)
-}

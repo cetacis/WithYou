@@ -24,19 +24,8 @@ struct ContentView: View {
             }
             if view_switcher == 2 && self.timing.time >= 0 {
                 HomeView_together(url: URL(string: "https://withyou.cetacis.dev/api"+User.img_path)!,cache: self.cache ,view_swither: $view_switcher).onAppear(perform:
-                    {print("#3")
-                        getMatched()
-                        print("User:")
-                        print(User)
-                        print("Partner:")
-                        print(Partner)
-                        if User.partner != ""{
-                            GetFriendInfo(completion: {(RtData) in
-                                Partner = RtData
-                                print("#2")
-                                //print(Partner)
-                            }, email: User.partner)
-                        }
+                    {
+                        GetMatch()
                 })
             }
             /*if view_switcher == 3 && self.timing.time >= 0 {
