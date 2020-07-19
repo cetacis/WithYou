@@ -18,6 +18,7 @@ func GetMatch() {
             // match success
             let friendemail = msg // friend email
             // add yourself task
+            User.TogetherTasks = [TogetherTask]()
             for task in Tasks[User.CurrentTaskId]{
                 User.TogetherTasks.append(TogetherTask(
                                             name: task,
@@ -70,6 +71,12 @@ func GetMatch() {
                     Partner = UserInfo
                 }
             }, email: friendemail)
+        } else {
+            if User.partner.count != 0 {
+                GetFriendInfo(completion: { (UserInfo) in
+                    Partner = UserInfo
+                }, email: User.partner)
+            }
         }
     }, email: User.email, taskid: User.CurrentTaskId)
 }
