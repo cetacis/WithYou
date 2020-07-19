@@ -38,6 +38,7 @@ func GetMatch() {
             )
             //add yourself friend
             User.Friends.append(friendemail)
+            User.partner = friendemail
             // save yourself info
             PostChangeProfile(completion: { (code, msg) in
                 if (code == 0) {
