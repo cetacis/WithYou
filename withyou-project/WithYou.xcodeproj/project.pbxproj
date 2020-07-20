@@ -12,6 +12,7 @@
 		748E1B4A034A0D48535E823A /* Pods_WithYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2860C6AAF6A5A865E2699842 /* Pods_WithYou.framework */; };
 		A1003998244618B100AF8363 /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1003997244618B100AF8363 /* profile.swift */; };
 		A100399A24461BA200AF8363 /* checklogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100399924461BA200AF8363 /* checklogin.swift */; };
+		A108568524C585600093ADBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A108568424C585600093ADBD /* LoadingView.swift */; };
 		A1115FA52445F2B900B943B8 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1115FA42445F2B900B943B8 /* login.swift */; };
 		A1115FA92445F34400B943B8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1115FA82445F34400B943B8 /* Coordinator.swift */; };
 		A1115FAB2445F39300B943B8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1115FAA2445F39300B943B8 /* Home.swift */; };
@@ -96,6 +97,7 @@
 		7694DD30FA958DFA4D3A9D2E /* Pods-WithYou-WithYouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WithYou-WithYouUITests.debug.xcconfig"; path = "Target Support Files/Pods-WithYou-WithYouUITests/Pods-WithYou-WithYouUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1003997244618B100AF8363 /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		A100399924461BA200AF8363 /* checklogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checklogin.swift; sourceTree = "<group>"; };
+		A108568424C585600093ADBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A1115FA42445F2B900B943B8 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		A1115FA82445F34400B943B8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A1115FAA2445F39300B943B8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				A15107DE2447BF9400D08DD2 /* addNewPrivateTask.swift */,
 				B58026322446AC3600659F58 /* addNewTask.swift */,
 				B58026382446CF4600659F58 /* TaskShowingViewDefault.swift */,
+				A108568424C585600093ADBD /* LoadingView.swift */,
 				B58026362446C2EE00659F58 /* TaskShowingViewStu.swift */,
 				B58026342446B58000659F58 /* TaskShowingViewFit.swift */,
 				B5D34D5124BF2AB10089BFB3 /* TaskShowingViewRead.swift */,
@@ -593,6 +596,7 @@
 				A128D87F24449CBF007999F9 /* SceneDelegate.swift in Sources */,
 				A17F1C4124BA21F900A3A45C /* EnvironmentValues+ImageCache.swift in Sources */,
 				B517E74524BAEFC50060329B /* view_message.swift in Sources */,
+				A108568524C585600093ADBD /* LoadingView.swift in Sources */,
 				A1FB25D62445AE390038BDAF /* TagContent.swift in Sources */,
 				A17F1C2A24B9A8B100A3A45C /* PostLogin.swift in Sources */,
 				A1A26C1524C0346A004E7A67 /* PostGetMatch.swift in Sources */,

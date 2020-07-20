@@ -18,14 +18,12 @@ class timer: ObservableObject {
 }
 
 func checkNewMessage() -> Bool {
-    var hasNewMessage = false
     for i in 0..<User.Messages.count {
-        
-        if (User.Messages[i].IsRead == true){hasNewMessage = true}
-        hasNewMessage = false
-        break
+        if (User.Messages[i].IsRead == false) {
+            return true
+        }
     }
-    return hasNewMessage
+    return false
 }
 
 
@@ -33,7 +31,7 @@ func checkNewMessage() -> Bool {
 struct HomeView_together: View {
     @State var showingaddtask = false
     @State var showingprofile = false
-    @State var showingnavi = false
+    @State var showingnavi = true
     @State var showingmessage = false
     
     @Binding var view_swither: Int
@@ -94,16 +92,16 @@ struct HomeView_together: View {
                         .padding(.horizontal,15)
                         .onTapGesture {
                             self.showingprofile = true
-                    }.sheet(isPresented: self.$showingprofile) {
-                        profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
-                    }
+                        }.sheet(isPresented: self.$showingprofile) {
+                            profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
+                        }
                 }.frame(width: 380)
                 Divider()
                 HStack {
                     Text("Together Schedule")
                         .font(.headline)
                         .foregroundColor(.blue)
-
+                    
                 }.frame(width:380)
                 HStack {
                     VStack{
@@ -207,13 +205,11 @@ struct HomeView_together: View {
     
 }
 
-/*
 
 struct HomeView_person: View {
-    @Environment(\.imageCache) var cache: ImageCache
     @State var showingaddtask = false
     @State var showingprofile = false
-    @State var showingnavi = false
+    @State var showingnavi = true
     @Binding var view_swither: Int
     @State var IsChanging = false
     @State var taskcontent = ""
@@ -222,12 +218,15 @@ struct HomeView_person: View {
     @ObservedObject private var loader: ImageLoader
     private let placeholder: Image?
     private let configuration: (Image) -> Image
-    
+    private let url: URL
+    private let cache: ImageCache?
     init(url: URL, cache: ImageCache? = nil, view_swither: Binding<Int>) {
         loader = ImageLoader(url: url, cache: cache)
         self.placeholder = Choose
         self.configuration = {$0.resizable()}
         self._view_swither = view_swither
+        self.url = url
+        self.cache = cache
     }
     
     private var image: some View {
@@ -249,7 +248,17 @@ struct HomeView_person: View {
                         .foregroundColor(.blue)
                         .offset(y: 5)
                     Spacer()
-                    
+                    NavigationLink(destination: Messageview().onAppear() {
+                        self.showingnavi = false
+                    }) {
+                        HStack {
+                            Image(systemName: "message.fill")
+                                .font(.headline)
+                        }
+                        .foregroundColor(.blue)
+                        .background(Color(red: 1, green: 1, blue: 1))
+                        .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -23) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
+                    }
                     image
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
@@ -262,9 +271,9 @@ struct HomeView_person: View {
                         .onTapGesture {
                             self.showingprofile.toggle()
                             
-                    }.sheet(isPresented: self.$showingprofile) {
-                        profileview(showingprofile: self.$showingprofile)
-                    }
+                        }.sheet(isPresented: self.$showingprofile) {
+                            profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
+                        }
                 }.frame(width: 380)
                 Divider()
                 HStack {
@@ -274,70 +283,102 @@ struct HomeView_person: View {
                     Spacer()
                 }.frame(width:380).padding(.top,20)
                 List {
-                    
-                    .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
-                    .cornerRadius(10)
-                    .frame(width: 380)
-                    
-                    HStack {
-                        NavigationLink(destination: FriendView().onAppear() {
-                            self.showingnavi = false
-                        }) {
-                            HStack {
-                                Image(systemName: "person.circle")
-                                    .font(.headline)
-                                Text("Your Friend")
-                                    .fontWeight(.semibold)
-                                    .font(.headline)
-                                
-                                
+                    ForEach(0..<User.PrivateTasks.count, id: \.self) {
+                        index in
+                        HStack {
+                            if User.PrivateTasks[index].IsFinished == false {
+                                Text("\(User.PrivateTasks[index].name)")
+                                Spacer()
+                                Image(systemName: "circle")
+                                    .onTapGesture {
+                                        User.PrivateTasks[index].IsFinished = true
+                                        self.settings.count += 1
+                                        PostChangeProfile(completion: { (code, msg) in
+                                            print(code, msg)
+                                        }, UserData: User)
+                                        
+                                    }
                             }
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(.orange))
-                            .cornerRadius(10)
-                        }
-                        Spacer()
-                        Button(action: {
-                            self.view_swither = 2
-                        }) {
-                            HStack {
-                                Image(systemName: "pencil.and.outline")
-                                    .font(.headline)
-                                Text("private Schedule")
-                                    .fontWeight(.semibold)
-                                    .font(.headline)
-                                
+                            if User.PrivateTasks[index].IsFinished == true {
+                                Text("\(User.PrivateTasks[index].name)")
+                                    .foregroundColor(Color.gray)
+                                    .strikethrough()
+                                Spacer()
+                                Image(systemName: "checkmark.circle")
+                                    .onTapGesture {
+                                        User.PrivateTasks[index].IsFinished = false
+                                        self.settings.count -= 1
+                                        PostChangeProfile(completion: { (code, msg) in
+                                            print(code, msg)
+                                        }, UserData: User)
+                                    }
                             }
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(.orange))
-                            .cornerRadius(10)
                         }
-                    }.frame(width:380)
+                    }
+                }
+                
+                .colorMultiply(Color(red:0.85,green:0.85,blue:0.95))
+                .cornerRadius(10)
+                .frame(width: 380)
+                
+                HStack {
+                    NavigationLink(destination: FriendView().onAppear() {
+                        self.showingnavi = false
+                    }) {
+                        HStack {
+                            Image(systemName: "person.circle")
+                                .font(.headline)
+                            Text("Your Friend")
+                                .fontWeight(.semibold)
+                                .font(.headline)
+                            
+                            
+                        }
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(.orange))
+                        .cornerRadius(10)
+                    }
                     Spacer()
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            self.showingaddtask.toggle()
-                        }) {
-                            Text("Add Tasks")
-                        }.sheet(isPresented: $showingaddtask) {
-                            addNewPrivateTask(addingtask: self.$showingaddtask, IsChanging: self.$IsChanging)
+                    Button(action: {
+                        self.view_swither = 2
+                    }) {
+                        HStack {
+                            Image(systemName: "pencil.and.outline")
+                                .font(.headline)
+                            Text("private Schedule")
+                                .fontWeight(.semibold)
+                                .font(.headline)
+                            
                         }
-                        if IsChanging {
-                            Text("")
-                        }
-                    }.frame(width:300)
-                }
-                .navigationBarTitle(Text("Home"),displayMode: .inline)
-                .navigationBarHidden(showingnavi)
-                .onAppear() {
-                    self.showingnavi = true
-                }
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(.orange))
+                        .cornerRadius(10)
+                    }
+                }.frame(width:380)
+                Spacer()
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.showingaddtask.toggle()
+                    }) {
+                        Text("Add Tasks")
+                    }.sheet(isPresented: $showingaddtask) {
+                        addNewPrivateTask(addingtask: self.$showingaddtask, IsChanging: self.$IsChanging)
+                    }
+                    if IsChanging {
+                        Text("")
+                    }
+                }.frame(width:300)
+            }
+            .navigationBarTitle(Text("Home"),displayMode: .inline)
+            .navigationBarHidden(showingnavi)
+            .onAppear() {
+                self.showingnavi = true
             }
         }
     }
 }
 
-*/
+
