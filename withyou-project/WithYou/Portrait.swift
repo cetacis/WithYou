@@ -130,7 +130,17 @@ struct Portrait_change: View {
                     }
                     Button(" Save"){
                         Choose = self.image ?? Choose
-                        self.showAlert = true
+                        UserPortrait = self.image ?? UserPortrait
+                        PostImagePath = self.imagePath
+                        //print(PostImagePath!)
+                        compress()
+                        PostChangeProt(completion:{(code,msg) in
+                            print(code)
+                            print(msg)
+                            if code == 0{
+                                self.showAlert = true
+                            }
+                        },email: User.email, password: User.password)
                     } .alert(isPresented: $showAlert) {
                                        Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
                                    }
