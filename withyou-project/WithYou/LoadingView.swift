@@ -10,37 +10,11 @@ import Foundation
 import SwiftUI
 
 struct LoadingView: View {
-    @Binding var view_swither: Int
-    
-    @ObservedObject private var loader: ImageLoader
-    private let placeholder: Image?
-    private let configuration: (Image) -> Image
-    private let url: URL
-    private let cache: ImageCache?
-    init(url: URL, cache: ImageCache? = nil, view_swither: Binding<Int>) {
-        loader = ImageLoader(url: url, cache: cache)
-        self.placeholder = Choose
-        self.configuration = {$0.resizable()}
-        self._view_swither = view_swither
-        self.url = url
-        self.cache = cache
-    }
-    
-    private var image: some View {
-        Group {
-            if loader.image != nil  {
-                configuration(Image(uiImage: loader.image!))
-            } else {
-                placeholder
-            }
-        }
-    }
-    
     var body: some View {
         VStack {
-            image
-                .onAppear(perform: loader.load)
-                .onDisappear(perform: loader.cancel).frame(width: 200, height: 200)
+            UserPortrait
+                .resizable()
+                .frame(width: 200, height: 200)
                 .scaledToFit()
                 .clipShape(Circle())
                 .overlay(

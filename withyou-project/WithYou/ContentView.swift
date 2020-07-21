@@ -43,7 +43,7 @@ struct ContentView: View {
             }
             
             if view_switcher == 6 && self.timing.time >= 0 {
-                LoadingView(url: URL(string: "https://withyou.cetacis.dev/api"+User.img_path)!, cache: self.cache ,view_swither: $view_switcher).onAppear() {
+                LoadingView().onAppear() {
                     GetFriends()
                     GetMatch { (finished) in
                         if finished {
