@@ -11,28 +11,6 @@ import SwiftUI
 
 struct FriendView:View {
     @State var showingprofile = false
-    @State var changed = 0
-    @Environment(\.imageCache) var cache: ImageCache
-    @State var loader: ImageLoader = ImageLoader(url: URL(string: "https://img.cetacis.dev/uploads/big/eb1dc98270f647c1e236ecb56b51a98a.jpg")!, cache: nil)
-    private let placeholder = Choose
-    private let configuration: (Image) -> Image = {
-        $0.resizable()
-    }
-    
-    func Loading(url: URL, cache: ImageCache? = nil) {
-        loader = ImageLoader(url: url, cache: cache)
-        loader.load()
-    }
-    
-    private var image: some View {
-        Group {
-            if loader.image != nil  {
-                configuration(Image(uiImage: loader.image!))
-            } else {
-                placeholder
-            }
-        }
-    }
     
     var body: some View {
         VStack {
@@ -43,7 +21,15 @@ struct FriendView:View {
                     ForEach(0..<Friends.count, id: \.self){
                         index in
                         HStack {
-                            ImgDict[Friends[index].email]
+                            ImgDict[Friends[index].email]!
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .scaledToFit()
+                                .offset(y: 5)
+                                .clipShape(Circle())
+                                .overlay(
+                                    Circle().stroke(Color.gray, lineWidth: 2))
+                                .padding(.horizontal,15)
                             Spacer()
                             Text("\(Friends[index].email)")
                         }

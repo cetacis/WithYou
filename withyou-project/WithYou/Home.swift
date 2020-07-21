@@ -83,6 +83,7 @@ struct HomeView_together: View {
                     }
                     
                     UserPortrait
+                        .resizable()
                         .frame(width: 50, height: 50)
                         .scaledToFit()
                         .clipShape(Circle())
@@ -92,7 +93,7 @@ struct HomeView_together: View {
                         .onTapGesture {
                             self.showingprofile = true
                         }.sheet(isPresented: self.$showingprofile) {
-                            profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
+                            profileview(showingprofile: self.$showingprofile)
                         }
                 }.frame(width: 380)
                 Divider()
@@ -258,9 +259,9 @@ struct HomeView_person: View {
                         .background(Color(red: 1, green: 1, blue: 1))
                         .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -23) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
                     }
-                    image
-                        .onAppear(perform: loader.load)
-                        .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
+                    UserPortrait
+                        .resizable()
+                        .frame(width: 50, height: 50)
                         .scaledToFit()
                         .clipShape(Circle())
                         .overlay(
@@ -270,7 +271,7 @@ struct HomeView_person: View {
                             self.showingprofile.toggle()
                             
                         }.sheet(isPresented: self.$showingprofile) {
-                            profileview(url: self.url, cache: self.cache, showingprofile: self.$showingprofile)
+                            profileview(showingprofile: self.$showingprofile)
                         }
                 }.frame(width: 380)
                 Divider()
