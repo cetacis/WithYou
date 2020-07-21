@@ -27,16 +27,17 @@ struct addNewPrivateTask:View {
                 }
                 Spacer()
                 if (isnotempty(taskcontent)){
-                   
                         Button(action: {
-                        var new_task = PrivateTask()
-                        new_task.name = self.taskcontent
-                        //todo 将new_task 加入 post
-                        /*try! realm.write {
-                            User.privatetasks.append(new_task)
-                        }*/
-                        self.IsChanging.toggle()
-                        self.addingtask.toggle()
+                            var new_task = PrivateTask()
+                            new_task.name = self.taskcontent
+                            User.PrivateTasks.append(new_task)
+                            PostChangeProfile(completion: { (code, msg) in
+                                if code == 0 {
+                                    print("success")
+                                }
+                            }, UserData: User)
+                            self.IsChanging.toggle()
+                            self.addingtask.toggle()
                     }) {
                         Text("Done")
                     }
@@ -46,11 +47,5 @@ struct addNewPrivateTask:View {
             LabelTextField(label: "Task", placeHolder: "write your task", icon: "person.circle.fill", text: $taskcontent)
             Spacer()
         }
-    }
-}
-
-struct addNewPrivateTask_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

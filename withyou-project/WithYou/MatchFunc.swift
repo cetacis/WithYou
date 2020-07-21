@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-func GetMatch() {
+func GetMatch(completion: @escaping (_ IsFinished: Bool) -> ()) {
     // get match
     PostGetMatch(completion: { (code, msg) in
         if code == 0 {
@@ -69,15 +69,20 @@ func GetMatch() {
                         }
                     }, UserData: ChangeInfo)
                     Partner = ChangeInfo
+                    completion(true)
                 } else {
                     Partner = UserInfo
+                    completion(true)
                 }
             }, email: friendemail)
         } else {
             if User.partner.count != 0 {
                 GetFriendInfo(completion: { (UserInfo) in
                     Partner = UserInfo
+                    completion(true)
                 }, email: User.partner)
+            } else {
+                completion(true)
             }
         }
     }, email: User.email, taskid: User.CurrentTaskId)
