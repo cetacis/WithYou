@@ -13,30 +13,6 @@ struct profileview: View {
     @Binding var showingprofile: Bool
     @State var showmoreprofile = false
     
-    @ObservedObject private var loader: ImageLoader
-    private let placeholder: Image?
-    private let configuration: (Image) -> Image
-    private let url: URL
-    private let cache: ImageCache?
-    init(url: URL, cache: ImageCache? = nil, showingprofile: Binding<Bool>) {
-        loader = ImageLoader(url: url, cache: cache)
-        self.placeholder = Choose
-        self.configuration = {$0.resizable()}
-        self.url = url
-        self.cache = cache
-        self._showingprofile = showingprofile
-    }
-    
-    private var image: some View {
-        Group {
-            if loader.image != nil  {
-                configuration(Image(uiImage: loader.image!))
-            } else {
-                placeholder
-            }
-        }
-    }
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -50,11 +26,10 @@ struct profileview: View {
                 }.frame(width: 365).padding(.top,10)
                 Divider()
                 VStack {
-                    image
-                        .onAppear(perform: loader.load)
-                        .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
+                    UserPortrait
+                        .resizable()
+                        .frame(width: 50, height: 50)
                         .scaledToFit()
-                      
                         .clipShape(Circle())
                         .overlay(
                             Circle().stroke(Color.gray, lineWidth: 2))
@@ -115,7 +90,7 @@ struct profileview: View {
                     }.frame(width: 365)
                     VStack{
                         Divider()
-                        NavigationLink(destination: MoreProfile(url: self.url, cache: self.cache).onAppear() {
+                        NavigationLink(destination: MoreProfile().onAppear() {
                             self.showmoreprofile = false
                         }) {
                             HStack {
@@ -125,7 +100,7 @@ struct profileview: View {
                             }.frame(width:365)
                         }
                         Divider()
-                        NavigationLink(destination: MoreProfile(url: self.url, cache: self.cache).onAppear() {
+                        NavigationLink(destination: ChangeProfile().onAppear() {
                             self.showmoreprofile = false
                         }) {
                             HStack {

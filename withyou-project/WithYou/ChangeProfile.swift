@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct ChangeProfile: View {
-    @State var image: Image? = Choose
+    @State var image: Image? = UserPortrait
     @State var isshowingNavi = true
     @State var changingBio = User.bio
     @State var changingName = User.username
