@@ -31,7 +31,7 @@ struct StreetRow: View {
             Text(message.IsRead || message.IsUser ? "" : "Not Readed")
         }.onTapGesture {
             self.showingMessage = true
-            User.Messages[index].IsRead = true
+            User.Messages[self.index].IsRead = true
             PostChangeProfile(completion: { (code, msg) in
                 print(code, msg)
             }, UserData: User)

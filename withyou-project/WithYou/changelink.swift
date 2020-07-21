@@ -95,7 +95,7 @@ struct ChangeLinkAge:View {
 struct ChangeLinkbio:View {
     
     @Binding var change_bio: String
-    @State var showingAlertBio = false
+    @State var showingAlert = false
     @State var changing = ""
     var body: some View {
         VStack {
@@ -105,10 +105,10 @@ struct ChangeLinkbio:View {
                   
                     self.change_bio = self.changing
                     PostChangeProfile(completion: { (code, msg) in
+                        if code == 0 { self.showingAlert = true}
                         print(code, msg)
                     }, UserData: User)
-                    self.showingAlertBio = true
-                } .alert(isPresented: $showingAlertBio) {
+                } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
                 } .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).offset(x:20).font(.system(size:15,design:.rounded))
                 
@@ -130,7 +130,7 @@ struct ChangeLinkMobile:View {
                     
                     self.change_mobile = self.changing
                     PostChangeProfile(completion: { (code, msg) in
-                        print(code, msg)
+                        if code == 0 { self.showingAlert = true}
                     }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
@@ -151,12 +151,11 @@ struct ChangeLinkConstellation:View {
             LabelTextField(label: "Constellation", placeHolder: "valid Constellation", icon: "s.circle.fill", text: $changing).foregroundColor(isValidStar(changing) ? .green : .black)
             if (isValidStar(changing)) {
                 Button("Save"){
-                   
                     self.change_star = self.changing
                     PostChangeProfile(completion: { (code, msg) in
                         print(code, msg)
+                        if code == 0 { self.showingAlert = true}
                     }, UserData: User)
-                    self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
                 } .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).offset(x:20).font(.system(size:15,design:.rounded))
@@ -178,9 +177,8 @@ struct ChangeLinkBirthDay:View {
                     
                     self.change_birthDay = self.changing
                     PostChangeProfile(completion: { (code, msg) in
-                        print(code, msg)
+                         if code == 0 { self.showingAlert = true}
                     }, UserData: User)
-                    self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
                 } .padding().background(Color.yellow).cornerRadius(100).foregroundColor(.gray).offset(x:20).font(.system(size:15,design:.rounded))
@@ -201,7 +199,7 @@ struct ChangeLinkSex:View {
                 Button("Save"){
                     self.change_sex = self.changing
                     PostChangeProfile(completion: { (code, msg) in
-                                           print(code, msg)
+                        if code == 0 { self.showingAlert = true}
                                        }, UserData: User)
                     self.showingAlert = true
                 } .alert(isPresented: $showingAlert) {

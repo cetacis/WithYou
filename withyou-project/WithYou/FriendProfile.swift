@@ -28,7 +28,7 @@ struct Friendprofileview: View {
                 }.frame(width: 365).padding(.top,10)
                 Divider()
                 VStack {
-                    Choose
+                    ImgDict[User.email]!
                         .resizable()
                         .frame(width: 80, height: 80)
                         .scaledToFit()
