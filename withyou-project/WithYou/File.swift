@@ -15,7 +15,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 
 var PostImagePath : URL? = nil
@@ -105,5 +105,8 @@ var Tasks = [[],
 
 ]
 
+var Friends = [UserInfo]()
 
+var ImgDict: [String:Image] = [String:Image]()
 
+var UserPortrait: Image = Choose
