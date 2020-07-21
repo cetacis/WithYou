@@ -37,7 +37,7 @@ struct LoadingView: View {
     }
     
     var body: some View {
-        HStack {
+        VStack {
             image
                 .onAppear(perform: loader.load)
                 .onDisappear(perform: loader.cancel).frame(width: 200, height: 200)
