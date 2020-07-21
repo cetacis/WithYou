@@ -93,7 +93,6 @@ struct ChangeLinkAge:View {
 }
 
 struct ChangeLinkbio:View {
-    
     @Binding var change_bio: String
     @State var showingAlert = false
     @State var changing = ""
@@ -102,11 +101,13 @@ struct ChangeLinkbio:View {
             LabelTextField(label: "Bio", placeHolder: "valid bio", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBio(changing) ? .green : .black)
             if (isValidBio(changing)) {
                 Button("Save"){
-                  
                     self.change_bio = self.changing
+                    User.bio = self.change_bio
                     PostChangeProfile(completion: { (code, msg) in
                         if code == 0 { self.showingAlert = true}
                         print(code, msg)
+                        print(User.bio)
+                        print("123")
                     }, UserData: User)
                 } .alert(isPresented: $showingAlert) {
                     Alert(title: Text("successfully modified"), dismissButton: .default(Text("OK")))
@@ -129,6 +130,7 @@ struct ChangeLinkMobile:View {
                 Button("Save"){
                     
                     self.change_mobile = self.changing
+                    User.mobile = self.change_mobile
                     PostChangeProfile(completion: { (code, msg) in
                         if code == 0 { self.showingAlert = true}
                     }, UserData: User)
@@ -152,6 +154,7 @@ struct ChangeLinkConstellation:View {
             if (isValidStar(changing)) {
                 Button("Save"){
                     self.change_star = self.changing
+                    User.constellation = self.change_star
                     PostChangeProfile(completion: { (code, msg) in
                         print(code, msg)
                         if code == 0 { self.showingAlert = true}
@@ -174,8 +177,8 @@ struct ChangeLinkBirthDay:View {
             LabelTextField(label: "BirthDay", placeHolder: "xxxx-xx-xx", icon: "b.circle.fill", text: $changing).foregroundColor(isValidBirthDay(changing) ? .green : .black)
     
                 Button("Save"){
-                    
                     self.change_birthDay = self.changing
+                    User.birthday = self.change_birthDay
                     PostChangeProfile(completion: { (code, msg) in
                          if code == 0 { self.showingAlert = true}
                     }, UserData: User)
@@ -198,6 +201,7 @@ struct ChangeLinkSex:View {
             if (isValidSex(changing)) {
                 Button("Save"){
                     self.change_sex = self.changing
+                    User.sex = self.change_sex
                     PostChangeProfile(completion: { (code, msg) in
                         if code == 0 { self.showingAlert = true}
                                        }, UserData: User)

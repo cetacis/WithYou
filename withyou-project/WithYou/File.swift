@@ -97,6 +97,7 @@ struct TaskQuue: Codable {
 }
 
 var User = UserInfo()
+var BIO : String = User.bio
 var Partner = UserInfo()
 var temFriend = UserInfo()
 
@@ -110,3 +111,4 @@ var Friends = [UserInfo]()
 var ImgDict: [String:Image] = [String:Image]()
 
 var UserPortrait: Image = Choose
+
