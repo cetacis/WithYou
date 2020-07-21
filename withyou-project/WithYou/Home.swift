@@ -263,7 +263,6 @@ struct HomeView_person: View {
                         .onAppear(perform: loader.load)
                         .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
                         .scaledToFit()
-                        .offset(y: 5)
                         .clipShape(Circle())
                         .overlay(
                             Circle().stroke(Color.gray, lineWidth: 2))
