@@ -82,9 +82,8 @@ struct HomeView_together: View {
                         .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -23) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
                     }
                     
-                    image
-                        .onAppear(perform: loader.load)
-                        .onDisappear(perform: loader.cancel).frame(width: 50, height: 50)
+                    UserPortrait
+                        .frame(width: 50, height: 50)
                         .scaledToFit()
                         .clipShape(Circle())
                         .overlay(

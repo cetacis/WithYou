@@ -127,9 +127,10 @@ struct LoginView: View {
                             (RtData) in
                             //print("The dafault User:\(User)")
                             User = RtData
-                            print("#1")
-                            print("The changed User:\(User)")
-                            self.view_switcher = 6
+                            GetImage(completion: { (Image) in
+                                UserPortrait = Image
+                                self.view_switcher = 6
+                            }, url: "https://withyou.cetacis.dev/api" + User.img_path)
                         }, email: self.emailIn, pass: self.passpordIn)
                     }
                     
