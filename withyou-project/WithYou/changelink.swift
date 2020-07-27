@@ -54,6 +54,7 @@ struct ChangeLinkName:View {
                 Button("Save"){
                 
                     self.change_name = self.changing
+                    User.username = self.change_name
                     PostChangeProfile(completion: { (code, msg) in
                                                 print(code, msg)
                                             }, UserData: User)
@@ -78,6 +79,7 @@ struct ChangeLinkAge:View {
                 Button("Save"){
                    
                     self.change_age = self.changing
+                    User.age = self.change_age
                    PostChangeProfile(completion: { (code, msg) in
                              print(code, msg)
                          }, UserData: User)

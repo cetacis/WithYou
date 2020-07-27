@@ -30,14 +30,17 @@ struct StreetRow: View {
             Spacer()
             Text(message.IsRead || message.IsUser ? "" : "Not Readed")
         }.onTapGesture {
-            self.showingMessage = true
-            User.Messages[self.index].IsRead = true
+            self.message.IsRead = true
+            User.Messages[self.index].IsRead = self.message.IsRead
             PostChangeProfile(completion: { (code, msg) in
                 print(code, msg)
             }, UserData: User)
-            print("sheet")}
+            print("sheet")
+            self.showingMessage = true
+        }
         .sheet(isPresented:self.$showingMessage) {
             MessageviewDetail(message: self.$message)
+            
         }
     }
 }

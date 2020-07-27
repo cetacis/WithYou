@@ -113,7 +113,7 @@ struct ChangeProfile: View {
                 NavigationLink(destination: ChangeLinkConstellation(change_star: $changingStar)) {
                     VStack{
                         HStack {
-                            Text("Star")
+                            Text("Constellation")
                             Spacer()
                         }
                         HStack {

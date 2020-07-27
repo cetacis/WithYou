@@ -28,3 +28,5 @@ func PostGetUserInfo(completion: @escaping (_ RtData: UserInfo) -> (), email:Str
     }
 }
 
+
+

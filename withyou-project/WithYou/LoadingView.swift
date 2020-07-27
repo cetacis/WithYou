@@ -22,6 +22,8 @@ struct LoadingView: View {
                 .padding(.horizontal,15)
                 
             Text("loading..")
+                .font(.system(size:30, design: .rounded))
+                .foregroundColor(.orange)
         }
     }
 }

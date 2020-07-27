@@ -79,7 +79,7 @@ struct HomeView_together: View {
                         }
                         .foregroundColor(.blue)
                         .background(Color(red: 1, green: 1, blue: 1))
-                        .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -23) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
+                        .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 10, y: -10) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
                     }
                     
                     UserPortrait

@@ -57,21 +57,31 @@ struct AnimationView: View {
             Text("Life is better").font(.system(size:30, design: .rounded))
                 .offset(y: hasTimeElapsed2 ? -40:60).foregroundColor(.orange).opacity(hasTimeElapsed2 ? 1.0 : 0.0).animation(.easeInOut(duration: 2.0))
             
-   
-                Button(action: {
-                    self.view_swither = 0
-                },
-                       label:{Text("Let's Start").padding(.horizontal).font(.system(size: 20, design: .rounded)) .background(Color(red: 233/244, green: 233/255, blue: 1))
-                                                             .cornerRadius(10)}
-                 
-                    ).offset(y:0).opacity(hasButtom ? 1.0:0.0)
             
-                .animation(.easeInOut(duration: 1.0))
-          
+            Button(action: {
+                self.view_swither = 0
+            },
+                   label:{Text("Let's Start")
+                    //.padding()
+                    //.font(.system(size: 20, design: .rounded))
+                    //.background(Color(red: 233/244, green: 233/255, blue: 1))
+                    //.cornerRadius(20)}
+                    .foregroundColor(.purple)
+                    .font(.title)
+                    .padding() 
+                    .cornerRadius(40)
+                    .border(Color.purple, width: 5)
+            }
                 
+                
+            ).offset(y:0).opacity(hasButtom ? 1.0:0.0)
+                
+                .animation(.easeInOut(duration: 1.0))
             
-          
-           
+            
+            
+            
+            
         }
         
         /*  Text("withYou")
