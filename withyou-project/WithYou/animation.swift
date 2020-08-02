@@ -66,11 +66,12 @@ struct AnimationView: View {
                     //.font(.system(size: 20, design: .rounded))
                     //.background(Color(red: 233/244, green: 233/255, blue: 1))
                     //.cornerRadius(20)}
-                    .foregroundColor(.purple)
-                    .font(.title)
-                    .padding() 
+                    
+                    .font(.system(size:20, design: .rounded))
+                    .padding()
+                  
                     .cornerRadius(40)
-                    .border(Color.purple, width: 5)
+                    
             }
                 
                 

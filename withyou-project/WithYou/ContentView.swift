@@ -44,12 +44,14 @@ struct ContentView: View {
             
             if view_switcher == 6 && self.timing.time >= 0 {
                 LoadingView().onAppear() {
-                    GetFriends()
                     GetMatch { (finished) in
+                        GetFriends()
                         if finished {
                             self.view_switcher = 2
                         }
+                    
                     }
+                   
                 }
             }
         }.onAppear(){

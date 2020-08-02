@@ -132,7 +132,7 @@ struct HomeView_together: View {
                         List {//0..<User.Friends.count, id: \.self
                             ForEach(0..<Partner.TogetherTasks.count, id: \.self){
                                 index in
-                                NavigationLink(destination: TagContent(TagName: Partner.TogetherTasks[index].name, isFriend: true, taskid: index).onAppear(){
+                                NavigationLink(destination: TagContent(comment:Partner.TogetherTasks[index].comment,TagName: Partner.TogetherTasks[index].name, isFriend: true, taskid: index).onAppear(){
                                     self.showingnavi = false
                                 }) {
                                     if (!Partner.TogetherTasks[index].IsFinished) {
@@ -150,6 +150,7 @@ struct HomeView_together: View {
                 .frame(width: 380)
                 HStack {
                     NavigationLink(destination: FriendView().onAppear() {
+                        
                         self.showingnavi = false
                     }) {
                         HStack {
@@ -257,8 +258,8 @@ struct HomeView_person: View {
                         }
                         .foregroundColor(.blue)
                         .background(Color(red: 1, green: 1, blue: 1))
-                        .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -23) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
-                    }
+                        .overlay(checkNewMessage() ? Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 10, y: -10) : Color.red.frame(width: 16, height: 16) .cornerRadius(8) .offset(x: 23, y: -200))
+                        }
                     UserPortrait
                         .resizable()
                         .frame(width: 50, height: 50)

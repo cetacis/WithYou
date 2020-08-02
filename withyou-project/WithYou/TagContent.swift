@@ -11,10 +11,11 @@ import SwiftUI
 
 
 struct TagContent: View {
+    var comment: String = ""
     var TagName: String
     var isFriend: Bool
     var taskid: Int
     var body: some View {
-        TaskDetail(taskid: taskid, isFriend: isFriend, isFinished: User.TogetherTasks[taskid].IsFinished)
+        TaskDetail(comment:comment,taskid: taskid, isFriend: isFriend, isFinished: User.TogetherTasks[taskid].IsFinished)
     }
 }
